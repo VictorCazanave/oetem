@@ -2,6 +2,7 @@ import React from 'react';
 import Summary from './components/Summary/Summary';
 import When from './components/When/When';
 import Where from './components/Where/Where';
+import What from './components/What/What';
 import Matches from './components/Matches/Matches';
 import './App.css';
 
@@ -89,13 +90,18 @@ class App extends React.Component {
 			],
 			selected: {
 				date: null,
-				areas: []
+				areas: [],
+				temperature: {
+					min: -20,
+					max: 50
+				}
 			},
 			matches: []
 		};
 
 		this.handleSelectDate = this.handleSelectDate.bind(this);
 		this.handleSelectArea = this.handleSelectArea.bind(this);
+		this.handleChangeTemperature = this.handleChangeTemperature.bind(this);
 		this.handleClickGo = this.handleClickGo.bind(this);
 	}
 
@@ -130,6 +136,10 @@ class App extends React.Component {
 		});
 	}
 
+	handleChangeTemperature(temperature) {
+		console.log('temperature', temperature);
+	}
+
 	handleClickGo() {
 		this.state.selected.areas.forEach((area) => {
 			const url = `/${this.state.selected.date.replace(/-/g, '')}_${area.id}.json`;
@@ -151,6 +161,7 @@ class App extends React.Component {
 			<Summary selected={this.state.selected}/>
 			<When dates={this.state.dates} selectedDate={this.state.selected.date} onSelect={this.handleSelectDate}/>
 			<Where areas={this.state.areas} selectedAreas={this.state.selected.areas} onSelect={this.handleSelectArea}/>
+			<What temperature={this.state.selected.temperature} onChangeTemperature={this.handleChangeTemperature}/>
 			<button onClick={this.handleClickGo}>Let's go!</button>
 			<Matches matches={this.state.matches}/>
 
