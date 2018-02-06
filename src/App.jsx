@@ -2,6 +2,7 @@ import React from 'react';
 import Summary from './components/Summary/Summary';
 import When from './components/When/When';
 import Where from './components/Where/Where';
+import Matches from './components/Matches/Matches';
 import './App.css';
 
 class App extends React.Component {
@@ -95,7 +96,7 @@ class App extends React.Component {
 
 		this.handleSelectDate = this.handleSelectDate.bind(this);
 		this.handleSelectArea = this.handleSelectArea.bind(this);
-		this.handleClick = this.handleClick.bind(this);
+		this.handleClickGo = this.handleClickGo.bind(this);
 	}
 
 	handleSelectDate(selectedDate) {
@@ -127,38 +128,22 @@ class App extends React.Component {
 				}
 			};
 		});
-		/*
-		this.setState((prevState) => {
-			let areas = prevState.areas.map((area) => {
-				if (area.id === areaId) {
-					area.selected = !area.selected;
-				}
-				return area;
+	}
+
+	handleClickGo() {
+		this.state.selected.areas.forEach((area) => {
+			const url = `/${this.state.selected.date.replace(/-/g, '')}_${area.id}.json`;
+
+			fetch(url).then((response) => {
+				return response.json()
+			}).then((json) => {
+				console.log('parsed json', json)
+				this.setState({matches: json.area.location});
+			}).catch((err) => {
+				console.log('parsing failed', err)
 			})
-
-			return {areas: areas};
-		});
-		*/
-	}
-
-	handleClick() {
-		fetch('/20180104_09007.json').then((response) => {
-			console.log('OK', response.json());
-
-		}).catch(() => {
-			console.log('BAD');
-		});
-
-		this.setState({
-			matches: [
-				{
-					name: 'Toto'
-				}
-			]
 		});
 	}
-
-	searchMatches() {}
 
 	render() {
 		return (<div>
@@ -166,7 +151,9 @@ class App extends React.Component {
 			<Summary selected={this.state.selected}/>
 			<When dates={this.state.dates} selectedDate={this.state.selected.date} onSelect={this.handleSelectDate}/>
 			<Where areas={this.state.areas} selectedAreas={this.state.selected.areas} onSelect={this.handleSelectArea}/>
-			<button onClick={this.handleClick}>Go!</button>
+			<button onClick={this.handleClickGo}>Let's go!</button>
+			<Matches matches={this.state.matches}/>
+
 		</div>);
 	}
 }
