@@ -5,6 +5,7 @@ import Where from './components/Where/Where';
 import What from './components/What/What';
 import Matches from './components/Matches/Matches';
 import './App.css';
+import 'react-input-range/lib/css/index.css'
 
 class App extends React.Component {
 	constructor() {
@@ -110,7 +111,8 @@ class App extends React.Component {
 			return {
 				selected: {
 					date: selectedDate,
-					areas: prevState.selected.areas
+					areas: prevState.selected.areas,
+					temperature: prevState.selected.temperature
 				}
 			}
 		});
@@ -121,23 +123,37 @@ class App extends React.Component {
 			let selectedAreas = [];
 
 			if (isSelected) {
-				selectedAreas = prevState.selected.areas.slice();
-				selectedAreas.push(selectedArea);
+				// Add area
+				selectedAreas = [
+					...prevState.selected.areas,
+					selectedArea
+				];
 			} else {
+				// Remove area
 				selectedAreas = prevState.selected.areas.filter(area => area !== selectedArea);
 			}
 
 			return {
 				selected: {
 					date: prevState.selected.date,
-					areas: selectedAreas
+					areas: selectedAreas,
+					temperature: prevState.selected.temperature
 				}
 			};
 		});
 	}
 
-	handleChangeTemperature(temperature) {
-		console.log('temperature', temperature);
+	handleChangeTemperature(changedTemperature) {
+		this.setState((prevState) => {
+
+			return {
+				selected: {
+					date: prevState.selected.date,
+					areas: prevState.selected.areas,
+					temperature: changedTemperature
+				}
+			};
+		});
 	}
 
 	handleClickGo() {
@@ -159,8 +175,8 @@ class App extends React.Component {
 		return (<div>
 			<h1>oeteM</h1>
 			<Summary selected={this.state.selected}/>
-			<When dates={this.state.dates} selectedDate={this.state.selected.date} onSelect={this.handleSelectDate}/>
-			<Where areas={this.state.areas} selectedAreas={this.state.selected.areas} onSelect={this.handleSelectArea}/>
+			<When dates={this.state.dates} selectedDate={this.state.selected.date} onSelectDate={this.handleSelectDate}/>
+			<Where areas={this.state.areas} selectedAreas={this.state.selected.areas} onSelectArea={this.handleSelectArea}/>
 			<What temperature={this.state.selected.temperature} onChangeTemperature={this.handleChangeTemperature}/>
 			<button onClick={this.handleClickGo}>Let's go!</button>
 			<Matches matches={this.state.matches}/>
