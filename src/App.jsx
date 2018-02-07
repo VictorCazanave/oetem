@@ -89,13 +89,37 @@ class App extends React.Component {
 					id: '10020'
 				}
 			],
+			temperature: {
+				//TODO: Use these values to initialize TemperatureInput
+				min: -10,
+				max: 40
+			},
+			skys: [
+				{
+					label: 'Sunny',
+					id: '01'
+				}, {
+					label: 'Partly cloudy',
+					id: '02'
+				}, {
+					label: 'Cloudy',
+					id: '03'
+				}, {
+					label: 'Super cloudy',
+					id: '04'
+				}, {
+					label: 'Raining',
+					id: '05'
+				}
+			],
 			selected: {
 				date: null,
 				areas: [],
 				temperature: {
-					min: -20,
-					max: 50
-				}
+					min: -10,
+					max: 40
+				},
+				skys: []
 			},
 			matches: []
 		};
@@ -103,8 +127,11 @@ class App extends React.Component {
 		this.handleSelectDate = this.handleSelectDate.bind(this);
 		this.handleSelectArea = this.handleSelectArea.bind(this);
 		this.handleChangeTemperature = this.handleChangeTemperature.bind(this);
+		this.handleSelectSky = this.handleSelectSky.bind(this);
 		this.handleClickGo = this.handleClickGo.bind(this);
 	}
+
+	//TODO: Find a better to handle events
 
 	handleSelectDate(selectedDate) {
 		this.setState((prevState) => {
@@ -112,7 +139,8 @@ class App extends React.Component {
 				selected: {
 					date: selectedDate,
 					areas: prevState.selected.areas,
-					temperature: prevState.selected.temperature
+					temperature: prevState.selected.temperature,
+					skys: prevState.selected.skys
 				}
 			}
 		});
@@ -137,7 +165,8 @@ class App extends React.Component {
 				selected: {
 					date: prevState.selected.date,
 					areas: selectedAreas,
-					temperature: prevState.selected.temperature
+					temperature: prevState.selected.temperature,
+					skys: prevState.selected.skys
 				}
 			};
 		});
@@ -150,7 +179,34 @@ class App extends React.Component {
 				selected: {
 					date: prevState.selected.date,
 					areas: prevState.selected.areas,
-					temperature: changedTemperature
+					temperature: changedTemperature,
+					skys: prevState.selected.skys
+				}
+			};
+		});
+	}
+
+	handleSelectSky(selectedSky, isSelected) {
+		this.setState((prevState) => {
+			let selectedSkys = [];
+
+			if (isSelected) {
+				// Add sky
+				selectedSkys = [
+					...prevState.selected.skys,
+					selectedSky
+				];
+			} else {
+				// Remove sky
+				selectedSkys = prevState.selected.skys.filter(sky => sky !== selectedSky);
+			}
+
+			return {
+				selected: {
+					date: prevState.selected.date,
+					areas: prevState.selected.areas,
+					temperature: prevState.selected.temperature,
+					skys: selectedSkys
 				}
 			};
 		});
@@ -177,7 +233,7 @@ class App extends React.Component {
 			<Summary selected={this.state.selected}/>
 			<When dates={this.state.dates} selectedDate={this.state.selected.date} onSelectDate={this.handleSelectDate}/>
 			<Where areas={this.state.areas} selectedAreas={this.state.selected.areas} onSelectArea={this.handleSelectArea}/>
-			<What temperature={this.state.selected.temperature} onChangeTemperature={this.handleChangeTemperature}/>
+			<What temperature={this.state.selected.temperature} onChangeTemperature={this.handleChangeTemperature} skys={this.state.skys} selectedSkys={this.state.selected.skys} onSelectSky={this.handleSelectSky}/>
 			<button onClick={this.handleClickGo}>Let's go!</button>
 			<Matches matches={this.state.matches}/>
 
