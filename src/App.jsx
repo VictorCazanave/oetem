@@ -14,15 +14,6 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			init: {
-				dates: [],
-				areas: [],
-				temperature: {
-					min: -100,
-					max: 100
-				},
-				skys: []
-			},
 			selected: {
 				date: null,
 				areas: [],
@@ -32,6 +23,16 @@ class App extends React.Component {
 				},
 				skys: []
 			}
+		};
+		// Init data that will not change later
+		this.initData = {
+			dates: [],
+			areas: [],
+			temperature: {
+				min: -100,
+				max: 100
+			},
+			skys: []
 		};
 
 		this.handleSelectDate = this.handleSelectDate.bind(this);
@@ -44,12 +45,10 @@ class App extends React.Component {
 		fetch('init.json').then((response) => {
 			return response.json()
 		}).then((json) => {
-			// Set init state and selected temperature
+			// Set init data and selected temperature
+			this.initData = json;
 			this.setState((prevState) => {
 				return update(prevState, {
-					init: {
-						$set: json
-					},
 					selected: {
 						temperature: {
 							$set: json.temperature
@@ -62,7 +61,7 @@ class App extends React.Component {
 		})
 	}
 
-	//TODO: Use  Object spread instead of immutability-helper?
+	//TODO: Use object spread instead of immutability-helper?
 
 	handleSelectDate(selectedDate) {
 		this.setState((prevState) => {
@@ -143,20 +142,12 @@ class App extends React.Component {
 		return (
 			<div>
 				<h1>oeteM</h1>
-				<Summary data={this.state.selected}/>
-				<When
-					dates={this.state.init.dates}
-					selectedDate={this.state.selected.date}
-					onSelectDate={this.handleSelectDate}/>
-				<Where
-					areas={this.state.init.areas}
-					selectedAreas={this.state.selected.areas}
-					onSelectArea={this.handleSelectArea}/>
+				<When dates={this.initData.dates} onSelectDate={this.handleSelectDate}/>
+				<Where areas={this.initData.areas} onSelectArea={this.handleSelectArea}/>
 				<What
-					temperature={this.state.init.temperature}
-					selectedTemperature={this.state.selected.temperature}
+					temperature={this.initData.temperature}
 					onSelectTemperature={this.handleSelectTemperature}
-					skys={this.state.init.skys}
+					skys={this.initData.skys}
 					selectedSkys={this.state.selected.skys}
 					onSelectSky={this.handleSelectSky}/>
 				<Matches selected={this.state.selected}/>

@@ -8,8 +8,14 @@ class When extends React.Component {
 		this.handleToggle = this.handleToggle.bind(this);
 	}
 
-	handleToggle(date) {
-		this.props.onSelectDate(date);
+	//TODO: Keep it? It is more optimized but more risky
+	shouldComponentUpdate() {
+		// Should update only when getting init data, because after there is no more changes
+		return (this.props.dates.length === 0);
+	}
+
+	handleToggle(selectedDate) {
+		this.props.onSelectDate(selectedDate);
 	}
 
 	render() {
@@ -17,13 +23,9 @@ class When extends React.Component {
 			<form>
 				<h2>When?</h2>
 				{
-					this.props.dates.map((date) => (
-						<DateInput
-							date={date}
-							selected={date === this.props.selectedDate}
-							onToggle={this.handleToggle}
-							key={date}></DateInput>
-					))
+					this.props.dates.map(
+						(date) => (<DateInput date={date} onToggle={this.handleToggle} key={date}></DateInput>)
+					)
 				}
 			</form>
 		);

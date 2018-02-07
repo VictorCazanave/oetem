@@ -3,12 +3,32 @@ import InputRange from 'react-input-range';
 
 class TemperatureInput extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
+		this.state = {
+			value: {
+				min: props.min,
+				max: props.max
+			}
+		};
+
 		this.handleChange = this.handleChange.bind(this);
 	}
 
+	componentWillReceiveProps(nextProps) {
+		// Set state when getting init data to avoid error from InputRange
+		if (nextProps.min !== this.props.min || nextProps.max !== this.props.max) {
+			this.setState({
+				value: {
+					min: nextProps.min,
+					max: nextProps.max
+				}
+			});
+		}
+	}
+
 	handleChange(value) {
+		this.setState({value: value});
 		this.props.onChange(value);
 	}
 
@@ -18,7 +38,7 @@ class TemperatureInput extends React.Component {
 				minValue={this.props.min}
 				maxValue={this.props.max}
 				formatLabel={value => `${value}°C`}
-				value={this.props.value}
+				value={this.state.value}
 				onChange={this.handleChange}/>
 		);
 	}

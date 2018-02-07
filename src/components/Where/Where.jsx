@@ -8,6 +8,12 @@ class Where extends React.Component {
 		this.handleToggle = this.handleToggle.bind(this);
 	}
 
+	//TODO: Keep it? It is more optimized but more risky
+	shouldComponentUpdate() {
+		// Should update only when getting init data, because after there is no more changes
+		return (this.props.areas.length === 0);
+	}
+
 	handleToggle(selectedArea, isSelected) {
 		this.props.onSelectArea(selectedArea, isSelected);
 	}
@@ -17,13 +23,9 @@ class Where extends React.Component {
 			<form>
 				<h2>Where?</h2>
 				{
-					this.props.areas.map((area) => (
-						<AreaInput
-							area={area}
-							selected={this.props.selectedAreas.includes(area)}
-							onToggle={this.handleToggle}
-							key={area.id}></AreaInput>
-					))
+					this.props.areas.map(
+						(area) => (<AreaInput area={area} onToggle={this.handleToggle} key={area.id}></AreaInput>)
+					)
 				}
 			</form>
 		);

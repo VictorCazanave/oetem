@@ -10,6 +10,14 @@ class What extends React.Component {
 		this.handleToggleSky = this.handleToggleSky.bind(this);
 	}
 
+	//TODO: Keep it? It is more optimized but more risky
+	shouldComponentUpdate() {
+		// Should update only when getting init data, because after there is no more changes
+		return (
+			this.props.temperature.min === -100 || this.props.temperature.max === 100 || this.props.skys.length === 0
+		);
+	}
+
 	handleChangeTemperature(selectedTemperature) {
 		this.props.onSelectTemperature(selectedTemperature);
 	}
@@ -26,19 +34,10 @@ class What extends React.Component {
 					<TemperatureInput
 						min={this.props.temperature.min}
 						max={this.props.temperature.max}
-						value={this.props.selectedTemperature}
 						onChange={this.handleChangeTemperature}/>
 				</div>
 				<div>
-					{
-						this.props.skys.map((sky) => (
-							<SkyInput
-								sky={sky}
-								selected={this.props.selectedSkys.includes(sky)}
-								onToggle={this.handleToggleSky}
-								key={sky.id}/>
-						))
-					}
+					{this.props.skys.map((sky) => (<SkyInput sky={sky} onToggle={this.handleToggleSky} key={sky.id}/>))}
 				</div>
 
 			</form>
