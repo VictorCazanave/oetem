@@ -13,7 +13,7 @@ class AreaInput extends React.Component {
 
 	render() {
 		return (<label>{this.props.area.name}
-			<input type="checkbox" name={this.props.area.name} checked={this.props.selected} onChange={this.handleChange}/>
+			<input type="checkbox" name={this.props.area.id} checked={this.props.selected} onChange={this.handleChange}/>
 		</label>);
 	}
 }
