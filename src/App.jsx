@@ -220,11 +220,24 @@ class App extends React.Component {
 				return response.json()
 			}).then((json) => {
 				console.log('parsed json', json)
-				this.setState({matches: json.area.location});
+				//TODO: Fix location(s) name
+				this.searchMatches(json.area.location, this.state.selected);
 			}).catch((err) => {
 				console.log('parsing failed', err)
 			})
 		});
+	}
+
+	searchMatches(locations, selected) {
+		const matches = locations.filter((location) => {
+			return this.match(location.weather, selected);
+		});
+
+		this.setState({matches: matches});
+	}
+
+	match(weather, selected) {
+		return (weather.minTemperature.value >= selected.temperature.min) && (weather.maxTemperature.value <= selected.temperature.max) && (selected.skys.includes(weather.sky));
 	}
 
 	render() {
@@ -236,7 +249,6 @@ class App extends React.Component {
 			<What temperature={this.state.selected.temperature} onChangeTemperature={this.handleChangeTemperature} skys={this.state.skys} selectedSkys={this.state.selected.skys} onSelectSky={this.handleSelectSky}/>
 			<button onClick={this.handleClickGo}>Let's go!</button>
 			<Matches matches={this.state.matches}/>
-
 		</div>);
 	}
 }
