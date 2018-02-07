@@ -13,7 +13,14 @@ class TemperatureInput extends React.Component {
 	}
 
 	render() {
-		return (<InputRange minValue={-20} maxValue={50} formatLabel={value => `${value}°C`} value={this.props.value} onChange={this.handleChange}/>);
+		return (
+			<InputRange
+				minValue={this.props.min}
+				maxValue={this.props.max}
+				formatLabel={value => `${value}°C`}
+				value={this.props.value}
+				onChange={this.handleChange}/>
+		);
 	}
 }
 

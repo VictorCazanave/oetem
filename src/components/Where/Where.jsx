@@ -13,10 +13,20 @@ class Where extends React.Component {
 	}
 
 	render() {
-		return (<form>
-			<h2>Where?</h2>
-			{this.props.areas.map((area) => (<AreaInput area={area} selected={this.props.selectedAreas.includes(area)} onToggle={this.handleToggle} key={area.id}></AreaInput>))}
-		</form>);
+		return (
+			<form>
+				<h2>Where?</h2>
+				{
+					this.props.areas.map((area) => (
+						<AreaInput
+							area={area}
+							selected={this.props.selectedAreas.includes(area)}
+							onToggle={this.handleToggle}
+							key={area.id}></AreaInput>
+					))
+				}
+			</form>
+		);
 	}
 }
 

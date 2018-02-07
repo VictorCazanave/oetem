@@ -10,8 +10,8 @@ class What extends React.Component {
 		this.handleToggleSky = this.handleToggleSky.bind(this);
 	}
 
-	handleChangeTemperature(temperature) {
-		this.props.onChangeTemperature(temperature);
+	handleChangeTemperature(selectedTemperature) {
+		this.props.onSelectTemperature(selectedTemperature);
 	}
 
 	handleToggleSky(selectedSky, isSelected) {
@@ -19,16 +19,30 @@ class What extends React.Component {
 	}
 
 	render() {
-		return (<form>
-			<h2>What?</h2>
-			<div>
-				<TemperatureInput value={this.props.temperature} onChange={this.handleChangeTemperature}/>
-			</div>
-			<div>
-				{this.props.skys.map((sky) => (<SkyInput sky={sky} selected={this.props.selectedSkys.includes(sky)} onToggle={this.handleToggleSky} key={sky.id}/>))}
-			</div>
+		return (
+			<form>
+				<h2>What?</h2>
+				<div>
+					<TemperatureInput
+						min={this.props.temperature.min}
+						max={this.props.temperature.max}
+						value={this.props.selectedTemperature}
+						onChange={this.handleChangeTemperature}/>
+				</div>
+				<div>
+					{
+						this.props.skys.map((sky) => (
+							<SkyInput
+								sky={sky}
+								selected={this.props.selectedSkys.includes(sky)}
+								onToggle={this.handleToggleSky}
+								key={sky.id}/>
+						))
+					}
+				</div>
 
-		</form>);
+			</form>
+		);
 	}
 }
 
