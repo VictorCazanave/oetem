@@ -72,7 +72,7 @@ class App extends React.Component {
 						$set: selectedDate
 					}
 				}
-			})
+			});
 		});
 	}
 
@@ -88,7 +88,7 @@ class App extends React.Component {
 				];
 			} else {
 				// Remove area
-				selectedAreas = prevState.selected.areas.filter(area => area !== selectedArea);
+				selectedAreas = prevState.selected.areas.filter(area => area.id !== selectedArea.id);
 			}
 
 			return update(prevState, {
@@ -97,21 +97,20 @@ class App extends React.Component {
 						$set: selectedAreas
 					}
 				}
-			})
+			});
 		});
 	}
 
 	handleSelectTemperature(selectedTemperature) {
 		this.setState((prevState) => {
 
-			return {
+			return update(prevState, {
 				selected: {
-					date: prevState.selected.date,
-					areas: prevState.selected.areas,
-					temperature: selectedTemperature,
-					skys: prevState.selected.skys
+					temperature: {
+						$set: selectedTemperature
+					}
 				}
-			};
+			});
 		});
 	}
 
@@ -127,47 +126,48 @@ class App extends React.Component {
 				];
 			} else {
 				// Remove sky
-				selectedSkys = prevState.selected.skys.filter(sky => sky !== selectedSky);
+				selectedSkys = prevState.selected.skys.filter(sky => sky.id !== selectedSky.id);
 			}
 
-			return {
+			return update(prevState, {
 				selected: {
-					date: prevState.selected.date,
-					areas: prevState.selected.areas,
-					temperature: prevState.selected.temperature,
-					skys: selectedSkys
+					skys: {
+						$set: selectedSkys
+					}
 				}
-			};
+			});
 		});
 	}
 
 	handleClickGo() {
-		this.state.selected.areas.forEach((area) => {
-			const url = `/${this.state.selected.date.replace(/-/g, '')}_${area.id}.json`;
+		for (const area of this.state.selected.areas) {
+			const url = `/${this.state.selected.date}_${area.id}.json`;
 
 			fetch(url).then((response) => {
 				return response.json()
 			}).then((json) => {
-				console.log('parsed json', json)
 				this.searchMatches(json.area.locations, this.state.selected);
 			}).catch((err) => {
-				console.log('parsing failed', err)
+				console.error(`parsing ${url} failed`, err)
 			})
-		});
+		}
 	}
 
 	searchMatches(locations, selected) {
-		const matches = locations.filter((location) => {
-			return this.match(location.weather, selected);
+		const matches = locations.filter(location => this.match(location.weather, selected));
+		this.setState((prevState) => {
+			return update(prevState, {
+				matches: {
+					$set: matches
+				}
+			});
 		});
-
-		this.setState({matches: matches});
 	}
 
 	match(weather, selected) {
 		return (weather.minTemperature.value >= selected.temperature.min) && (
 			weather.maxTemperature.value <= selected.temperature.max
-		) && (selected.skys.includes(weather.sky));
+		) && (selected.skys.find(sky => sky.id === weather.sky.id));
 	}
 
 	render() {
