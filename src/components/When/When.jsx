@@ -9,7 +9,7 @@ class When extends React.Component {
 	}
 
 	handleToggle(date) {
-		this.props.onSelect(date);
+		this.props.onSelectDate(date);
 	}
 
 	render() {

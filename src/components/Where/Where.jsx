@@ -9,7 +9,7 @@ class Where extends React.Component {
 	}
 
 	handleToggle(selectedArea, isSelected) {
-		this.props.onSelect(selectedArea, isSelected);
+		this.props.onSelectArea(selectedArea, isSelected);
 	}
 
 	render() {
