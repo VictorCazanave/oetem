@@ -1,9 +1,12 @@
 import React from 'react';
+import update from 'immutability-helper';
+
 import Summary from './components/Summary/Summary';
 import When from './components/When/When';
 import Where from './components/Where/Where';
 import What from './components/What/What';
 import Matches from './components/Matches/Matches';
+
 import './App.css';
 import 'react-input-range/lib/css/index.css'
 
@@ -44,35 +47,32 @@ class App extends React.Component {
 			return response.json()
 		}).then((json) => {
 			// Set init state and selected temperature
-			this.setState({
-				init: json,
-				selected: {
-					date: null,
-					areas: [],
-					temperature: {
-						min: json.temperature.min,
-						max: json.temperature.max
+			this.setState((prevState) => {
+				return update(prevState, {
+					init: {
+						$set: json
 					},
-					skys: []
-				}
+					selected: {
+						temperature: {
+							$set: json.temperature
+						}
+					}
+				});
 			});
 		}).catch((err) => {
 			console.error('Parsing init.json failed', err)
 		})
 	}
 
-	//TODO: Find a better way to handle events
-
 	handleSelectDate(selectedDate) {
 		this.setState((prevState) => {
-			return {
+			return update(prevState, {
 				selected: {
-					date: selectedDate,
-					areas: prevState.selected.areas,
-					temperature: prevState.selected.temperature,
-					skys: prevState.selected.skys
+					date: {
+						$set: selectedDate
+					}
 				}
-			}
+			})
 		});
 	}
 
@@ -91,14 +91,13 @@ class App extends React.Component {
 				selectedAreas = prevState.selected.areas.filter(area => area !== selectedArea);
 			}
 
-			return {
+			return update(prevState, {
 				selected: {
-					date: prevState.selected.date,
-					areas: selectedAreas,
-					temperature: prevState.selected.temperature,
-					skys: prevState.selected.skys
+					areas: {
+						$set: selectedAreas
+					}
 				}
-			};
+			})
 		});
 	}
 
