@@ -4,11 +4,14 @@ class Summary extends React.Component {
 
 	render() {
 
-		return (<aside>
-			<h1>Summary</h1>
-			{(this.props.selected.date !== null) && <div>{this.props.selected.date}</div>}
-			{(this.props.selected.areas.length > 0) && <ul>{this.props.selected.areas.map((area) => (<li key={area.id}>{area.name}</li>))}</ul>}
-		</aside>);
+		return (
+			<aside>
+				<h1>Summary</h1>
+				{(this.props.data.date !== null) && <div>{this.props.data.date}</div>}
+				{(this.props.data.areas.length > 0) && <ul>{this.props.data.areas.map((area) => (<li key={area.id}>{area.name}</li>))}</ul>}
+				{(this.props.data.skys.length > 0) && <ul>{this.props.data.skys.map((sky) => (<li key={sky.id}>{sky.label}</li>))}</ul>}
+			</aside>
+		);
 	}
 }
 

@@ -31,15 +31,13 @@ class App extends React.Component {
 					max: 100
 				},
 				skys: []
-			},
-			matches: []
+			}
 		};
 
 		this.handleSelectDate = this.handleSelectDate.bind(this);
 		this.handleSelectArea = this.handleSelectArea.bind(this);
 		this.handleSelectTemperature = this.handleSelectTemperature.bind(this);
 		this.handleSelectSky = this.handleSelectSky.bind(this);
-		this.handleClickGo = this.handleClickGo.bind(this);
 	}
 
 	componentDidMount() {
@@ -63,6 +61,8 @@ class App extends React.Component {
 			console.error('Parsing init.json failed', err)
 		})
 	}
+
+	//TODO: Use  Object spread instead of immutability-helper?
 
 	handleSelectDate(selectedDate) {
 		this.setState((prevState) => {
@@ -139,42 +139,11 @@ class App extends React.Component {
 		});
 	}
 
-	handleClickGo() {
-		for (const area of this.state.selected.areas) {
-			const url = `/${this.state.selected.date}_${area.id}.json`;
-
-			fetch(url).then((response) => {
-				return response.json()
-			}).then((json) => {
-				this.searchMatches(json.area.locations, this.state.selected);
-			}).catch((err) => {
-				console.error(`parsing ${url} failed`, err)
-			})
-		}
-	}
-
-	searchMatches(locations, selected) {
-		const matches = locations.filter(location => this.match(location.weather, selected));
-		this.setState((prevState) => {
-			return update(prevState, {
-				matches: {
-					$set: matches
-				}
-			});
-		});
-	}
-
-	match(weather, selected) {
-		return (weather.minTemperature.value >= selected.temperature.min) && (
-			weather.maxTemperature.value <= selected.temperature.max
-		) && (selected.skys.find(sky => sky.id === weather.sky.id));
-	}
-
 	render() {
 		return (
 			<div>
 				<h1>oeteM</h1>
-				<Summary selected={this.state.selected}/>
+				<Summary data={this.state.selected}/>
 				<When
 					dates={this.state.init.dates}
 					selectedDate={this.state.selected.date}
@@ -190,8 +159,7 @@ class App extends React.Component {
 					skys={this.state.init.skys}
 					selectedSkys={this.state.selected.skys}
 					onSelectSky={this.handleSelectSky}/>
-				<button onClick={this.handleClickGo}>Let's go!</button>
-				<Matches matches={this.state.matches}/>
+				<Matches selected={this.state.selected}/>
 			</div>
 		);
 	}

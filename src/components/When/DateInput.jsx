@@ -12,9 +12,16 @@ class DateInput extends React.Component {
 	}
 
 	render() {
-		return (<label>{this.props.date}
-			<input type="radio" name="date" value={this.props.date} checked={this.props.selected} onChange={this.handleChange}/>
-		</label>);
+		return (
+			<label>{this.props.date}
+				<input
+					type="radio"
+					name="date"
+					value={this.props.date}
+					checked={this.props.selected}
+					onChange={this.handleChange}/>
+			</label>
+		);
 	}
 }
 
