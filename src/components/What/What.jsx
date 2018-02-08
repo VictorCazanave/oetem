@@ -6,8 +6,6 @@ class What extends React.Component {
 
 	constructor() {
 		super();
-		this.handleChangeTemperature = this.handleChangeTemperature.bind(this);
-		this.handleToggleSky = this.handleToggleSky.bind(this);
 	}
 
 	//TODO: Keep it? It is more optimized but more risky
@@ -18,29 +16,32 @@ class What extends React.Component {
 		);
 	}
 
-	handleChangeTemperature(selectedTemperature) {
-		this.props.onSelectTemperature(selectedTemperature);
-	}
-
-	handleToggleSky(selectedSky, isSelected) {
-		this.props.onSelectSky(selectedSky, isSelected);
-	}
-
 	render() {
 		return (
-			<form>
-				<h2>What?</h2>
-				<div>
-					<TemperatureInput
-						min={this.props.temperature.min}
-						max={this.props.temperature.max}
-						onChange={this.handleChangeTemperature}/>
-				</div>
-				<div>
-					{this.props.skys.map((sky) => (<SkyInput sky={sky} onToggle={this.handleToggleSky} key={sky.id}/>))}
-				</div>
-
-			</form>
+			<section>
+				<header>
+					<h1>What?</h1>
+					<p>Choose the kind of weather you desire</p>
+				</header>
+				<form>
+					<div>
+						<TemperatureInput
+							min={this.props.temperature.min}
+							max={this.props.temperature.max}
+							onChange={this.props.onSelectTemperature}/>
+					</div>
+					<div>
+						{
+							this.props.skys.map(
+								(sky) => (<div key={sky.id}><SkyInput sky={sky} onToggle={this.props.onSelectSky}/></div>)
+							)
+						}
+					</div>
+				</form>
+				<footer>
+					<button onClick={this.props.onClickNext}>Let's search</button>
+				</footer>
+			</section>
 		);
 	}
 }

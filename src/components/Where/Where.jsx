@@ -5,7 +5,6 @@ class Where extends React.Component {
 
 	constructor() {
 		super();
-		this.handleToggle = this.handleToggle.bind(this);
 	}
 
 	//TODO: Keep it? It is more optimized but more risky
@@ -14,20 +13,26 @@ class Where extends React.Component {
 		return (this.props.areas.length === 0);
 	}
 
-	handleToggle(selectedArea, isSelected) {
-		this.props.onSelectArea(selectedArea, isSelected);
-	}
-
 	render() {
 		return (
-			<form>
-				<h2>Where?</h2>
-				{
-					this.props.areas.map(
-						(area) => (<AreaInput area={area} onToggle={this.handleToggle} key={area.id}></AreaInput>)
-					)
-				}
-			</form>
+			<section>
+				<header>
+					<h1>Where?</h1>
+					<p>Choose one or more places of your desired weather</p>
+				</header>
+				<form>
+					{
+						this.props.areas.map((area) => (
+							<div key={area.id}>
+								<AreaInput area={area} onToggle={this.props.onSelectArea}></AreaInput>
+							</div>
+						))
+					}
+				</form>
+				<footer>
+					<button onClick={this.props.onClickNext}>Last question</button>
+				</footer>
+			</section>
 		);
 	}
 }
