@@ -18,6 +18,10 @@ class What extends React.Component {
 				<header>
 					<h1>What?</h1>
 					<p>Choose the kind of weather you desire</p>
+					<blockquote>
+						There is no such thing as bad weather, only different kinds of good weather.<br/>
+						John Ruskin
+					</blockquote>
 				</header>
 				<form>
 					<div>

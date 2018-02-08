@@ -15,6 +15,10 @@ class When extends React.Component {
 				<header>
 					<h1>When?</h1>
 					<p>Choose the date of your desired weather</p>
+					<blockquote>
+						Every day brings new choices.<br/>
+						Martha Beck
+					</blockquote>
 				</header>
 				<form>
 					{

@@ -20,6 +20,7 @@ class Matches extends React.Component {
 	}
 
 	handleClickSearch() {
+		//TODO: Handle invalid data and display errors (missing date...)
 		for (const area of this.props.selected.areas) {
 			const url = `/${this.props.selected.date}_${area.id}.json`;
 
@@ -50,6 +51,10 @@ class Matches extends React.Component {
 				<Summary data={this.props.selected}></Summary>
 				<header>
 					<h1>Matches</h1>
+					<blockquote>
+						Climate is what we expect, weather is what we get.<br/>
+						Mark Twain
+					</blockquote>
 				</header>
 				{
 					(this.state.matches.length === 0) && <div>

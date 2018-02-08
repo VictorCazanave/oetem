@@ -15,6 +15,10 @@ class Where extends React.Component {
 				<header>
 					<h1>Where?</h1>
 					<p>Choose one or more places of your desired weather</p>
+					<blockquote>
+						Wherever you go, no matter what the weather, always bring your own sunshine.<br/>
+						Anthony J. D&#39;Angelo
+					</blockquote>
 				</header>
 				<form>
 					{
