@@ -1,4 +1,5 @@
 import React from 'react';
+import FormPage from '../FormPage';
 import TemperatureInput from './TemperatureInput';
 import SkyInput from './SkyInput';
 
@@ -14,15 +15,13 @@ class What extends React.Component {
 
 	render() {
 		return (
-			<section>
-				<header>
-					<h1>What?</h1>
-					<p>Choose the kind of weather you desire</p>
-					<blockquote>
-						There is no such thing as bad weather, only different kinds of good weather.<br/>
-						John Ruskin
-					</blockquote>
-				</header>
+			<FormPage
+				title="What?"
+				subtitle="Choose the kind of weather you desire"
+				quote="There is no such thing as bad weather, only different kinds of good weather."
+				author="John Ruskin"
+				button="Let's search"
+				onClick={this.props.onClickNext}>
 				<form>
 					<div>
 						<TemperatureInput
@@ -38,10 +37,7 @@ class What extends React.Component {
 						}
 					</div>
 				</form>
-				<footer>
-					<button onClick={this.props.onClickNext}>Let's search</button>
-				</footer>
-			</section>
+			</FormPage>
 		);
 	}
 }

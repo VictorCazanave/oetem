@@ -1,4 +1,5 @@
 import React from 'react';
+import FormPage from '../FormPage';
 import AreaInput from './AreaInput';
 
 class Where extends React.Component {
@@ -11,15 +12,13 @@ class Where extends React.Component {
 
 	render() {
 		return (
-			<section>
-				<header>
-					<h1>Where?</h1>
-					<p>Choose one or more places of your desired weather</p>
-					<blockquote>
-						Wherever you go, no matter what the weather, always bring your own sunshine.<br/>
-						Anthony J. D&#39;Angelo
-					</blockquote>
-				</header>
+			<FormPage
+				title="Where?"
+				subtitle="Choose one or more places of your desired weather"
+				quote="Wherever you go, no matter what the weather, always bring your own sunshine."
+				author="Anthony J. D'Angelo"
+				button="Last question"
+				onClick={this.props.onClickNext}>
 				<form>
 					{
 						this.props.areas.map((area) => (
@@ -29,10 +28,7 @@ class Where extends React.Component {
 						))
 					}
 				</form>
-				<footer>
-					<button onClick={this.props.onClickNext}>Last question</button>
-				</footer>
-			</section>
+			</FormPage>
 		);
 	}
 }

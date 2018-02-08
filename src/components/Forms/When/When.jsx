@@ -1,4 +1,5 @@
 import React from 'react';
+import FormPage from '../FormPage';
 import DateInput from './DateInput';
 
 class When extends React.Component {
@@ -11,15 +12,13 @@ class When extends React.Component {
 
 	render() {
 		return (
-			<section>
-				<header>
-					<h1>When?</h1>
-					<p>Choose the date of your desired weather</p>
-					<blockquote>
-						Every day brings new choices.<br/>
-						Martha Beck
-					</blockquote>
-				</header>
+			<FormPage
+				title="When?"
+				subtitle="Choose the date of your desired weather"
+				quote="Every day brings new choices."
+				author="Martha Beck"
+				button="One more question"
+				onClick={this.props.onClickNext}>
 				<form>
 					{
 						this.props.dates.map((date) => (
@@ -29,10 +28,7 @@ class When extends React.Component {
 						))
 					}
 				</form>
-				<footer>
-					<button onClick={this.props.onClickNext}>One more question</button>
-				</footer>
-			</section>
+			</FormPage>
 		);
 	}
 }
