@@ -3,7 +3,6 @@ import update from 'immutability-helper';
 import {Fullpage, Slide} from 'fullpage-react';
 
 import Home from './components/Home/Home';
-import Summary from './components/Summary/Summary';
 import When from './components/When/When';
 import Where from './components/Where/Where';
 import What from './components/What/What';
@@ -16,6 +15,7 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
+			displayMatches: false,
 			selected: {
 				date: null,
 				areas: [],
@@ -70,6 +70,9 @@ class App extends React.Component {
 	}
 
 	//TODO: Use object spread instead of immutability-helper?
+	//TODO: Really need to update state everytime?
+	//TODO: Maybe send data only when clicking on the next button?
+	//TODO: But need to block the scroll and arrow
 
 	handleSelectDate(selectedDate) {
 		this.setState((prevState) => {
@@ -148,11 +151,18 @@ class App extends React.Component {
 
 	handleClickNext(event) {
 		event.preventDefault();
-		Fullpage.changeFullpageSlide(++this.activeSlide);
+		Fullpage.changeFullpageSlide(this.activeSlide + 1);
 	}
 
+	// Handle click and scroll and arrow
 	handleSlideChangeEnd(name, props, state, newState) {
 		this.activeSlide = newState.activeSlide;
+
+		if (this.activeSlide === 4) {
+			this.setState({displayMatches: true});
+		} else {
+			this.setState({displayMatches: false});
+		}
 	}
 
 	render() {
@@ -181,7 +191,7 @@ class App extends React.Component {
 					onClickNext={this.handleClickNext}/>
 			</Slide>,
 			<Slide>
-				<Matches selected={this.state.selected}/>
+				<Matches display={this.state.displayMatches} selected={this.state.selected}/>
 			</Slide>
 		];
 

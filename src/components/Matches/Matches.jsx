@@ -1,4 +1,5 @@
 import React from 'react';
+import Summary from './Summary';
 import Match from './Match';
 
 class Matches extends React.Component {
@@ -9,6 +10,13 @@ class Matches extends React.Component {
 		}
 
 		this.handleClickSearch = this.handleClickSearch.bind(this);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		// Start search when display becomes true
+		if (!this.props.display && nextProps.display) {
+			this.handleClickSearch();
+		}
 	}
 
 	handleClickSearch() {
@@ -37,11 +45,18 @@ class Matches extends React.Component {
 	}
 
 	render() {
-
 		return (
 			<section>
-				<button onClick={this.handleClickSearch}>Let's search!</button>
-				<h2>Matches</h2>
+				<Summary data={this.props.selected}></Summary>
+				<header>
+					<h1>Matches</h1>
+				</header>
+				{
+					(this.state.matches.length === 0) && <div>
+							<p>Sorry, no place matched you criteria</p>
+							<p>You may try again with less strict criteria</p>
+						</div>
+				}
 				{(this.state.matches.length > 0) && <ul>{this.state.matches.map((match) => (<li key={match.name}><Match match={match}/></li>))}</ul>}
 			</section>
 		);
