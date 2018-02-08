@@ -1,6 +1,8 @@
 import React from 'react';
 import update from 'immutability-helper';
+import {Fullpage, Slide} from 'fullpage-react';
 
+import Home from './components/Home/Home';
 import Summary from './components/Summary/Summary';
 import When from './components/When/When';
 import Where from './components/Where/Where';
@@ -24,6 +26,10 @@ class App extends React.Component {
 				skys: []
 			}
 		};
+
+		// Active slide (no need to re-render)
+		this.activeSlide = 0;
+
 		// Init data that will not change later
 		this.initData = {
 			dates: [],
@@ -39,6 +45,8 @@ class App extends React.Component {
 		this.handleSelectArea = this.handleSelectArea.bind(this);
 		this.handleSelectTemperature = this.handleSelectTemperature.bind(this);
 		this.handleSelectSky = this.handleSelectSky.bind(this);
+		this.handleSlideChangeEnd = this.handleSlideChangeEnd.bind(this);
+		this.handleClickNext = this.handleClickNext.bind(this);
 	}
 
 	componentDidMount() {
@@ -138,20 +146,55 @@ class App extends React.Component {
 		});
 	}
 
+	handleClickNext(event) {
+		event.preventDefault();
+		Fullpage.changeFullpageSlide(++this.activeSlide);
+	}
+
+	handleSlideChangeEnd(name, props, state, newState) {
+		this.activeSlide = newState.activeSlide;
+	}
+
 	render() {
-		return (
-			<div>
-				<h1>oeteM</h1>
-				<When dates={this.initData.dates} onSelectDate={this.handleSelectDate}/>
-				<Where areas={this.initData.areas} onSelectArea={this.handleSelectArea}/>
+		const slides = [
+			<Slide>
+				<Home onClickNext={this.handleClickNext}/>
+			</Slide>,
+			<Slide>
+				<When
+					dates={this.initData.dates}
+					onSelectDate={this.handleSelectDate}
+					onClickNext={this.handleClickNext}/>
+			</Slide>,
+			<Slide>
+				<Where
+					areas={this.initData.areas}
+					onSelectArea={this.handleSelectArea}
+					onClickNext={this.handleClickNext}/>
+			</Slide>,
+			<Slide>
 				<What
 					temperature={this.initData.temperature}
 					onSelectTemperature={this.handleSelectTemperature}
 					skys={this.initData.skys}
-					selectedSkys={this.state.selected.skys}
-					onSelectSky={this.handleSelectSky}/>
+					onSelectSky={this.handleSelectSky}
+					onClickNext={this.handleClickNext}/>
+			</Slide>,
+			<Slide>
 				<Matches selected={this.state.selected}/>
-			</div>
+			</Slide>
+		];
+
+		return (
+			<Fullpage
+				slides={slides}
+				onSlideChangeEnd={this.handleSlideChangeEnd}
+				scrollSensitivity="2"
+				touchSensitivity="2"
+				scrollSpeed="500"
+				resetSlides="true"
+				hideScrollBars="true"
+				enableArrowKeys="true"></Fullpage>
 		);
 	}
 }
