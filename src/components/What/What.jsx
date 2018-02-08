@@ -4,10 +4,6 @@ import SkyInput from './SkyInput';
 
 class What extends React.Component {
 
-	constructor() {
-		super();
-	}
-
 	//TODO: Keep it? It is more optimized but more risky
 	shouldComponentUpdate() {
 		// Should update only when getting init data, because after there is no more changes
