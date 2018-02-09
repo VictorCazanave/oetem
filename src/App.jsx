@@ -9,7 +9,6 @@ import What from './components/Forms/What/What';
 import Matches from './components/Matches/Matches';
 
 import './App.css';
-import 'react-input-range/lib/css/index.css'
 
 class App extends React.Component {
 	constructor() {

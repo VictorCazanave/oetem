@@ -14,14 +14,14 @@ class Home extends React.Component {
 	render() {
 
 		return (
-			<section>
-				<header>
-					<h1>oeteM | Meteo</h1>
-					<p>Reversed meteo to find where is your desired weather</p>
+			<section className="home-page">
+				<header className="home-page__header">
+					<h1 className="home-page__header__title">oeteM | Meteo</h1>
+					<p className="home-page__header__quote">Reversed meteo to find where is your desired weather</p>
 				</header>
-				<footer>
-					<button onClick={this.handleClickAbout}>About</button>
-					<button onClick={this.props.onClickNext}>Let's start</button>
+				<footer className="home-page__footer">
+					<button className="home-page__footer__button-about" onClick={this.handleClickAbout}>About</button>
+					<button className="home-page__footer__button-start" onClick={this.props.onClickNext}>Let's start!</button>
 				</footer>
 			</section>
 		);

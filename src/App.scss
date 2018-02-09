@@ -1,0 +1,93 @@
+@import '../node_modules/react-input-range/lib/css/index.css';
+
+.home-page {
+	position: relative;
+	height: 100%;
+	padding: 1px 10px 10px; //TODO: Fix bug top of slide
+	background: linear-gradient(to bottom, #076585, #fff);
+	text-align: center;
+
+	&__header {
+		position: absolute;
+		//top: 10%;
+		color: #ddd;
+
+		&__title {
+			margin-bottom: 100px;
+			font-size: 2.5em;
+		}
+	}
+
+	&__footer {
+		position: absolute;
+		bottom: 20px;
+		width: 100%;
+
+		&__button-about {
+			display: block;
+			width: 50%;
+			margin: 0 auto 30px;
+			padding: 10px 20px;
+			border: 0;
+			border-radius: 1000em;
+			background-color: #eee;
+			font-size: 1em;
+			color: #aaa;
+		}
+
+		&__button-start {
+			display: block;
+			width: 50%;
+			margin: 0 auto;
+			padding: 10px 20px;
+			border: 0;
+			border-radius: 1000em;
+			background-color: #30d180;
+			font-size: 1em;
+			color: #eee;
+		}
+	}
+}
+
+.form-page {
+	position: relative;
+	height: 100%;
+	padding: 1px 10px 10px; //TODO: Fix bug top of slide
+	background: linear-gradient(to bottom, #fff, #003973);
+	/*
+  background: linear-gradient(to bottom, #0b8793, #360033); bof
+	background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%); bof
+  background: linear-gradient(to bottom, #fff, #076585);
+	background: linear-gradient(to bottom, #E5E5BE, #003973);
+	*/
+	text-align: center;
+
+	&__header {
+		position: absolute;
+		//top: 10%;
+		color: #ddd;
+
+		&__title {
+			margin-bottom: 100px;
+			font-size: 2.5em;
+		}
+	}
+
+	&__footer {
+		position: absolute;
+		bottom: 20px;
+		width: 100%;
+
+		&__button {
+			display: block;
+			min-width: 50%;
+			margin: 0 auto;
+			padding: 10px 20px;
+			border: 0;
+			border-radius: 1000em;
+			background-color: #30d180;
+			font-size: 1em;
+			color: #eee;
+		}
+	}
+}
