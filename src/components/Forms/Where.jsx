@@ -1,6 +1,6 @@
 import React from 'react';
-import FormPage from '../FormPage';
-import AreaInput from './AreaInput';
+import FormPage from './FormPage';
+import AreaInput from './Inputs/AreaInput';
 
 class Where extends React.Component {
 

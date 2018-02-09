@@ -1,7 +1,7 @@
 import React from 'react';
-import FormPage from '../FormPage';
-import TemperatureInput from './TemperatureInput';
-import SkyInput from './SkyInput';
+import FormPage from './FormPage';
+import TemperatureInput from './Inputs/TemperatureInput';
+import SkyInput from './Inputs/SkyInput';
 
 class What extends React.Component {
 
