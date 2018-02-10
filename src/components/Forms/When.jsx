@@ -14,18 +14,16 @@ class When extends React.Component {
 		return (
 			<FormPage
 				title="When?"
-				subtitle="Choose the date of your desired weather"
+				subtitle="Choose the date of your desired weather:"
 				quote="Every day brings new choices."
 				author="Martha Beck"
 				button="One more question"
 				onClick={this.props.onClickNext}>
 				<form>
 					{
-						this.props.dates.map((date) => (
-							<div key={date}>
-								<DateInput date={date} onToggle={this.props.onSelectDate}></DateInput>
-							</div>
-						))
+						this.props.dates.map(
+							(date) => (<DateInput date={date} onToggle={this.props.onSelectDate} key={date}/>)
+						)
 					}
 				</form>
 			</FormPage>

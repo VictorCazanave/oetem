@@ -1,7 +1,111 @@
+//@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,500');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i');
+
+/* CSS Reset inspired by https://github.com/alsacreations/KNACSS/blob/master/sass/_vendor/_reboot.css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
 
 body {
   margin: 0;
   padding: 0;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5rem;
+}
+
+p,
+ul,
+blockquote {
+	margin: 0;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+a {
+  touch-action: manipulation;
+}
+
+label {
+	touch-action: manipulation;
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+input {
+	overflow: visible;
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+
+	&[type="radio"],
+	&[type="checkbox"] {
+	  box-sizing: border-box;
+	  padding: 0;
+	}
+
+	&:not([type="range"]) {
+    touch-action: manipulation;
+	}
+}
+
+button {
+	overflow: visible;
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	text-transform: none;
+	-webkit-appearance: button;
+	touch-action: manipulation;
+
+	//TODO: Find a better looking style
+	//outline: 0;
+	//box-shadow: 0 2px 0 0 #333;
+	&:focus {
+	  outline: 1px dotted;
+	  outline: 5px auto -webkit-focus-ring-color;
+	}
+
+	&::-moz-focus-inner{
+		padding: 0;
+	  border-style: none;
+	}
+}
+
+/* Custom global CSS */
+body {
 	font-family: 'Roboto', Arial, sans-serif;
+	//font-weight: 300;
+	text-align: center;
+}
+
+button {
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+	padding: 0.6rem 1.2rem;
+	border: 0;
+	border-radius: 1000rem;
+	font-size: 1rem;
 }

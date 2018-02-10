@@ -1,50 +1,47 @@
 @import '../node_modules/react-input-range/lib/css/index.css';
+$btn-primary-bg: #30d180;
+$btn-primary-color: #fff;
+$btn-secondary-bg: #f1f6f8;
+$btn-secondary-color: #aaa;
+$form-page-bg: #eef4f6;
+$form-page-color: #444;
+$input-selected-color:#45879E;
+$input-date-border-radius: 0.5rem;
+$input-date-top-bg: #fd9f1b;
+$input-date-top-color: #fff;
+$input-date-bottom-bg: #fff;
+$input-date-bottom-color: #222;
 
 .home-page {
 	position: relative;
 	height: 100%;
-	padding: 1px 10px 10px; //TODO: Fix bug top of slide
-	background: linear-gradient(to bottom, #076585, #fff);
-	text-align: center;
+	//background: linear-gradient(to bottom, #076585, #fff);
+	background: linear-gradient(to bottom, #076585, #EEF4F6);
 
 	&__header {
-		position: absolute;
-		//top: 10%;
+		padding: 5rem 1rem 0;
 		color: #ddd;
 
 		&__title {
-			margin-bottom: 100px;
-			font-size: 2.5em;
+			margin-bottom: 6.5rem;
+			font-size: 2.5rem;
 		}
 	}
 
 	&__footer {
 		position: absolute;
-		bottom: 20px;
+		bottom: 1.5rem;
 		width: 100%;
 
 		&__button-about {
-			display: block;
-			width: 50%;
-			margin: 0 auto 30px;
-			padding: 10px 20px;
-			border: 0;
-			border-radius: 1000em;
-			background-color: #eee;
-			font-size: 1em;
-			color: #aaa;
+			margin-bottom: 2rem;
+			background-color: $btn-secondary-bg;
+			color: $btn-secondary-color;
 		}
 
 		&__button-start {
-			display: block;
-			width: 50%;
-			margin: 0 auto;
-			padding: 10px 20px;
-			border: 0;
-			border-radius: 1000em;
-			background-color: #30d180;
-			font-size: 1em;
-			color: #eee;
+			background-color: $btn-primary-bg;
+			color: $btn-primary-color;
 		}
 	}
 }
@@ -52,42 +49,90 @@
 .form-page {
 	position: relative;
 	height: 100%;
-	padding: 1px 10px 10px; //TODO: Fix bug top of slide
-	background: linear-gradient(to bottom, #fff, #003973);
+	background-color: $form-page-bg;
+	color: $form-page-color;
 	/*
   background: linear-gradient(to bottom, #0b8793, #360033); bof
 	background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%); bof
   background: linear-gradient(to bottom, #fff, #076585);
 	background: linear-gradient(to bottom, #E5E5BE, #003973);
 	*/
-	text-align: center;
-
 	&__header {
-		position: absolute;
-		//top: 10%;
-		color: #ddd;
+		padding: 1rem 1rem 0;
 
 		&__title {
-			margin-bottom: 100px;
-			font-size: 2.5em;
+			margin-bottom: 1.5rem;
+			font-size: 2rem;
+		}
+
+		&__quote {
+			margin-bottom: 2.5rem;
+
+			&__text {
+				color: #aaa;
+				font-size: 1.2rem;
+				font-style: italic;
+			}
+
+			&__author {
+				font-size: 0.8rem;
+				font-style: normal;
+				margin-right: 7rem;
+			}
+		}
+
+		&__subtitle {
+			margin-bottom: 1rem;
 		}
 	}
 
 	&__footer {
 		position: absolute;
-		bottom: 20px;
+		bottom: 1.5rem;
 		width: 100%;
 
 		&__button {
-			display: block;
-			min-width: 50%;
-			margin: 0 auto;
-			padding: 10px 20px;
-			border: 0;
-			border-radius: 1000em;
-			background-color: #30d180;
-			font-size: 1em;
-			color: #eee;
+			background-color: $btn-primary-bg;
+			color: $btn-primary-color;
+		}
+	}
+}
+
+.date-input {
+	display: inline-block;
+
+	&__label {
+		min-width: 6rem;
+		border: .25rem solid $form-page-bg;
+		border-radius: .7rem;
+
+		&__month {
+			border-radius: $input-date-border-radius $input-date-border-radius 0 0;
+			border-bottom: 1px dashed #f37302;
+			padding-top: .2rem;
+			background-color: $input-date-top-bg;
+			color: $input-date-top-color;
+		}
+
+		&__date {
+			margin-bottom: -.3rem;
+			background-color: $input-date-bottom-bg;
+			font-size: 1.8rem;
+		}
+
+		&__day {
+			border-radius: 0 0 $input-date-border-radius $input-date-border-radius;
+			padding-bottom: .4rem;
+			background-color: $input-date-bottom-bg;
+			font-size: 0.8rem;
+		}
+	}
+
+	&__input {
+		opacity: 0;
+
+		&:checked + label {
+			border-color: $input-selected-color;
 		}
 	}
 }

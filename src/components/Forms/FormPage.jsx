@@ -6,10 +6,11 @@ function FormPage(props) {
 		<section className="form-page">
 			<header className="form-page__header">
 				<h1 className="form-page__header__title">{props.title}</h1>
-				<p className="form-page__header__subtitle">{props.subtitle}</p>
 				<blockquote className="form-page__header__quote">
-					{props.quote}<br/>{props.author}
+					<p className="form-page__header__quote__text">&#34;{props.quote}&#34;</p>
+					<span className="form-page__header__quote__author">― {props.author}</span>
 				</blockquote>
+				<p className="form-page__header__subtitle">{props.subtitle}</p>
 			</header>
 			{props.children}
 			<footer className="form-page__footer">
