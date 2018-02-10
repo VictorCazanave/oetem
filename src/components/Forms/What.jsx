@@ -17,18 +17,17 @@ class What extends React.Component {
 		return (
 			<FormPage
 				title="What?"
-				subtitle="Choose the kind of weather you desire"
+				subtitle="Choose the kind of weather you desire:"
 				quote="There is no such thing as bad weather, only different kinds of good weather."
 				author="John Ruskin"
 				button="Let's search"
 				onClick={this.props.onClickNext}>
 				<form>
-					<div>
-						<TemperatureInput
-							min={this.props.temperature.min}
-							max={this.props.temperature.max}
-							onChange={this.props.onSelectTemperature}/>
-					</div>
+					<h2>Temperature</h2>
+					<TemperatureInput
+						min={this.props.temperature.min}
+						max={this.props.temperature.max}
+						onChange={this.props.onSelectTemperature}/>
 					<div>
 						{
 							this.props.skys.map(

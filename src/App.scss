@@ -148,14 +148,14 @@ $input-area-border-radius: 50%;
 	display: inline-block;
 	vertical-align: middle;
 	width: 4.4rem;
-	margin: 0 .5rem;
+	margin: 0 0.5rem;
 
 	&__label {
 		width: 4.4rem;
-		height:4.4rem;
+		height: 4.4rem;
 		margin-bottom: 1rem;
-		padding: 1rem .2rem .2rem .2rem;
-		border: .25rem solid $form-page-bg;
+		padding: 1rem 0.2rem 0.2rem;
+		border: 0.25rem solid $form-page-bg;
 		border-radius: 50% 50% 50% 0;
 		transform: rotate(-45deg);
 		background-color: $input-area-bg;
@@ -164,7 +164,6 @@ $input-area-border-radius: 50%;
 			font-size: 0.8rem;
 			transform: rotate(45deg);
 		}
-
 		/*
 		&:before {
 			content: '';
@@ -200,6 +199,42 @@ $input-area-border-radius: 50%;
 
 		&:checked + label {
 			border-color: $input-selected-color;
+		}
+	}
+}
+
+.input-temperature {
+	margin: 2rem;
+
+	// Overriding InputRange component styles
+	.input-range {
+		&__label {
+			color: inherit;
+			font-family: inherit;
+			font-size: 0.9rem;
+
+			&--min, &--max {
+				display: none;
+			}
+		}
+
+		&__slider {
+			width: 1.2rem;
+			height: 1.2rem;
+			margin-left: -.1rem;
+			margin-top: -0.8rem;
+			border-color: $input-selected-color;
+			background-color: $input-selected-color;
+		}
+
+		&__track {
+			height: 0.5rem;
+			background: linear-gradient(to right, #0054ff, #FF1400);
+			//background: #fff;
+
+			&--active {
+				background: $input-selected-color;
+			}
 		}
 	}
 }
