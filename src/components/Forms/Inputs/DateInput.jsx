@@ -14,6 +14,8 @@ class DateInput extends React.Component {
 	}
 
 	render() {
+		const id = `date${this.props.date}`;
+
 		return (
 			<div className="date-input">
 				<input
@@ -21,9 +23,9 @@ class DateInput extends React.Component {
 					name="date"
 					value={this.props.date}
 					onChange={this.handleChange}
-					id={this.props.date}
+					id={id}
 					className="date-input__input"/>
-				<label htmlFor={this.props.date} className="date-input__label">
+				<label htmlFor={id} className="date-input__label">
 					<div className="date-input__label__month">{this.formattedDate.month}</div>
 					<div className="date-input__label__date">{this.formattedDate.date}</div>
 					<div className="date-input__label__day">{this.formattedDate.day}</div>
