@@ -14,18 +14,16 @@ class Where extends React.Component {
 		return (
 			<FormPage
 				title="Where?"
-				subtitle="Choose one or more places of your desired weather"
+				subtitle="Choose one or more places of your desired weather:"
 				quote="Wherever you go, no matter what the weather, always bring your own sunshine."
 				author="Anthony J. D'Angelo"
 				button="Last question"
 				onClick={this.props.onClickNext}>
 				<form>
 					{
-						this.props.areas.map((area) => (
-							<div key={area.id}>
-								<AreaInput area={area} onToggle={this.props.onSelectArea}></AreaInput>
-							</div>
-						))
+						this.props.areas.map(
+							(area) => (<AreaInput area={area} onToggle={this.props.onSelectArea} key={area.id}/>)
+						)
 					}
 				</form>
 			</FormPage>

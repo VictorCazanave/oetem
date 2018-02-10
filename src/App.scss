@@ -5,12 +5,14 @@ $btn-secondary-bg: #f1f6f8;
 $btn-secondary-color: #aaa;
 $form-page-bg: #eef4f6;
 $form-page-color: #444;
-$input-selected-color:#45879E;
+$input-selected-color: #45879E;
 $input-date-border-radius: 0.5rem;
 $input-date-top-bg: #fd9f1b;
 $input-date-top-color: #fff;
 $input-date-bottom-bg: #fff;
 $input-date-bottom-color: #222;
+$input-area-bg: #fff;
+$input-area-border-radius: 50%;
 
 .home-page {
 	position: relative;
@@ -66,6 +68,7 @@ $input-date-bottom-color: #222;
 		}
 
 		&__quote {
+			display: none;
 			margin-bottom: 2.5rem;
 
 			&__text {
@@ -102,34 +105,98 @@ $input-date-bottom-color: #222;
 	display: inline-block;
 
 	&__label {
-		min-width: 6rem;
-		border: .25rem solid $form-page-bg;
-		border-radius: .7rem;
+		width: 6rem;
+		border: 0.25rem solid $form-page-bg;
+		border-radius: 0.7rem;
 
 		&__month {
 			border-radius: $input-date-border-radius $input-date-border-radius 0 0;
 			border-bottom: 1px dashed #f37302;
-			padding-top: .2rem;
+			padding: 0.2rem 0;
 			background-color: $input-date-top-bg;
 			color: $input-date-top-color;
 		}
 
 		&__date {
-			margin-bottom: -.3rem;
+			padding-top: 0.2rem;
 			background-color: $input-date-bottom-bg;
 			font-size: 1.8rem;
 		}
 
 		&__day {
 			border-radius: 0 0 $input-date-border-radius $input-date-border-radius;
-			padding-bottom: .4rem;
+			padding-bottom: 0.4rem;
 			background-color: $input-date-bottom-bg;
 			font-size: 0.8rem;
 		}
 	}
 
 	&__input {
-		opacity: 0;
+		display: none;
+		//TODO: Choose best color and way to show selected value
+		&:checked + label {
+			border-color: $input-selected-color;
+
+			.date-input__label__month {
+				//background-color: $input-selected-color;
+			}
+		}
+	}
+}
+
+.area-input {
+	display: inline-block;
+	vertical-align: middle;
+	width: 4.4rem;
+	margin: 0 .5rem;
+
+	&__label {
+		width: 4.4rem;
+		height:4.4rem;
+		margin-bottom: 1rem;
+		padding: 1rem .2rem .2rem .2rem;
+		border: .25rem solid $form-page-bg;
+		border-radius: 50% 50% 50% 0;
+		transform: rotate(-45deg);
+		background-color: $input-area-bg;
+
+		&__text {
+			font-size: 0.8rem;
+			transform: rotate(45deg);
+		}
+
+		/*
+		&:before {
+			content: '';
+			position: absolute;
+			top: -65%;
+			left: 50%;
+			display: block;
+			width: 2rem;
+			height: 2rem;
+			margin-left: -1rem;
+			border-radius: 50% 50% 50% 0;
+			transform: rotate(-45deg);
+			background-color: $input-area-bg;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: -65%;
+			left: 50%;
+			display: block;
+			width: 1rem;
+			height: 1rem;
+			margin: 0.5rem 0 0 -.5rem;
+			border-radius: 50%;
+			background-color: orange;
+		}
+		*/
+	}
+
+	&__input {
+		display: none;
 
 		&:checked + label {
 			border-color: $input-selected-color;
