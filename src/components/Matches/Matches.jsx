@@ -47,22 +47,31 @@ class Matches extends React.Component {
 
 	render() {
 		return (
-			<section>
-				<Summary data={this.props.selected}></Summary>
-				<header>
-					<h1>Matches</h1>
-					<blockquote>
-						Climate is what we expect, weather is what we get.<br/>
-						Mark Twain
+			<section className="matches-page">
+				<header className="matches-page__header">
+					<h1 className="matches-page__header__title">Matches</h1>
+					<blockquote className="matches-page__header__quote">
+						<p className="matches-page__header__quote__text">
+							&#34;Climate is what we expect, weather is what we get.&#34;
+						</p>
+						<span className="matches-page__header__quote__author">
+							― Mark Twain
+						</span>
 					</blockquote>
 				</header>
 				{
-					(this.state.matches.length === 0) && <div>
+					(this.state.matches.length === 0) && <div className="matches-page__empty">
 							<p>Sorry, no place matched you criteria</p>
 							<p>You may try again with less strict criteria</p>
 						</div>
 				}
-				{(this.state.matches.length > 0) && <ul>{this.state.matches.map((match) => (<li key={match.name}><Match match={match}/></li>))}</ul>}
+				{
+					(this.state.matches.length > 0) && <ul className="matches-page__list">{
+								this.state.matches.map(
+									(match) => (<li className="matches-page__list__item" key={match.name}><Match match={match}/></li>)
+								)
+							}</ul>
+				}
 			</section>
 		);
 	}

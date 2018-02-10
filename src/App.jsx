@@ -194,6 +194,7 @@ class App extends React.Component {
 			</Slide>
 		];
 
+		//TODO: Use react-router instead?
 		return (
 			<Fullpage
 				slides={slides}

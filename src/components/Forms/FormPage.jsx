@@ -10,7 +10,7 @@ function FormPage(props) {
 					<p className="form-page__header__quote__text">&#34;{props.quote}&#34;</p>
 					<span className="form-page__header__quote__author">― {props.author}</span>
 				</blockquote>
-				<p className="form-page__header__subtitle">{props.subtitle}</p>
+				{props.subtitle && <p className="form-page__header__subtitle">{props.subtitle}</p>}
 			</header>
 			{props.children}
 			<footer className="form-page__footer">

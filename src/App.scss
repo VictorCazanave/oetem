@@ -206,6 +206,7 @@ $input-area-border-radius: 50%;
 .what-form {
 	&__block {
 		margin-bottom: 2rem;
+
 		&__title {
 			margin-bottom: 1rem;
 		}
@@ -272,5 +273,41 @@ $input-area-border-radius: 50%;
 		&:checked + .sky-input__label {
 			border-color: $input-selected-color;
 		}
+	}
+}
+
+.matches-page {
+	background: linear-gradient(to top, #076585, #EEF4F6);
+
+	&__header {
+		padding: 1rem 1rem 0;
+
+		&__title {
+			margin-bottom: 1.5rem;
+			font-size: 2rem;
+		}
+
+		&__quote {
+			display: none;
+		}
+	}
+
+	&__list {
+		padding: 0;
+
+		&__item {
+			list-style: none;
+		}
+	}
+}
+
+.match {
+	margin: .5rem;
+	padding: .5rem;
+	text-align: left;
+	background-color: #fff;
+
+	&__name {
+
 	}
 }

@@ -4,11 +4,15 @@ class Match extends React.Component {
 
 	render() {
 
-		return (<div>
-			{this.props.match.name}
-			<a href="">Maps</a>
-			<a href="">Weather forecast</a>
-		</div>);
+		return (
+			<div className="match">
+				<div className="match__name">
+					{this.props.match.name}
+				</div>
+				<a href="">Maps</a>
+				<a href="">Weather forecast</a>
+			</div>
+		);
 	}
 }
 
