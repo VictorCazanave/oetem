@@ -5,13 +5,13 @@ $btn-secondary-bg: #f1f6f8;
 $btn-secondary-color: #aaa;
 $form-page-bg: #eef4f6;
 $form-page-color: #444;
+$input-bg: #fff;
 $input-selected-color: #45879E;
 $input-date-border-radius: 0.5rem;
 $input-date-top-bg: #fd9f1b;
 $input-date-top-color: #fff;
 $input-date-bottom-bg: #fff;
 $input-date-bottom-color: #222;
-$input-area-bg: #fff;
 $input-area-border-radius: 50%;
 
 .home-page {
@@ -134,7 +134,7 @@ $input-area-border-radius: 50%;
 	&__input {
 		display: none;
 		//TODO: Choose best color and way to show selected value
-		&:checked + label {
+		&:checked + .date-input__label {
 			border-color: $input-selected-color;
 
 			.date-input__label__month {
@@ -158,7 +158,7 @@ $input-area-border-radius: 50%;
 		border: 0.25rem solid $form-page-bg;
 		border-radius: 50% 50% 50% 0;
 		transform: rotate(-45deg);
-		background-color: $input-area-bg;
+		background-color: $input-bg;
 
 		&__text {
 			font-size: 0.8rem;
@@ -176,7 +176,7 @@ $input-area-border-radius: 50%;
 			margin-left: -1rem;
 			border-radius: 50% 50% 50% 0;
 			transform: rotate(-45deg);
-			background-color: $input-area-bg;
+			background-color: $input-bg;
 		}
 
 		&:after {
@@ -197,31 +197,48 @@ $input-area-border-radius: 50%;
 	&__input {
 		display: none;
 
-		&:checked + label {
+		&:checked + .area-input__label {
 			border-color: $input-selected-color;
+		}
+	}
+}
+
+.what-form {
+	&__block {
+		margin-bottom: 2rem;
+		&__title {
+			margin-bottom: 1rem;
+		}
+
+		&__subtitle {
+			margin-bottom: 1rem;
 		}
 	}
 }
 
 .input-temperature {
 	margin: 2rem;
-
-	// Overriding InputRange component styles
+	/* Overriding InputRange component styles */
 	.input-range {
 		&__label {
 			color: inherit;
 			font-family: inherit;
 			font-size: 0.9rem;
 
-			&--min, &--max {
+			&--max,
+			&--min {
 				display: none;
+			}
+
+			&-container {
+				left: -30%;
 			}
 		}
 
 		&__slider {
 			width: 1.2rem;
 			height: 1.2rem;
-			margin-left: -.1rem;
+			margin-left: -.6rem;
 			margin-top: -0.8rem;
 			border-color: $input-selected-color;
 			background-color: $input-selected-color;
@@ -231,10 +248,29 @@ $input-area-border-radius: 50%;
 			height: 0.5rem;
 			background: linear-gradient(to right, #0054ff, #FF1400);
 			//background: #fff;
-
 			&--active {
 				background: $input-selected-color;
 			}
+		}
+	}
+}
+
+.sky-input {
+	display: inline-block;
+
+	&__label {
+		margin: 0.1rem 0.2rem;
+		padding: 0.8rem;
+		border: 0.25rem solid $form-page-bg;
+		border-radius: 50%;
+		background-color: $input-bg;
+	}
+
+	&__input {
+		display: none;
+
+		&:checked + .sky-input__label {
+			border-color: $input-selected-color;
 		}
 	}
 }

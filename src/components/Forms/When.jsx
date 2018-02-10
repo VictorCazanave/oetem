@@ -14,7 +14,7 @@ class When extends React.Component {
 		return (
 			<FormPage
 				title="When?"
-				subtitle="Choose the date of your desired weather:"
+				subtitle="Choose one date you can go out:"
 				quote="Every day brings new choices."
 				author="Martha Beck"
 				button="One more question"

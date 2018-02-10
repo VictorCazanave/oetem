@@ -12,12 +12,22 @@ class SkyInput extends React.Component {
 	}
 
 	render() {
+		const id = `sky${this.props.sky.id}`;
+
 		return (
-			<label><img
-				src={`http://www.cwb.gov.tw/V7/symbol/weather/gif/day/${this.props.sky.id}.gif`}
-				alt={this.props.sky.label}/>
-				<input type="checkbox" name={this.props.sky.id} onChange={this.handleChange}/>
-			</label>
+			<div className="sky-input">
+				<input
+					type="checkbox"
+					name={this.props.sky.id}
+					onChange={this.handleChange}
+					id={id}
+					className="sky-input__input"/>
+				<label htmlFor={id} className="sky-input__label">
+					<img
+						src={`http://www.cwb.gov.tw/V7/symbol/weather/gif/day/${this.props.sky.id}.gif`}
+						alt={this.props.sky.label}/>
+				</label>
+			</div>
 		);
 	}
 }

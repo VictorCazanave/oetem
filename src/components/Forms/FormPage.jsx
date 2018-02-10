@@ -14,7 +14,7 @@ function FormPage(props) {
 			</header>
 			{props.children}
 			<footer className="form-page__footer">
-				<button className="form-page__footer__button" onClick={props.onClick}>{props.button}</button>
+				<button className="form-page__footer__button" onClick={props.onClick}>{props.button}</button >
 			</footer>
 		</section>
 	);
