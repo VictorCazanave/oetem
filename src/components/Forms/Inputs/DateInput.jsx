@@ -15,7 +15,7 @@ class DateInput extends React.Component {
 
 	render() {
 		const id = `date${this.props.date}`;
-
+		//TODO: Use controlled component (checked={this.props.checked}
 		return (
 			<div className="date-input">
 				<input

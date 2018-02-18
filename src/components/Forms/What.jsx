@@ -20,7 +20,7 @@ class What extends React.Component {
 				quote="There is no such thing as bad weather, only different kinds of good weather."
 				author="John Ruskin"
 				button="Let's search"
-				onClick={this.props.onClickNext}>
+				nextPath="/matches">
 				<form className="what-form">
 					<div className="what-form__block">
 						<h2 className="what-form__block__title">Temperature</h2>

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {Switch, Route} from 'react-router-dom'
 import update from 'immutability-helper';
-import {Fullpage, Slide} from 'fullpage-react';
 
 import Home from './components/Home/Home';
 import When from './components/Forms/When';
@@ -10,7 +10,7 @@ import Matches from './components/Matches/Matches';
 
 import './App.css';
 
-class App extends React.Component {
+class App extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -25,9 +25,6 @@ class App extends React.Component {
 				skys: []
 			}
 		};
-
-		// Active slide (no need to re-render)
-		this.activeSlide = 0;
 
 		// Init data that will not change later
 		this.initData = {
@@ -44,8 +41,6 @@ class App extends React.Component {
 		this.handleSelectArea = this.handleSelectArea.bind(this);
 		this.handleSelectTemperature = this.handleSelectTemperature.bind(this);
 		this.handleSelectSky = this.handleSelectSky.bind(this);
-		this.handleSlideChangeEnd = this.handleSlideChangeEnd.bind(this);
-		this.handleClickNext = this.handleClickNext.bind(this);
 	}
 
 	componentDidMount() {
@@ -148,63 +143,30 @@ class App extends React.Component {
 		});
 	}
 
-	handleClickNext(event) {
-		event.preventDefault();
-		Fullpage.changeFullpageSlide(this.activeSlide + 1);
-	}
-
-	// Handle click and scroll and arrow
-	handleSlideChangeEnd(name, props, state, newState) {
-		this.activeSlide = newState.activeSlide;
-
-		if (this.activeSlide === 4) {
-			this.setState({displayMatches: true});
-		} else {
-			this.setState({displayMatches: false});
-		}
-	}
-
 	render() {
-		const slides = [
-			<Slide>
-				<Home onClickNext={this.handleClickNext}/>
-			</Slide>,
-			<Slide>
-				<When
-					dates={this.initData.dates}
-					onSelectDate={this.handleSelectDate}
-					onClickNext={this.handleClickNext}/>
-			</Slide>,
-			<Slide>
-				<Where
-					areas={this.initData.areas}
-					onSelectArea={this.handleSelectArea}
-					onClickNext={this.handleClickNext}/>
-			</Slide>,
-			<Slide>
-				<What
-					temperature={this.initData.temperature}
-					onSelectTemperature={this.handleSelectTemperature}
-					skys={this.initData.skys}
-					onSelectSky={this.handleSelectSky}
-					onClickNext={this.handleClickNext}/>
-			</Slide>,
-			<Slide>
-				<Matches display={this.state.displayMatches} selected={this.state.selected}/>
-			</Slide>
-		];
-
-		//TODO: Use react-router instead?
 		return (
-			<Fullpage
-				slides={slides}
-				onSlideChangeEnd={this.handleSlideChangeEnd}
-				scrollSensitivity="2"
-				touchSensitivity="2"
-				scrollSpeed="500"
-				resetSlides="true"
-				hideScrollBars="true"
-				enableArrowKeys="true"></Fullpage>
+			<Switch>
+				<Route exact="true" path="/" component={Home}/>
+				<Route
+					path="/when"
+					render={(props) => (<When dates={this.initData.dates} onSelectDate={this.handleSelectDate} {...props}/>)}/>
+				<Route
+					path="/where"
+					render={(props) => (<Where areas={this.initData.areas} onSelectArea={this.handleSelectArea} {...props}/>)}/>
+				<Route
+					path="/what"
+					render={(props) => (
+						<What
+							temperature={this.initData.temperature}
+							onSelectTemperature={this.handleSelectTemperature}
+							skys={this.initData.skys}
+							onSelectSky={this.handleSelectSky}
+							{...props}/>
+					)}/>
+				<Route
+					path="/matches"
+					render={(props) => (<Matches display={this.state.displayMatches} selected={this.state.selected} {...props}/>)}/>
+			</Switch>
 		);
 	}
 }

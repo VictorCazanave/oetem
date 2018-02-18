@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 function FormPage(props) {
 
@@ -14,7 +15,7 @@ function FormPage(props) {
 			</header>
 			{props.children}
 			<footer className="form-page__footer">
-				<button className="form-page__footer__button" onClick={props.onClick}>{props.button}</button >
+				<Link to={props.nextPath} className="form-page__footer__button">{props.button}</Link>
 			</footer>
 		</section>
 	);

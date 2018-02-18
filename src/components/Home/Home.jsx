@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 
-class Home extends React.Component {
+class Home extends Component {
 	constructor() {
 		super();
 		this.handleClickAbout = this.handleClickAbout.bind(this);
@@ -21,7 +22,7 @@ class Home extends React.Component {
 				</header>
 				<footer className="home-page__footer">
 					<button className="home-page__footer__button-about" onClick={this.handleClickAbout}>About</button>
-					<button className="home-page__footer__button-start" onClick={this.props.onClickNext}>Let's start!</button>
+					<Link to="/when" className="home-page__footer__button-start">Let's start!</Link>
 				</footer>
 			</section>
 		);

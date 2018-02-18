@@ -18,7 +18,7 @@ class When extends React.Component {
 				quote="Every day brings new choices."
 				author="Martha Beck"
 				button="One more question"
-				onClick={this.props.onClickNext}>
+				nextPath="/where">
 				<form>
 					{
 						this.props.dates.map(
