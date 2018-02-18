@@ -5,9 +5,11 @@ import DateInput from './Inputs/DateInput';
 class When extends React.Component {
 
 	//TODO: Keep it? It is more optimized but more risky
-	shouldComponentUpdate() {
-		// Should update only when getting init data, because after there is no more changes
-		return (this.props.dates.length === 0);
+	shouldComponentUpdate(nextProps) {
+		// Should update only when getting init data and selecting new date
+		return (this.props.dates.length === 0 && nextProps.dates.length > 0) || (
+			this.props.selectedDate !== nextProps.selectedDate
+		);
 	}
 
 	render() {
@@ -21,9 +23,13 @@ class When extends React.Component {
 				nextPath="/where">
 				<form>
 					{
-						this.props.dates.map(
-							(date) => (<DateInput date={date} onToggle={this.props.onSelectDate} key={date}/>)
-						)
+						this.props.dates.map((date) => (
+							<DateInput
+								date={date}
+								selected={this.props.selectedDate === date}
+								onToggle={this.props.onSelectDate}
+								key={date}/>
+						))
 					}
 				</form>
 			</FormPage>

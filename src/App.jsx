@@ -146,10 +146,16 @@ class App extends Component {
 	render() {
 		return (
 			<Switch>
-				<Route exact="true" path="/" component={Home}/>
+				<Route exact={true} path="/" component={Home}/>
 				<Route
 					path="/when"
-					render={(props) => (<When dates={this.initData.dates} onSelectDate={this.handleSelectDate} {...props}/>)}/>
+					render={(props) => (
+						<When
+							dates={this.initData.dates}
+							selectedDate={this.state.selected.date}
+							onSelectDate={this.handleSelectDate}
+							{...props}/>
+					)}/>
 				<Route
 					path="/where"
 					render={(props) => (<Where areas={this.initData.areas} onSelectArea={this.handleSelectArea} {...props}/>)}/>

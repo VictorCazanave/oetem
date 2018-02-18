@@ -14,14 +14,15 @@ class DateInput extends React.Component {
 	}
 
 	render() {
+		// Used to link input and label
 		const id = `date${this.props.date}`;
-		//TODO: Use controlled component (checked={this.props.checked}
+
 		return (
 			<div className="date-input">
 				<input
 					type="radio"
-					name="date"
 					value={this.props.date}
+					checked={this.props.selected}
 					onChange={this.handleChange}
 					id={id}
 					className="date-input__input"/>
