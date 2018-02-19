@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-class AreaInput extends React.Component {
+class AreaInput extends Component {
 
 	constructor() {
 		super();
@@ -8,6 +8,7 @@ class AreaInput extends React.Component {
 	}
 
 	handleChange(event) {
+		// Need to return area object, not only area.id (event.target.value)
 		this.props.onToggle(this.props.area, event.target.checked);
 	}
 

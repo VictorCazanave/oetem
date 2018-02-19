@@ -64,9 +64,6 @@ class App extends Component {
 	}
 
 	//TODO: Use object spread instead of immutability-helper?
-	//TODO: Really need to update state everytime?
-	//TODO: Maybe send data only when clicking on the next button?
-	//TODO: But need to block the scroll and arrow
 
 	handleSelectDate(selectedDate) {
 		this.setState((prevState) => {
@@ -104,7 +101,6 @@ class App extends Component {
 
 	handleSelectTemperature(selectedTemperature) {
 		this.setState((prevState) => {
-
 			return update(prevState, {
 				selected: {
 					temperature: {
@@ -117,17 +113,14 @@ class App extends Component {
 
 	handleSelectSky(selectedSky, isSelected) {
 		this.setState((prevState) => {
-			let selectedSkys = [];
+			let selectedSkys = new Set([...prevState.selected.skys]);
 
 			if (isSelected) {
 				// Add sky
-				selectedSkys = [
-					...prevState.selected.skys,
-					selectedSky
-				];
+				selectedSkys.add(selectedSky);
 			} else {
 				// Remove sky
-				selectedSkys = prevState.selected.skys.filter(sky => sky.id !== selectedSky.id);
+				selectedSkys.delete(selectedSky);
 			}
 
 			return update(prevState, {
@@ -167,8 +160,10 @@ class App extends Component {
 					render={(props) => (
 						<What
 							temperature={this.initData.temperature}
+							selectedTemperature={this.state.selected.temperature}
 							onSelectTemperature={this.handleSelectTemperature}
 							skys={this.initData.skys}
+							selectedSkys={this.state.selected.skys}
 							onSelectSky={this.handleSelectSky}
 							{...props}/>
 					)}/>

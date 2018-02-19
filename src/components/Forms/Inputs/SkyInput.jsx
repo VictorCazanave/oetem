@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-class SkyInput extends React.Component {
+class SkyInput extends Component {
 
 	constructor() {
 		super();
@@ -8,17 +8,20 @@ class SkyInput extends React.Component {
 	}
 
 	handleChange(event) {
+		// Need to return sky object, not only sky.id (event.target.value)
 		this.props.onToggle(this.props.sky, event.target.checked);
 	}
 
 	render() {
+		// Used to link input and label
 		const id = `sky${this.props.sky.id}`;
 
 		return (
 			<div className="sky-input">
 				<input
 					type="checkbox"
-					name={this.props.sky.id}
+					value={this.props.sky.id}
+					checked={this.props.selected}
 					onChange={this.handleChange}
 					id={id}
 					className="sky-input__input"/>
