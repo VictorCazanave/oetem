@@ -17,12 +17,12 @@ class App extends Component {
 			displayMatches: false,
 			selected: {
 				date: null,
-				areas: [],
+				areas: new Set(),
 				temperature: {
 					min: -100,
 					max: 100
 				},
-				skys: []
+				skys: new Set()
 			}
 		};
 
@@ -82,17 +82,14 @@ class App extends Component {
 
 	handleSelectArea(selectedArea, isSelected) {
 		this.setState((prevState) => {
-			let selectedAreas = [];
+			let selectedAreas = new Set([...prevState.selected.areas]);
 
 			if (isSelected) {
 				// Add area
-				selectedAreas = [
-					...prevState.selected.areas,
-					selectedArea
-				];
+				selectedAreas.add(selectedArea);
 			} else {
 				// Remove area
-				selectedAreas = prevState.selected.areas.filter(area => area.id !== selectedArea.id);
+				selectedAreas.delete(selectedArea);
 			}
 
 			return update(prevState, {
@@ -158,7 +155,13 @@ class App extends Component {
 					)}/>
 				<Route
 					path="/where"
-					render={(props) => (<Where areas={this.initData.areas} onSelectArea={this.handleSelectArea} {...props}/>)}/>
+					render={(props) => (
+						<Where
+							areas={this.initData.areas}
+							selectedAreas={this.state.selected.areas}
+							onSelectArea={this.handleSelectArea}
+							{...props}/>
+					)}/>
 				<Route
 					path="/what"
 					render={(props) => (

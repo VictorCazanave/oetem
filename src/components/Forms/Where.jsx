@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import FormPage from './FormPage';
 import AreaInput from './Inputs/AreaInput';
 
-class Where extends React.Component {
+class Where extends Component {
 
-	//TODO: Keep it? It is more optimized but more risky
-	shouldComponentUpdate() {
-		// Should update only when getting init data, because after there is no more changes
-		return (this.props.areas.length === 0);
+	//TODO: Keep it? Maybe more optimized but more risky
+	/*
+	shouldComponentUpdate(nextProps) {
+		// Should update only when getting init data and selecting new area
+		return (this.props.areas.length === 0 && nextProps.areas.length > 0) || (
+			this.props.selectedAreas !== nextProps.selectedAreas
+		);
 	}
+	*/
 
 	render() {
 		return (
@@ -21,9 +25,13 @@ class Where extends React.Component {
 				nextPath="/what">
 				<form>
 					{
-						this.props.areas.map(
-							(area) => (<AreaInput area={area} onToggle={this.props.onSelectArea} key={area.id}/>)
-						)
+						this.props.areas.map((area) => (
+							<AreaInput
+								area={area}
+								selected={this.props.selectedAreas.has(area)}
+								onToggle={this.props.onSelectArea}
+								key={area.id}/>
+						))
 					}
 				</form>
 			</FormPage>

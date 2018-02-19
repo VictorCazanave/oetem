@@ -12,13 +12,15 @@ class AreaInput extends React.Component {
 	}
 
 	render() {
+		// Used to link input and label
 		const id = `area${this.props.area.id}`;
 
 		return (
 			<div className="area-input">
 				<input
 					type="checkbox"
-					name={this.props.area.id}
+					value={this.props.area.id}
+					checked={this.props.selected}
 					onChange={this.handleChange}
 					id={id}
 					className="area-input__input"/>
