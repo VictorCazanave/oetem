@@ -18,8 +18,8 @@ class Home extends Component {
 			<section className="home-page">
 				<header className="home-page__header">
 					<h1 className="home-page__header__title">oeteM | Meteo</h1>
-					<p className="home-page__header__quote">Reversed meteo to find where is your desired weather</p>
 				</header>
+				<p className="home-page__intro">Reversed meteo to find where is your desired weather</p>
 				<footer className="home-page__footer">
 					<button className="home-page__footer__button-about" onClick={this.handleClickAbout}>About</button>
 					<Link to="/when" className="home-page__footer__button-start">Let's start!</Link>

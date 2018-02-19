@@ -8,15 +8,15 @@
   box-sizing: border-box;
 }
 
+@-ms-viewport {
+  width: device-width;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: transparent;
-}
-
-@-ms-viewport {
-  width: device-width;
 }
 
 body {
@@ -93,13 +93,26 @@ button {
 }
 
 /* Custom global CSS */
+html {
+	width: 100%;
+	height: 100%;
+}
+
 body {
+	width: 100%;
+	height: 100%;
 	font-family: 'Roboto', Arial, sans-serif;
 	//font-weight: 300;
 	text-align: center;
 }
 
-button {
+#root {
+	width: 100%;
+	height: 100%;
+}
+
+//TODO: Find a better way
+button, a {
 	display: block;
 	width: 50%;
 	margin: 0 auto;
