@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import FormPage from './FormPage';
 import TemperatureInput from './Inputs/TemperatureInput';
 import SkyInput from './Inputs/SkyInput';
 
-class What extends React.Component {
+class What extends Component {
 
 	//TODO: Keep it? Maybe more optimized but more risky
 	/*
