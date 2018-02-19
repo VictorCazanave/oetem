@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Summary from './Summary';
 import Match from './Match';
 
-class Matches extends React.Component {
+class Matches extends Component {
 	constructor() {
 		super();
 		this.state = {
