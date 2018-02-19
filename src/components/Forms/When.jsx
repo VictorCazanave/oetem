@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import FormPage from './FormPage';
 import DateInput from './Inputs/DateInput';
 
-class When extends React.Component {
+class When extends Component {
 
 	//TODO: Keep it? It is more optimized but more risky
+	/*
 	shouldComponentUpdate(nextProps) {
 		// Should update only when getting init data and selecting new date
 		return (this.props.dates.length === 0 && nextProps.dates.length > 0) || (
 			this.props.selectedDate !== nextProps.selectedDate
 		);
 	}
+	*/
 
 	render() {
 		return (

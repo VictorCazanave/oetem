@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {getFormattedDate} from './DateUtils.js';
 
-class DateInput extends React.Component {
+class DateInput extends Component {
 
 	constructor(props) {
 		super(props);
