@@ -1,8 +1,13 @@
 @import '../node_modules/react-input-range/lib/css/index.css';
+/* Router animation */
+$route-transition-duration: 300ms;
+$route-transition-timing: ease-in;
+/* Buttons colors */
 $btn-primary-bg: #30d180;
 $btn-primary-color: #fff;
 $btn-secondary-bg: #f1f6f8;
 $btn-secondary-color: #aaa;
+/* Form page styles */
 $form-page-bg: #eef4f6;
 $form-page-color: #444;
 $input-bg: #fff;
@@ -13,10 +18,49 @@ $input-date-top-color: #fff;
 $input-date-bottom-bg: #fff;
 $input-date-bottom-color: #222;
 $input-area-border-radius: 50%;
+/* Need more specificity to override home-page/form-page/matches-page styles */
+.form-page,
+.home-page,
+.matches-page {
+	&.route-enter {
+		position: absolute;
+		top: -25%;
+		opacity: 0;
+
+		&.route-enter-active {
+			top: 0;
+			opacity: 1;
+			transition: top $route-transition-duration $route-transition-timing $route-transition-duration, opacity $route-transition-duration $route-transition-timing $route-transition-duration;
+		}
+	}
+
+	&.route-exit {
+		position: absolute;
+		top: 0;
+		opacity: 1;
+
+		&.route-exit-active {
+			top: -25%;
+			opacity: 0;
+			transition: top $route-transition-duration $route-transition-timing, opacity $route-transition-duration $route-transition-timing;
+		}
+	}
+}
+// TODO: Is it the best way?
+.button {
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+	padding: 0.6rem 1.2rem;
+	border: 0;
+	border-radius: 1000rem;
+	font-size: 1rem;
+	line-height: 1.3;
+}
 
 .home-page {
 	position: relative;
-	height: 100%;
+	min-height: 100%;
 	//background: linear-gradient(to bottom, #076585, #fff);
 	background: linear-gradient(to bottom, #076585, #EEF4F6);
 
@@ -30,9 +74,7 @@ $input-area-border-radius: 50%;
 		}
 	}
 
-	&__intro {
-
-	}
+	&__intro {}
 
 	&__footer {
 		position: absolute;
@@ -55,8 +97,9 @@ $input-area-border-radius: 50%;
 
 .form-page {
 	position: relative;
+	width: 100%;
 	min-height: 100%;
-	padding-bottom: 5rem;;
+	padding-bottom: 5rem;
 	background-color: $form-page-bg;
 	color: $form-page-color;
 	/*
@@ -309,12 +352,10 @@ $input-area-border-radius: 50%;
 }
 
 .match {
-	margin: .5rem;
-	padding: .5rem;
+	margin: 0.5rem;
+	padding: 0.5rem;
 	text-align: left;
 	background-color: #fff;
 
-	&__name {
-
-	}
+	&__name {}
 }

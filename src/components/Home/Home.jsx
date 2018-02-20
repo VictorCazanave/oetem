@@ -21,8 +21,8 @@ class Home extends Component {
 				</header>
 				<p className="home-page__intro">Reversed meteo to find where is your desired weather</p>
 				<footer className="home-page__footer">
-					<button className="home-page__footer__button-about" onClick={this.handleClickAbout}>About</button>
-					<Link to="/when" className="home-page__footer__button-start">Let's start!</Link>
+					<button className="button home-page__footer__button-about" onClick={this.handleClickAbout}>About</button>
+					<Link to="/when" className="button home-page__footer__button-start">Let's start!</Link>
 				</footer>
 			</section>
 		);

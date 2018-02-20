@@ -15,7 +15,7 @@ function FormPage(props) {
 			</header>
 			{props.children}
 			<footer className="form-page__footer">
-				<Link to={props.nextPath} className="form-page__footer__button">{props.button}</Link>
+				<Link to={props.nextPath} className="button form-page__footer__button">{props.button}</Link>
 			</footer>
 		</section>
 	);

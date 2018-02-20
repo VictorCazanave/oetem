@@ -101,6 +101,7 @@ html {
 body {
 	width: 100%;
 	height: 100%;
+	background-color: #eef4f6;
 	font-family: 'Roboto', Arial, sans-serif;
 	//font-weight: 300;
 	text-align: center;
@@ -109,16 +110,9 @@ body {
 #root {
 	width: 100%;
 	height: 100%;
-}
 
-//TODO: Find a better way
-button, a {
-	display: block;
-	width: 50%;
-	margin: 0 auto;
-	padding: 0.6rem 1.2rem;
-	border: 0;
-	border-radius: 1000rem;
-	font-size: 1rem;
-	line-height: 1.3;
+	> div {
+		width: 100%;
+		height: 100%;
+	}
 }
