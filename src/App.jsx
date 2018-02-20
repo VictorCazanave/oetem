@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, withRouter} from 'react-router-dom';
+import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import update from 'immutability-helper';
 
 import Home from './components/Home/Home';
@@ -61,6 +62,14 @@ class App extends Component {
 		}).catch((err) => {
 			console.error('Parsing init.json failed', err)
 		})
+	}
+
+	//TODO: Keep it?
+	componentDidUpdate(prevProps) {
+		// Scroll to top when changing route
+		if (this.props.location !== prevProps.location) {
+			//window.scrollTo(0, 0)
+		}
 	}
 
 	//TODO: Use object spread instead of immutability-helper?
@@ -134,45 +143,53 @@ class App extends Component {
 	}
 
 	render() {
+		// this.props.location comes from withRouter HOC
+		// https://medium.com/@pshrmn/a-shallow-dive-into-react-router-v4-animated-transitions-4b73f634992a
+		// TODO: Use ReactCSSTransitionGroup?
+		// https://reactjs.org/docs/animation.html#high-level-api-reactcsstransitiongroup
 		return (
-			<Switch>
-				<Route exact={true} path="/" component={Home}/>
-				<Route
-					path="/when"
-					render={(props) => (
-						<When
-							dates={this.initData.dates}
-							selectedDate={this.state.selected.date}
-							onSelectDate={this.handleSelectDate}
-							{...props}/>
-					)}/>
-				<Route
-					path="/where"
-					render={(props) => (
-						<Where
-							areas={this.initData.areas}
-							selectedAreas={this.state.selected.areas}
-							onSelectArea={this.handleSelectArea}
-							{...props}/>
-					)}/>
-				<Route
-					path="/what"
-					render={(props) => (
-						<What
-							temperature={this.initData.temperature}
-							selectedTemperature={this.state.selected.temperature}
-							onSelectTemperature={this.handleSelectTemperature}
-							skys={this.initData.skys}
-							selectedSkys={this.state.selected.skys}
-							onSelectSky={this.handleSelectSky}
-							{...props}/>
-					)}/>
-				<Route
-					path="/matches"
-					render={(props) => (<Matches display={this.state.displayMatches} selected={this.state.selected} {...props}/>)}/>
-			</Switch>
+			<TransitionGroup>
+				<CSSTransition key={this.props.location.key} classNames="route" timeout={600}>
+					<Switch location={this.props.location}>
+						<Route exact={true} path="/" component={Home}/>
+						<Route
+							path="/when"
+							render={(props) => (
+								<When
+									dates={this.initData.dates}
+									selectedDate={this.state.selected.date}
+									onSelectDate={this.handleSelectDate}
+									{...props}/>
+							)}/>
+						<Route
+							path="/where"
+							render={(props) => (
+								<Where
+									areas={this.initData.areas}
+									selectedAreas={this.state.selected.areas}
+									onSelectArea={this.handleSelectArea}
+									{...props}/>
+							)}/>
+						<Route
+							path="/what"
+							render={(props) => (
+								<What
+									temperature={this.initData.temperature}
+									selectedTemperature={this.state.selected.temperature}
+									onSelectTemperature={this.handleSelectTemperature}
+									skys={this.initData.skys}
+									selectedSkys={this.state.selected.skys}
+									onSelectSky={this.handleSelectSky}
+									{...props}/>
+							)}/>
+						<Route
+							path="/matches"
+							render={(props) => (<Matches display={this.state.displayMatches} selected={this.state.selected} {...props}/>)}/>
+					</Switch>
+				</CSSTransition>
+			</TransitionGroup>
 		);
 	}
 }
 
-export default App;
+export default withRouter(App);
