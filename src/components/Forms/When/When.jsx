@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import FormPage from './FormPage';
-import DateInput from './Inputs/DateInput';
+import FormPage from '../FormPage/FormPage';
+import DateInput from '../Inputs/DateInput/DateInput';
 
 class When extends Component {
 
