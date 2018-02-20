@@ -1,0 +1,41 @@
+@import './../../../../../node_modules/react-input-range/lib/css/index.css';
+@import './../../../../variables.scss';
+
+.input-temperature {
+	margin: 2rem;
+	/* Overriding InputRange component styles */
+	.input-range {
+		&__label {
+			color: inherit;
+			font-family: inherit;
+			font-size: 0.9rem;
+
+			&--max,
+			&--min {
+				display: none;
+			}
+
+			&-container {
+				left: -30%;
+			}
+		}
+
+		&__slider {
+			width: 1.2rem;
+			height: 1.2rem;
+			margin-left: -.6rem;
+			margin-top: -0.8rem;
+			border-color: $input-selected-color;
+			background-color: $input-selected-color;
+		}
+
+		&__track {
+			height: 0.5rem;
+			background: linear-gradient(to right, #0054ff, #FF1400);
+			//background: #fff;
+			&--active {
+				background: $input-selected-color;
+			}
+		}
+	}
+}

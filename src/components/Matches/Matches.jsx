@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import Summary from './Summary';
-import Match from './Match';
+import Summary from './Summary/Summary';
+import Match from './Match/Match';
+import './Matches.css';
 
 class Matches extends Component {
 	constructor() {

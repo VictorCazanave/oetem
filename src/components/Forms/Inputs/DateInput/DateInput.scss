@@ -1,0 +1,50 @@
+@import './../../../../variables.scss';
+
+$input-date-border-radius: 0.5rem;
+$input-date-top-bg: #fd9f1b;
+$input-date-top-color: #fff;
+$input-date-bottom-bg: #fff;
+$input-date-bottom-color: #222;
+
+.date-input {
+	display: inline-block;
+
+	&__label {
+		width: 6rem;
+		border: 0.25rem solid $page-bg-light;
+		border-radius: 0.7rem;
+
+		&__month {
+			border-radius: $input-date-border-radius $input-date-border-radius 0 0;
+			//border-bottom: 1px dashed #f37302;
+			padding: 0.2rem 0;
+			background-color: $input-date-top-bg;
+			color: $input-date-top-color;
+		}
+
+		&__date {
+			padding-top: 0.2rem;
+			background-color: $input-date-bottom-bg;
+			font-size: 1.8rem;
+		}
+
+		&__day {
+			border-radius: 0 0 $input-date-border-radius $input-date-border-radius;
+			padding-bottom: 0.4rem;
+			background-color: $input-date-bottom-bg;
+			font-size: 0.8rem;
+		}
+	}
+
+	&__input {
+		display: none;
+		//TODO: Choose best color and way to show selected value
+		&:checked + .date-input__label {
+			border-color: $input-selected-color;
+
+			.date-input__label__month {
+				//background-color: $input-selected-color;
+			}
+		}
+	}
+}

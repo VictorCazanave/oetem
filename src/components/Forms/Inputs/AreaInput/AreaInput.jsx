@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './AreaInput.css';
 
 class AreaInput extends Component {
 

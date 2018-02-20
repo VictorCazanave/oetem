@@ -1,0 +1,21 @@
+@import './../../../../variables.scss';
+
+.sky-input {
+	display: inline-block;
+
+	&__label {
+		margin: 0.1rem 0.2rem;
+		padding: 0.8rem;
+		border: 0.25rem solid $page-bg-light;
+		border-radius: 50%;
+		background-color: $input-bg;
+	}
+
+	&__input {
+		display: none;
+
+		&:checked + .sky-input__label {
+			border-color: $input-selected-color;
+		}
+	}
+}

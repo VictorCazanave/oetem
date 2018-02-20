@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import InputRange from 'react-input-range';
+import './TemperatureInput.css';
 
 class TemperatureInput extends Component {
 

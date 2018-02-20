@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {getFormattedDate} from './DateUtils.js';
+import './DateInput.css';
 
 class DateInput extends Component {
 

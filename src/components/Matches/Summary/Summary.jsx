@@ -1,4 +1,5 @@
 import React from 'react';
+import './Summary.css';
 
 class Summary extends React.Component {
 

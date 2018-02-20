@@ -1,0 +1,36 @@
+@import './../../variables.scss';
+@import './../../mixins.scss';
+
+.home-page {
+	position: relative;
+	min-height: 100%;
+	background: linear-gradient(to bottom, $page-bg-dark, $page-bg-light);
+
+	&__header {
+		padding: 5rem 1rem 0;
+		color: $page-color-light;
+
+		&__title {
+			margin-bottom: 6.5rem;
+			font-size: 2.5rem;
+		}
+	}
+
+	&__intro {}
+
+	&__footer {
+		position: absolute;
+		bottom: 1.5rem;
+		width: 100%;
+
+		&__button-about {
+			@include button($btn-secondary-bg, $btn-secondary-color);
+			margin-bottom: 2rem;
+		}
+
+		&__button-start {
+			@include button($btn-primary-bg, $btn-primary-color);
+			text-decoration: none;
+		}
+	}
+}
