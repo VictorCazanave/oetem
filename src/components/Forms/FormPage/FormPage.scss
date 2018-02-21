@@ -14,8 +14,9 @@
   background: linear-gradient(to bottom, #fff, #076585);
 	background: linear-gradient(to bottom, #E5E5BE, #003973);
 	*/
+
 	&__header {
-		padding: 1rem 1rem 0;
+		padding: 1rem 1rem 2rem;
 
 		&__title {
 			margin-bottom: 1.5rem;
@@ -40,7 +41,6 @@
 		}
 
 		&__subtitle {
-			margin-bottom: 1rem;
 		}
 	}
 

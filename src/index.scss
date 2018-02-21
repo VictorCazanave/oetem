@@ -1,5 +1,6 @@
 //@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,500');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i');
+@import './variables.scss';
 
 /* CSS Reset inspired by https://github.com/alsacreations/KNACSS/blob/master/sass/_vendor/_reboot.css */
 *,
@@ -101,7 +102,8 @@ html {
 body {
 	width: 100%;
 	height: 100%;
-	background-color: #eef4f6;
+	background-color: $page-bg-light;
+	color: $page-color-dark;
 	font-family: 'Roboto', Arial, sans-serif;
 	//font-weight: 300;
 	text-align: center;
