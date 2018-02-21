@@ -9,4 +9,9 @@
 	color: $color;
 	font-size: 1rem;
 	line-height: 1.3;
+
+	&:focus {
+		 // Fake outline with round border
+		//box-shadow: $input-shadow;
+	}
 }

@@ -2,9 +2,9 @@
 
 .sky-input {
 	display: inline-block;
+	margin: 0.1rem 0.2rem;
 
 	&__label {
-		margin: 0.1rem 0.2rem;
 		padding: 0.8rem;
 		border: 0.25rem solid $page-bg-light;
 		border-radius: 50%;
@@ -12,9 +12,16 @@
 	}
 
 	&__input {
-		display: none;
+		opacity: 0;
+		width: 0;
+		height: 0;
+
+		&:focus + .sky-input__label {
+			//box-shadow: $input-shadow;
+		}
 
 		&:checked + .sky-input__label {
+			//box-shadow: none;
 			border-color: $input-selected-color;
 		}
 	}

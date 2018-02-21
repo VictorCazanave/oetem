@@ -37,10 +37,16 @@ $input-date-bottom-color: #222;
 	}
 
 	&__input {
-		//TODO: Make it accessible
-		display: none;
+		opacity: 0;
+		width: 0;
+		height: 0;
+
+		&:focus + .date-input__label {
+			//box-shadow: $input-shadow;
+		}
 		//TODO: Choose best color and way to show selected value
 		&:checked + .date-input__label {
+			//box-shadow: none;
 			border-color: $input-selected-color;
 
 			.date-input__label__month {

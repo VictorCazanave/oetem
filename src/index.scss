@@ -43,6 +43,10 @@ img {
 
 a {
   touch-action: manipulation;
+
+	&:focus {
+		outline: 0;
+	}
 }
 
 label {
@@ -67,6 +71,10 @@ input {
 	&:not([type="range"]) {
     touch-action: manipulation;
 	}
+
+	&:focus {
+		outline: 0;
+	}
 }
 
 button {
@@ -79,12 +87,8 @@ button {
 	-webkit-appearance: button;
 	touch-action: manipulation;
 
-	//TODO: Find a better looking style
-	//outline: 0;
-	//box-shadow: 0 2px 0 0 #333;
 	&:focus {
-	  outline: 1px dotted;
-	  outline: 5px auto -webkit-focus-ring-color;
+		outline: 0;
 	}
 
 	&::-moz-focus-inner{
