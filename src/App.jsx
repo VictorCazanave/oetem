@@ -48,8 +48,21 @@ class App extends Component {
 		fetch('init.json').then((response) => {
 			return response.json()
 		}).then((json) => {
-			// Set init data and selected temperature
+			// Set init data
 			this.initData = json;
+
+			// Sort areas alphabetically
+			this.initData.areas = json.areas.sort((area1, area2) => {
+				if (area1.name < area2.name) {
+					return -1;
+				}
+				if (area1.name > area2.name) {
+					return 1;
+				}
+				return 0;
+			})
+
+			// Set selected temperature
 			this.setState((prevState) => {
 				return update(prevState, {
 					selected: {
