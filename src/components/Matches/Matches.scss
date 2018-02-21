@@ -1,11 +1,13 @@
 @import './../../variables.scss';
 
 .matches-page {
+	width: 100%;
 	min-height: 100%;
+	padding-bottom: 5rem;
 	background: linear-gradient(to top, $page-bg-dark, $page-bg-light);
 
 	&__header {
-		padding: 1rem 1rem 0;
+		padding: 1rem 1rem 2rem;
 
 		&__title {
 			margin-bottom: 1.5rem;

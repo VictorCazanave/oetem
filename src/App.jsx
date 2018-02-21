@@ -15,7 +15,6 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			displayMatches: false,
 			selected: {
 				date: null,
 				areas: new Set(),
@@ -195,9 +194,7 @@ class App extends Component {
 									onSelectSky={this.handleSelectSky}
 									{...props}/>
 							)}/>
-						<Route
-							path="/matches"
-							render={(props) => (<Matches display={this.state.displayMatches} selected={this.state.selected} {...props}/>)}/>
+						<Route path="/matches" render={(props) => (<Matches selected={this.state.selected} {...props}/>)}/>
 					</Switch>
 				</CSSTransition>
 			</TransitionGroup>

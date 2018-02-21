@@ -1,8 +1,17 @@
+@import './../../../variables.scss';
+
 .match {
 	margin: 0.5rem;
 	padding: 0.5rem;
 	text-align: left;
-	background-color: #fff;
+	background-color: $input-bg;
 
-	&__name {}
+	&__name {
+	}
+
+	&__link {
+		&__image {
+			width: 1rem;
+		}
+	}
 }

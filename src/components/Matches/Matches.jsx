@@ -9,30 +9,28 @@ class Matches extends Component {
 		this.state = {
 			matches: []
 		}
-
-		this.handleClickSearch = this.handleClickSearch.bind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		// Start search when display becomes true
-		if (!this.props.display && nextProps.display) {
-			this.handleClickSearch();
-		}
-	}
+	componentDidMount() {
+		// Convert this.props.selected.skys Set into Array to use find() method
+		const selected = {
+			...this.props.selected,
+			...{
+				skys: [...this.props.selected.skys]
+			}
+		};
+		// TODO: Handle invalid data and display errors (missing date...) for (const area of selected.areas)
+		// { const url = `/${selected.date}_${area.id}.json`;
+		const url = `/20180214_10015.json`;
 
-	handleClickSearch() {
-		//TODO: Handle invalid data and display errors (missing date...)
-		for (const area of this.props.selected.areas) {
-			const url = `/${this.props.selected.date}_${area.id}.json`;
-
-			fetch(url).then((response) => {
-				return response.json()
-			}).then((json) => {
-				this.searchMatches(json.area.locations, this.props.selected);
-			}).catch((err) => {
-				console.error(`parsing ${url} failed`, err)
-			})
-		}
+		fetch(url).then((response) => {
+			return response.json()
+		}).then((json) => {
+			this.searchMatches(json.area.locations, selected);
+		}).catch((err) => {
+			console.error(`parsing ${url} failed`, err)
+		})
+		//}
 	}
 
 	searchMatches(locations, selected) {
@@ -41,6 +39,7 @@ class Matches extends Component {
 	}
 
 	match(weather, selected) {
+		return true;
 		return (weather.minTemperature.value >= selected.temperature.min) && (
 			weather.maxTemperature.value <= selected.temperature.max
 		) && (selected.skys.find(sky => sky.id === weather.sky.id));
@@ -60,6 +59,8 @@ class Matches extends Component {
 						</span>
 					</blockquote>
 				</header>
+				<p className="matches-page__header__subtitle"></p>
+
 				{
 					(this.state.matches.length === 0) && <div className="matches-page__empty">
 							<p>Sorry, no place matched you criteria</p>
