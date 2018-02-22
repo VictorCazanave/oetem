@@ -11,23 +11,25 @@ class Match extends React.Component {
 
 		return (
 			<div className="match">
-				<div className="match__name">
-					{this.props.match.name}
+				<div className="match__location">
+					<div className="match__location__name">
+						{this.props.match.name}
+					</div>
+					<ul className="match__location__criteria">
+						<li className="match__location__criteria__item">{this.props.match.area.name}</li>
+						<li className="match__location__criteria__item">{this.props.match.weather.minTemperature.value}°{this.props.match.weather.minTemperature.unit}</li>
+						<li className="match__location__criteria__item">{this.props.match.weather.maxTemperature.value}°{this.props.match.weather.maxTemperature.unit}</li>
+						<li className="match__location__criteria__item">{this.props.match.weather.sky.label}</li>
+					</ul>
 				</div>
-				<div className="match__links">
-					<a href={forecastUrl} target="_blank" className="match__links__link">
-						<img src={forecastImg} alt="forecast" className="match__links__link__image"/>
+				<div className="match__more">
+					<a href={mapUrl} target="_blank" className="match__more__link">
+						<img src={mapImg} alt="Map icon" className="match__more__link__image"/>
 					</a>
-					<a href={mapUrl} target="_blank" className="match__links__link">
-						<img src={mapImg} alt="map" className="match__links__link__image"/>
+					<a href={forecastUrl} target="_blank" className="match__more__link">
+						<img src={forecastImg} alt="Forecast icon" className="match__more__link__image"/>
 					</a>
 				</div>
-				<ul className="match__criteria">
-					<li className="match__criteria__item">{this.props.match.area.name}</li>
-					<li className="match__criteria__item">{this.props.match.weather.minTemperature.value}°{this.props.match.weather.minTemperature.unit}</li>
-					<li className="match__criteria__item">{this.props.match.weather.maxTemperature.value}°{this.props.match.weather.maxTemperature.unit}</li>
-					<li className="match__criteria__item">{this.props.match.weather.sky.label}</li>
-				</ul>
 			</div>
 		);
 	}

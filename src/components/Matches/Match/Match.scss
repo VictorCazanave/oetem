@@ -1,31 +1,50 @@
 @import './../../../variables.scss';
 
 .match {
+	display: flex;
+	align-items: center;
 	margin: 0.5rem;
-	padding: 0.7rem;
+	padding: 0.7rem 0.1rem 0.7rem 0.7rem; // To handle padding of images on the left
 	border-radius: 0.3rem;
-	text-align: left;
 	background-color: $input-bg;
 
-	&__name {}
+	&__location {
+		flex: 1;
+		text-align: left;
 
-	&__criteria {
-		padding: 0;
-		font-size: 0.8rem;
-		font-style: italic;
-		list-style: circle;
+		&__name {
+			font-weight: 400;
+			margin-bottom: 0.4rem;
+		}
 
-		&__item {
-			display: inline-block;
-			margin-right: 0.4rem;
+		&__criteria {
+			padding: 0;
+			font-size: 0.8rem;
+			font-style: italic;
+			list-style: circle;
+
+			&__item {
+				display: inline-block;
+				margin-right: 0.4rem;
+			}
 		}
 	}
 
-	&__links {
+	&__more {
+		width: 5rem;
+		text-align: right;
+
 		&__link {
+			display: inline-block;
+			width: 2.5rem;
+			height: 2.5rem;
+
 			&__image {
-				width: 1.5rem;
+				width: 1.3rem;
+				margin: 0.6rem;
 			}
 		}
 	}
 }
+
+.test {}
