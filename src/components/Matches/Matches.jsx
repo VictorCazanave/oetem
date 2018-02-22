@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
+
+import {getSortedAreas} from './../../Utils/AreaUtils';
 import Summary from './Summary/Summary';
 import Match from './Match/Match';
+
 import './Matches.css';
 
 class Matches extends Component {
@@ -34,7 +37,9 @@ class Matches extends Component {
 	}
 
 	searchMatches(locations, selected) {
-		const matches = locations.filter(location => this.match(location.weather, selected));
+		const matches = getSortedAreas(
+			locations.filter(location => this.match(location.weather, selected))
+		);
 		this.setState({matches: matches});
 	}
 
@@ -58,8 +63,13 @@ class Matches extends Component {
 							― Mark Twain
 						</span>
 					</blockquote>
+					{(this.state.matches.length === 1) && <p className="matches-page__header__subtitle">Here is the perfect location for you:</p>}
+					{
+						(this.state.matches.length > 1) && <p className="matches-page__header__subtitle">
+								{this.state.matches.length}&nbsp;locations match your wishes:
+							</p>
+					}
 				</header>
-				<p className="matches-page__header__subtitle"></p>
 
 				{
 					(this.state.matches.length === 0) && <div className="matches-page__empty">

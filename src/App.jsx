@@ -3,6 +3,7 @@ import {Switch, Route, withRouter} from 'react-router-dom';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import update from 'immutability-helper';
 
+import {getSortedAreas} from './Utils/AreaUtils';
 import Home from './components/Home/Home';
 import When from './components/Forms/When/When';
 import Where from './components/Forms/Where/Where';
@@ -50,16 +51,8 @@ class App extends Component {
 			// Set init data
 			this.initData = json;
 
-			// Sort areas alphabetically
-			this.initData.areas = json.areas.sort((area1, area2) => {
-				if (area1.name < area2.name) {
-					return -1;
-				}
-				if (area1.name > area2.name) {
-					return 1;
-				}
-				return 0;
-			})
+			// Sort areas
+			this.initData.areas = getSortedAreas(json.areas)
 
 			// Set selected temperature
 			this.setState((prevState) => {
