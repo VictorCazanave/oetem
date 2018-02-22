@@ -27,7 +27,7 @@ class What extends Component {
 				<form className="what-form">
 					<div className="what-form__block">
 						<h2 className="what-form__block__title">Temperature</h2>
-						<p className="what-form__block__subtitle">Choose the range of temperature you would like:</p>
+						<p className="what-form__block__subtitle">Choose the range of temperature you like:</p>
 						<TemperatureInput
 							min={this.props.temperature.min}
 							max={this.props.temperature.max}
@@ -36,7 +36,7 @@ class What extends Component {
 					</div>
 					<div className="what-form__block">
 						<h2 className="what-form__block__title">Sky</h2>
-						<p className="what-form__block__subtitle">Choose the kind of sky you would like:</p>
+						<p className="what-form__block__subtitle">Choose the kind of sky you like:</p>
 						{
 							this.props.skys.map((sky) => (
 								<SkyInput
