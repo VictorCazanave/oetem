@@ -29,7 +29,8 @@ class SkyInput extends Component {
 				<label htmlFor={id} className="sky-input__label">
 					<img
 						src={`http://www.cwb.gov.tw/V7/symbol/weather/gif/day/${this.props.sky.id}.gif`}
-						alt={this.props.sky.label}/>
+						alt={this.props.sky.label}
+						title={this.props.sky.label}/>
 				</label>
 			</div>
 		);

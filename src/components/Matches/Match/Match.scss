@@ -10,10 +10,12 @@
 
 	&__location {
 		flex: 1;
+		padding-right: 0.2rem;
 		text-align: left;
 
 		&__name {
 			font-weight: 400;
+			//font-size: 1.1rem;
 			margin-bottom: 0.4rem;
 		}
 
@@ -25,7 +27,22 @@
 
 			&__item {
 				display: inline-block;
-				margin-right: 0.4rem;
+				vertical-align: middle;
+				margin-bottom: -0.4rem;
+
+				&:not(:first-child) {
+					margin-left: 0.4rem;
+
+					&::before {
+						content: '-';
+						margin-right: 0.4rem;
+					}
+				}
+
+				&__image {
+					width: 1.8rem;
+					margin-left: -0.3rem;
+				}
 			}
 		}
 	}

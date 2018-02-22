@@ -16,10 +16,20 @@ class Match extends React.Component {
 						{this.props.match.name}
 					</div>
 					<ul className="match__location__criteria">
-						<li className="match__location__criteria__item">{this.props.match.area.name}</li>
-						<li className="match__location__criteria__item">{this.props.match.weather.minTemperature.value}°{this.props.match.weather.minTemperature.unit}</li>
-						<li className="match__location__criteria__item">{this.props.match.weather.maxTemperature.value}°{this.props.match.weather.maxTemperature.unit}</li>
-						<li className="match__location__criteria__item">{this.props.match.weather.sky.label}</li>
+						<li className="match__location__criteria__item">
+							{this.props.match.area.name}
+						</li>
+						<li className="match__location__criteria__item">
+							{this.props.match.weather.minTemperature.value}°{this.props.match.weather.minTemperature.unit}
+							&nbsp;/&nbsp; {this.props.match.weather.maxTemperature.value}°{this.props.match.weather.maxTemperature.unit}
+						</li>
+						<li className="match__location__criteria__item">
+							<img
+								src={`http://www.cwb.gov.tw/V7/symbol/weather/gif/day/${this.props.match.weather.sky.id}.gif`}
+								alt={this.props.match.weather.sky.label}
+								title={this.props.match.weather.sky.label}
+								className="match__location__criteria__item__image"/>
+						</li>
 					</ul>
 				</div>
 				<div className="match__more">
