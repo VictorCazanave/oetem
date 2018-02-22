@@ -18,6 +18,19 @@
 
 		&__quote {
 			display: none;
+			margin-bottom: 2.5rem;
+
+			&__text {
+				color: #aaa;
+				font-size: 1.2rem;
+				font-style: italic;
+			}
+
+			&__author {
+				font-size: 0.8rem;
+				font-style: normal;
+				margin-right: 7rem;
+			}
 		}
 	}
 
@@ -26,6 +39,7 @@
 		list-style: none;
 
 		&__item {
+			margin: 0.5rem;
 		}
 	}
 

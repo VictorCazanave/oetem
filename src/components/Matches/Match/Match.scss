@@ -3,7 +3,6 @@
 .match {
 	display: flex;
 	align-items: center;
-	margin: 0.5rem;
 	padding: 0.7rem 0.1rem 0.7rem 0.7rem; // To handle padding of images on the left
 	border-radius: 0.3rem;
 	background-color: $input-bg;
@@ -14,8 +13,8 @@
 		text-align: left;
 
 		&__name {
-			font-weight: 400;
-			//font-size: 1.1rem;
+			//font-weight: 400;
+			font-size: 1.1rem;
 			margin-bottom: 0.4rem;
 		}
 

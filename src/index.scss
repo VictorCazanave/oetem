@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400');
-//@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i');
+//@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i');
 @import './variables.scss';
 
 /* CSS Reset inspired by https://github.com/alsacreations/KNACSS/blob/master/sass/_vendor/_reboot.css */
@@ -124,6 +124,6 @@ body {
 }
 
 
-h1, h2, h3, h4, h5, h6, button {
+h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
