@@ -187,7 +187,9 @@ class App extends Component {
 									onSelectSky={this.handleSelectSky}
 									{...props}/>
 							)}/>
-						<Route path="/matches" render={(props) => (<Matches selected={this.state.selected} {...props}/>)}/>
+						<Route
+							path="/matches"
+							render={(props) => (<Matches selected={this.state.selected} firstPath="/when" {...props}/>)}/>
 					</Switch>
 				</CSSTransition>
 			</TransitionGroup>

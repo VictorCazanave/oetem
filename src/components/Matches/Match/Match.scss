@@ -7,12 +7,25 @@
 	text-align: left;
 	background-color: $input-bg;
 
-	&__name {
+	&__name {}
+
+	&__criteria {
+		padding: 0;
+		font-size: 0.8rem;
+		font-style: italic;
+		list-style: circle;
+
+		&__item {
+			display: inline-block;
+			margin-right: 0.4rem;
+		}
 	}
 
-	&__link {
-		&__image {
-			width: 1rem;
+	&__links {
+		&__link {
+			&__image {
+				width: 1.5rem;
+			}
 		}
 	}
 }

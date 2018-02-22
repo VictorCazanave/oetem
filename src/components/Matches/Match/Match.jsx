@@ -14,12 +14,20 @@ class Match extends React.Component {
 				<div className="match__name">
 					{this.props.match.name}
 				</div>
-				<a href={forecastUrl} target="_blank" className="match__link">
-					<img src={forecastImg} alt="forecast" className="match__link__image"/>
-				</a>
-				<a href={mapUrl} target="_blank" className="match__link">
-					<img src={mapImg} alt="map" className="match__link__image"/>
-				</a>
+				<div className="match__links">
+					<a href={forecastUrl} target="_blank" className="match__links__link">
+						<img src={forecastImg} alt="forecast" className="match__links__link__image"/>
+					</a>
+					<a href={mapUrl} target="_blank" className="match__links__link">
+						<img src={mapImg} alt="map" className="match__links__link__image"/>
+					</a>
+				</div>
+				<ul className="match__criteria">
+					<li className="match__criteria__item">{this.props.match.area.name}</li>
+					<li className="match__criteria__item">{this.props.match.weather.minTemperature.value}°{this.props.match.weather.minTemperature.unit}</li>
+					<li className="match__criteria__item">{this.props.match.weather.maxTemperature.value}°{this.props.match.weather.maxTemperature.unit}</li>
+					<li className="match__criteria__item">{this.props.match.weather.sky.label}</li>
+				</ul>
 			</div>
 		);
 	}

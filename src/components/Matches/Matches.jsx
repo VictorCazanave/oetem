@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import update from 'immutability-helper';
 
 import {getSortedAreas} from './../../Utils/AreaUtils';
 import Summary from './Summary/Summary';
@@ -16,41 +18,54 @@ class Matches extends Component {
 
 	componentDidMount() {
 		// Convert this.props.selected.skys Set into Array to use find() method
-		const selected = {
-			...this.props.selected,
-			...{
-				skys: [...this.props.selected.skys]
-			}
-		};
-		// TODO: Handle invalid data and display errors (missing date...) for (const area of selected.areas)
-		// { const url = `/${selected.date}_${area.id}.json`;
-		const url = `/20180214_10015.json`;
+		const selectedSkys = [...this.props.selected.skys];
+
+		// TODO: Handle invalid data and display errors (missing date...) for (const selectedArea of
+		// this.props.selected.areas) { const url = `/${this.props.selected.date}_${selectedArea.id}.json`;
+		const url = '20180212_10005.json';
 
 		fetch(url).then((response) => {
 			return response.json()
 		}).then((json) => {
-			this.searchMatches(json.area.locations, selected);
+			this.searchMatches(json.area, this.props.selected.temperature, selectedSkys);
 		}).catch((err) => {
 			console.error(`parsing ${url} failed`, err)
 		})
 		//}
 	}
 
-	searchMatches(locations, selected) {
-		const matches = getSortedAreas(
-			locations.filter(location => this.match(location.weather, selected))
-		);
-		this.setState({matches: matches});
+	searchMatches(area, selectedTemperature, selectedSkys) {
+		const matchedLocations = area.locations.filter(
+			location => this.match(location.weather, selectedTemperature, selectedSkys)
+		).map(matchedLocation => {
+			matchedLocation.area = {
+				id: area.id,
+				name: area.name
+			}
+			return matchedLocation;
+		});
+
+		if (matchedLocations.length > 0) {
+			this.setState((prevState) => {
+				return update(prevState, {
+					matches: {
+						$push: matchedLocations
+					}
+				});
+			});
+		}
 	}
 
-	match(weather, selected) {
+	match(weather, selectedTemperature, selectedSkys) {
 		return true;
-		return (weather.minTemperature.value >= selected.temperature.min) && (
-			weather.maxTemperature.value <= selected.temperature.max
-		) && (selected.skys.find(sky => sky.id === weather.sky.id));
+		return (weather.minTemperature.value >= selectedTemperature.min) && (
+			weather.maxTemperature.value <= selectedTemperature.max
+		) && (selectedSkys.find(sky => sky.id === weather.sky.id));
 	}
 
 	render() {
+		const sortedMatches = getSortedAreas(this.state.matches);
+		//console.log('matches', sortedMatches);
 		return (
 			<section className="matches-page">
 				<header className="matches-page__header">
@@ -63,27 +78,32 @@ class Matches extends Component {
 							― Mark Twain
 						</span>
 					</blockquote>
-					{(this.state.matches.length === 1) && <p className="matches-page__header__subtitle">Here is the perfect location for you:</p>}
+					{(sortedMatches.length === 1) && <p className="matches-page__header__subtitle">Here is the perfect place for you:</p>}
 					{
-						(this.state.matches.length > 1) && <p className="matches-page__header__subtitle">
-								{this.state.matches.length}&nbsp;locations match your wishes:
+						(sortedMatches.length > 1) && <p className="matches-page__header__subtitle">
+								{sortedMatches.length}&nbsp;places match your wishes:
 							</p>
 					}
 				</header>
 
 				{
-					(this.state.matches.length === 0) && <div className="matches-page__empty">
-							<p>Sorry, no place matched you criteria</p>
-							<p>You may try again with less strict criteria</p>
+					(sortedMatches.length === 0) && <div className="matches-page__empty">
+							<p>Sorry, no place matches your wishes</p>
+							<p>You may try again with more open wishes</p>
 						</div>
 				}
 				{
-					(this.state.matches.length > 0) && <ul className="matches-page__list">{
-								this.state.matches.map(
+					(sortedMatches.length > 0) && <ul className="matches-page__list">{
+								sortedMatches.map(
 									(match) => (<li className="matches-page__list__item" key={match.name}><Match match={match}/></li>)
 								)
 							}</ul>
 				}
+
+				<footer className="matches-page__footer">
+					<Link to="/" className="matches-page__footer__button-home">Home</Link>
+					<Link to={this.props.firstPath} className="matches-page__footer__button-again">Try again!</Link>
+				</footer>
 			</section>
 		);
 	}
