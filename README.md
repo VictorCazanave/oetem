@@ -23,7 +23,8 @@ npm start
 * [whatwg-fetch](https://github.com/github/fetch): Used in App component to fetch data.
 
 ### TODO
-* Disable submit button when form not valid
+* ~~Disable submit button when form not valid~~
+* Move nextPath prop in App
 * Tablet/Desktop styles
 * Buttons hover styles
 * About modal
