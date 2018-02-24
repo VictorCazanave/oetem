@@ -1,40 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './SkyInput.css';
 
-class SkyInput extends Component {
+function SkyInput(props) {
+	const id = `sky${props.sky.id}`; // Used to link input and label
 
-	constructor() {
-		super();
-		this.handleChange = this.handleChange.bind(this);
-	}
-
-	handleChange(event) {
-		// Need to return sky object, not only sky.id (event.target.value)
-		this.props.onToggle(this.props.sky, event.target.checked);
-	}
-
-	render() {
-		// Used to link input and label
-		const id = `sky${this.props.sky.id}`;
-
-		return (
-			<div className="sky-input">
+	return (
+		<div className="sky-input">
 				<input
 					type="checkbox"
-					value={this.props.sky.id}
-					checked={this.props.selected}
-					onChange={this.handleChange}
+					value={props.sky.id}
+					checked={props.selected}
+					onChange={(event) => props.onToggle(props.sky, event.target.checked)}
 					id={id}
 					className="sky-input__input"/>
 				<label htmlFor={id} className="sky-input__label">
 					<img
-						src={`http://www.cwb.gov.tw/V7/symbol/weather/gif/day/${this.props.sky.id}.gif`}
-						alt={this.props.sky.label}
-						title={this.props.sky.label}/>
+						src={`http://www.cwb.gov.tw/V7/symbol/weather/gif/day/${props.sky.id}.gif`}
+						alt={props.sky.label}
+						title={props.sky.label}/>
 				</label>
 			</div>
-		);
-	}
+	);
 }
 
 export default SkyInput;
