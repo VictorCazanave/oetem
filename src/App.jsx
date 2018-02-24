@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Switch, Route, withRouter} from 'react-router-dom';
-import {TransitionGroup, CSSTransition} from 'react-transition-group';
+import React, { Component } from 'react';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import update from 'immutability-helper';
-import {getSortedAreas} from './Utils/AreaUtils';
+import { getSortedAreas } from './Utils/AreaUtils';
 import Home from './components/Home/Home';
 import When from './components/Forms/When/When';
 import Where from './components/Forms/Where/Where';
@@ -67,15 +67,13 @@ class App extends Component {
 		})
 	}
 
-	//TODO: Keep it?
 	componentDidUpdate(prevProps) {
 		// Scroll to top when changing route
 		if (this.props.location !== prevProps.location) {
-			//window.scrollTo(0, 0)
+			console.log('scroll');
+			window.scrollTo(0, 0)
 		}
 	}
-
-	//TODO: Use object spread instead of immutability-helper?
 
 	handleSelectDate(selectedDate) {
 		this.setState((prevState) => {
