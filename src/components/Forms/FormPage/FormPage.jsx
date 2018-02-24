@@ -16,7 +16,11 @@ function FormPage(props) {
 			</header>
 			{props.children}
 			<footer className="form-page__footer">
-				<Link to={props.nextPath} className="form-page__footer__button">{props.button}</Link>
+				{
+					props.valid
+						? <Link to={props.nextPath} className="form-page__footer__button">{props.button}</Link>
+						: <button disabled="disabled" className="form-page__footer__button--disabled">{props.button}</button>
+				}
 			</footer>
 		</section>
 	);

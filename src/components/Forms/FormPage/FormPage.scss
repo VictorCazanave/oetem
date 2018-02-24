@@ -52,6 +52,10 @@
 		&__button {
 			@include button($btn-primary-bg, $btn-primary-color);
 			text-decoration: none;
+
+			&--disabled {
+				@include button($btn-primary-disabled-bg, $btn-primary-disabled-color);
+			}
 		}
 	}
 }

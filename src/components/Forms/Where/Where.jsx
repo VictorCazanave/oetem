@@ -22,6 +22,7 @@ class Where extends Component {
 				quote="Wherever you go, no matter what the weather, always bring your own sunshine."
 				author="Anthony J. D'Angelo"
 				button="Last question"
+				valid={this.props.selectedAreas.size > 0}
 				nextPath="/what">
 				<form>
 					{

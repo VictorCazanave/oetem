@@ -23,6 +23,7 @@ class What extends Component {
 				quote="There is no such thing as bad weather, only different kinds of good weather."
 				author="John Ruskin"
 				button="Let's search"
+				valid={this.props.selectedSkys.size > 0}
 				nextPath="/matches">
 				<form className="what-form">
 					<div className="what-form__block">

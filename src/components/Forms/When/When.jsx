@@ -23,6 +23,7 @@ class When extends Component {
 				quote="Every day brings new choices."
 				author="Martha Beck"
 				button="One more question"
+				valid={this.props.selectedDate}
 				nextPath="/where">
 				<form>
 					{
