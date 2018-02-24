@@ -27,7 +27,7 @@ npm start
 * ~~Move nextPath prop in App~~
 * ~~Transform When/Where/What into dumb components~~
 * Transform XxxInput components into dumb components
-* Scroll to top after changing route
+* ~~Scroll to top after changing route~~
 * Reset form after click on try again button
 * Tablet/Desktop styles
 * Buttons hover styles
