@@ -1,6 +1,6 @@
 import React from 'react';
-import FormPage from '../FormPage/FormPage';
-import DateInput from '../Inputs/DateInput/DateInput';
+import FormPage from 'components/Forms/FormPage/FormPage';
+import DateInput from 'components/Forms/Inputs/DateInput/DateInput';
 
 function When(props) {
 

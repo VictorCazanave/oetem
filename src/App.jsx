@@ -70,7 +70,6 @@ class App extends Component {
 	componentDidUpdate(prevProps) {
 		// Scroll to top when changing route
 		if (this.props.location !== prevProps.location) {
-			console.log('scroll');
 			window.scrollTo(0, 0)
 		}
 	}

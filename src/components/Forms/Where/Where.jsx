@@ -1,6 +1,6 @@
 import React from 'react';
-import FormPage from '../FormPage/FormPage';
-import AreaInput from '../Inputs/AreaInput/AreaInput';
+import FormPage from 'components/Forms/FormPage/FormPage';
+import AreaInput from 'components/Forms/Inputs/AreaInput/AreaInput';
 
 function Where(props) {
 

@@ -6,7 +6,8 @@ import mapImg from './map.png';
 class Match extends React.Component {
 
 	render() {
-		const forecastUrl = `http://www.cwb.gov.tw/V7e/forecast/town368/town2.php?townid=${this.props.match.geocode}`;
+		const forecastUrl =
+			`http://www.cwb.gov.tw/V7e/forecast/town368/town2.php?townid=${this.props.match.geocode}`;
 		const mapUrl = `https://www.google.com/maps?q=${this.props.match.lat},${this.props.match.lon}`
 
 		return (
@@ -21,7 +22,7 @@ class Match extends React.Component {
 						</li>
 						<li className="match__location__criteria__item">
 							{this.props.match.weather.minTemperature.value}°{this.props.match.weather.minTemperature.unit}
-							&nbsp;/&nbsp; {this.props.match.weather.maxTemperature.value}°{this.props.match.weather.maxTemperature.unit}
+							&nbsp;/&nbsp;{this.props.match.weather.maxTemperature.value}°{this.props.match.weather.maxTemperature.unit}
 						</li>
 						<li className="match__location__criteria__item">
 							<img

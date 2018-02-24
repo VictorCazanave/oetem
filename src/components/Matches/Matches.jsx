@@ -1,11 +1,9 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
-
-import {getSortedAreas} from './../../Utils/AreaUtils';
-//import Summary from './Summary/Summary';
-import Match from './Match/Match';
-
+import { getSortedAreas } from 'Utils/AreaUtils';
+//import Summary from 'components/Matches/Summary/Summary';
+import Match from 'components/Matches/Match/Match';
 import './Matches.css';
 
 class Matches extends Component {

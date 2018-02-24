@@ -1,7 +1,7 @@
 import React from 'react';
-import FormPage from '../FormPage/FormPage';
-import TemperatureInput from '../Inputs/TemperatureInput/TemperatureInput';
-import SkyInput from '../Inputs/SkyInput/SkyInput';
+import FormPage from 'components/Forms/FormPage/FormPage';
+import TemperatureInput from 'components/Forms/Inputs/TemperatureInput/TemperatureInput';
+import SkyInput from 'components/Forms/Inputs/SkyInput/SkyInput';
 import './What.css';
 
 function What(props) {

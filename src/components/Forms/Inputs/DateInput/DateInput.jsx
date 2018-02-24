@@ -1,5 +1,5 @@
 import React from 'react';
-import { getFormattedDate } from './../../../../Utils/DateUtils.js';
+import { getFormattedDate } from 'Utils/DateUtils.js';
 import './DateInput.css';
 
 function DateInput(props) {
