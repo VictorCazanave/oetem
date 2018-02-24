@@ -12,7 +12,7 @@ function DateInput(props) {
 					type="radio"
 					value={props.date}
 					checked={props.selected}
-					onChange={props.onToggle.bind(this, props.date)}
+					onChange={() => props.onToggle(props.date)}
 					id={id}
 					className="date-input__input"/>
 				<label htmlFor={id} className="date-input__label">
