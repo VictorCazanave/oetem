@@ -40,6 +40,7 @@ class App extends Component {
 		this.handleSelectArea = this.handleSelectArea.bind(this);
 		this.handleSelectTemperature = this.handleSelectTemperature.bind(this);
 		this.handleSelectSky = this.handleSelectSky.bind(this);
+		this.handleClickAgain = this.handleClickAgain.bind(this);
 	}
 
 	componentDidMount() {
@@ -142,6 +143,18 @@ class App extends Component {
 		});
 	}
 
+	handleClickAgain() {
+		// Reset forms
+		this.setState({
+			selected: {
+				date: null,
+				areas: new Set(),
+				temperature: this.initData.temperature,
+				skys: new Set()
+			}
+		});
+	}
+
 	render() {
 		// this.props.location comes from withRouter HOC
 		// https://medium.com/@pshrmn/a-shallow-dive-into-react-router-v4-animated-transitions-4b73f634992a
@@ -187,7 +200,7 @@ class App extends Component {
 							)}/>
 						<Route
 							path="/matches"
-							render={(props) => (<Matches selected={this.state.selected} firstPath="/when" {...props}/>)}/>
+							render={(props) => (<Matches selected={this.state.selected} onClickAgain={this.handleClickAgain} againPath="/when" {...props}/>)}/>
 					</Switch>
 				</CSSTransition>
 			</TransitionGroup>

@@ -102,7 +102,7 @@ class Matches extends Component {
 
 				<footer className="matches-page__footer">
 					<Link to="/" className="matches-page__footer__button-home">Home</Link>
-					<Link to={this.props.firstPath} className="matches-page__footer__button-again">Try again!</Link>
+					<Link to={this.props.againPath} onClick={this.props.onClickAgain} className="matches-page__footer__button-again">Try again!</Link>
 				</footer>
 			</section>
 		);
