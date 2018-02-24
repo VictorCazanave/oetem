@@ -164,6 +164,7 @@ class App extends Component {
 									dates={this.initData.dates}
 									selectedDate={this.state.selected.date}
 									onSelectDate={this.handleSelectDate}
+									nextPath="/where"
 									{...props}/>
 							)}/>
 						<Route
@@ -173,6 +174,7 @@ class App extends Component {
 									areas={this.initData.areas}
 									selectedAreas={this.state.selected.areas}
 									onSelectArea={this.handleSelectArea}
+									nextPath="/what"
 									{...props}/>
 							)}/>
 						<Route
@@ -185,6 +187,7 @@ class App extends Component {
 									skys={this.initData.skys}
 									selectedSkys={this.state.selected.skys}
 									onSelectSky={this.handleSelectSky}
+									nextPath="/matches"
 									{...props}/>
 							)}/>
 						<Route

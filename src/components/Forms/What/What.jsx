@@ -24,7 +24,7 @@ class What extends Component {
 				author="John Ruskin"
 				button="Let's search"
 				valid={this.props.selectedSkys.size > 0}
-				nextPath="/matches">
+				nextPath={this.props.nextPath}>
 				<form className="what-form">
 					<div className="what-form__block">
 						<h2 className="what-form__block__title">Temperature</h2>

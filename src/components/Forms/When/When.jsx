@@ -24,7 +24,7 @@ class When extends Component {
 				author="Martha Beck"
 				button="One more question"
 				valid={this.props.selectedDate}
-				nextPath="/where">
+				nextPath={this.props.nextPath}>
 				<form>
 					{
 						this.props.dates.map((date) => (

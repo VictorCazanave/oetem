@@ -23,7 +23,7 @@ class Where extends Component {
 				author="Anthony J. D'Angelo"
 				button="Last question"
 				valid={this.props.selectedAreas.size > 0}
-				nextPath="/what">
+				nextPath={this.props.nextPath}>
 				<form>
 					{
 						this.props.areas.map((area) => (
