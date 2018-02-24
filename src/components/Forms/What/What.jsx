@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import FormPage from '../FormPage/FormPage';
 import TemperatureInput from '../Inputs/TemperatureInput/TemperatureInput';
 import SkyInput from '../Inputs/SkyInput/SkyInput';

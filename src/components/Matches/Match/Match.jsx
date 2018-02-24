@@ -33,10 +33,10 @@ class Match extends React.Component {
 					</ul>
 				</div>
 				<div className="match__more">
-					<a href={mapUrl} target="_blank" className="match__more__link">
+					<a href={mapUrl} target="_blank" rel="noopener noreferrer" className="match__more__link">
 						<img src={mapImg} alt="Map icon" className="match__more__link__image"/>
 					</a>
-					<a href={forecastUrl} target="_blank" className="match__more__link">
+					<a href={forecastUrl} target="_blank" rel="noopener noreferrer" className="match__more__link">
 						<img src={forecastImg} alt="Forecast icon" className="match__more__link__image"/>
 					</a>
 				</div>

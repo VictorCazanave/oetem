@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import update from 'immutability-helper';
 
 import {getSortedAreas} from './../../Utils/AreaUtils';
-import Summary from './Summary/Summary';
+//import Summary from './Summary/Summary';
 import Match from './Match/Match';
 
 import './Matches.css';
@@ -58,14 +58,16 @@ class Matches extends Component {
 
 	match(weather, selectedTemperature, selectedSkys) {
 		return true;
+		/*
 		return (weather.minTemperature.value >= selectedTemperature.min) && (
 			weather.maxTemperature.value <= selectedTemperature.max
 		) && (selectedSkys.find(sky => sky.id === weather.sky.id));
+		*/
 	}
 
 	render() {
 		const sortedMatches = getSortedAreas(this.state.matches);
-		//console.log('matches', sortedMatches);
+
 		return (
 			<section className="matches-page">
 				<header className="matches-page__header">

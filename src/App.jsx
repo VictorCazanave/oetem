@@ -2,14 +2,12 @@ import React, {Component} from 'react';
 import {Switch, Route, withRouter} from 'react-router-dom';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import update from 'immutability-helper';
-
 import {getSortedAreas} from './Utils/AreaUtils';
 import Home from './components/Home/Home';
 import When from './components/Forms/When/When';
 import Where from './components/Forms/Where/Where';
 import What from './components/Forms/What/What';
 import Matches from './components/Matches/Matches';
-
 import './App.css';
 
 class App extends Component {

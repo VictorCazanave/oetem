@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import FormPage from '../FormPage/FormPage';
 import AreaInput from '../Inputs/AreaInput/AreaInput';
 
