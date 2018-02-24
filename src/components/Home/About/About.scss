@@ -1,0 +1,74 @@
+.overlay {
+	background-color: rgba(100, 100, 100, 0.5);
+}
+.about {
+	position: absolute;
+	top:-100%;
+	width: 100%;
+	min-height: 100%;
+	padding: 2rem 1.5rem;
+	background-color: #eee;
+
+	&--after-open {
+		top: 0;
+	  transition: top 300ms ease-in;
+	}
+
+	&--before-close {
+		top:-100%;
+		transition: top 300ms ease-in;
+	}
+
+
+	&__header {
+		margin-bottom: 2rem;
+
+		&__title {
+			margin-bottom: 1rem;
+			font-size: 2rem;
+		}
+	}
+
+	&__article {
+		margin-bottom: 2rem;
+
+		&__title {
+			margin-bottom: 1rem;
+			font-size: 1.5rem;
+		}
+
+		&__list {
+			padding-left: 1rem;
+			text-align: left;
+
+			&__item {
+				margin-bottom: 0.5rem;
+
+				&__example {
+					font-size: 0.9rem;
+					font-style: italic;
+				}
+			}
+		}
+
+		&__text {
+			text-align: left;
+		}
+	}
+
+	&__button-close {
+		position: absolute;
+		top:0.5rem;
+		right: 0.5rem;
+		display: block;
+		width: 2.5rem;
+		height: 2.5rem;
+		font-size: 1.5rem;
+	}
+
+	&__footer {
+		position: absolute;
+		bottom: 1rem;
+		font-size: 0.7rem;
+	}
+}
