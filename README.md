@@ -24,7 +24,8 @@ npm start
 
 ### TODO
 * ~~Disable submit button when form not valid~~
-* Move nextPath prop in App
+* ~~Move nextPath prop in App~~
+* Transform When/Where/What into dumb components
 * Tablet/Desktop styles
 * Buttons hover styles
 * About modal
