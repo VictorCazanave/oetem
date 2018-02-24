@@ -19,6 +19,7 @@ npm start
 ### App modules
 * [immutability-helper](https://github.com/kolodny/immutability-helper): Used in setState() to mutate a copy of the state without changing the original one.
 * [react-input-range](https://github.com/davidchin/react-input-range): Used in TemperatureInput component to select a range of temperature.
+* [react-modal](https://github.com/reactjs/react-modal): Used in About component to display a modal.
 * [react-transition-group](https://github.com/reactjs/react-transition-group): Used in App component to add CSS transition between routes.
 * [whatwg-fetch](https://github.com/github/fetch): Used in App component to fetch data.
 
