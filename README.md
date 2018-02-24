@@ -34,7 +34,7 @@ npm start
 * Buttons hover styles
 * ~~About modal~~
 * Add custom styles to links
-* Use simpler path to components
+* ~~Use absolute path to components~~
 * i18n
 * SVG map?
 
