@@ -1,40 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './AreaInput.css';
 
-class AreaInput extends Component {
+function AreaInput(props) {
+	const id = `area${props.area.id}`; // Used to link input and label
 
-	constructor() {
-		super();
-		this.handleChange = this.handleChange.bind(this);
-	}
-
-	handleChange(event) {
-		// Need to return area object, not only area.id (event.target.value)
-		this.props.onToggle(this.props.area, event.target.checked);
-	}
-
-	render() {
-		// Used to link input and label
-		const id = `area${this.props.area.id}`;
-
-		return (
-			<div className="area-input">
+	return (
+		<div className="area-input">
 				<input
 					type="checkbox"
-					value={this.props.area.id}
-					checked={this.props.selected}
-					onChange={this.handleChange}
+					value={props.area.id}
+					checked={props.selected}
+					onChange={(event) => props.onToggle(props.area, event.target.checked)}
 					id={id}
 					className="area-input__input"/>
 				<label htmlFor={id} className="area-input__label">
 					<div className="area-input__label__text">
-						{this.props.area.name}
+						{props.area.name}
 					</div>
 				</label>
 			</div>
 
-		);
-	}
+	);
 }
 
 export default AreaInput;
