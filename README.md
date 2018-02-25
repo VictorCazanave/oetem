@@ -31,16 +31,17 @@ npm start
 * ~~Scroll to top after changing route~~
 * ~~Reset form after click on try again button~~
 * ~~Tablet styles~~
-* Desktop styles
+* ~~Desktop styles~~
 * Buttons hover styles
 * ~~About modal~~
-* Add custom styles to links
-* Fix buttons size?
+* ~~Add custom styles to links~~
+* ~~Fix buttons size~~
 * ~~Use absolute path to components~~
 * Remove useless state.selected
 * Display more info with large screens
 * Customize router animation for home/matches pages
 * Add filters on matches list
+* Accessibility
 * i18n
 * Progressive web app
 * Google Analytics
