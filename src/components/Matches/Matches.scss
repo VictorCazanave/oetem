@@ -5,11 +5,11 @@
 	position: relative;
 	width: 100%;
 	min-height: 100%;
-	padding-bottom: 11rem;
+	padding: 2rem 1rem 10rem;
 	background: linear-gradient(to top, $page-bg-dark, $page-bg-light);
 
 	&__header {
-		padding: 2rem 1rem;
+		margin-bottom: 2rem;
 
 		&__title {
 			margin-bottom: 1.5rem;
@@ -18,19 +18,6 @@
 
 		&__quote {
 			display: none;
-			margin-bottom: 2.5rem;
-
-			&__text {
-				color: #aaa;
-				font-size: 1.2rem;
-				font-style: italic;
-			}
-
-			&__author {
-				font-size: 0.8rem;
-				font-style: normal;
-				margin-right: 7rem;
-			}
 		}
 	}
 
@@ -39,13 +26,14 @@
 		list-style: none;
 
 		&__item {
-			margin: 0.5rem;
+			margin: 0.5rem 0;
 		}
 	}
 
 	&__footer {
 		position: absolute;
 		bottom: 1.5rem;
+		left: 0;
 		width: 100%;
 
 		&__button-home {
@@ -57,6 +45,38 @@
 		&__button-again {
 			@include button($btn-primary-bg, $btn-primary-color);
 			text-decoration: none;
+		}
+	}
+	@media (min-width: $medium) {
+		&__header {
+			&__title {
+				margin-bottom: 3.5rem;
+			}
+
+			&__quote {
+				display: block;
+				margin-bottom: 3.5rem;
+
+				&__text {
+					color: #aaa;
+					font-size: 1.2rem;
+					font-style: italic;
+				}
+
+				&__author {
+					font-size: 0.8rem;
+					font-style: normal;
+					margin-right: 7rem;
+				}
+			}
+		}
+
+		&__list {
+			&__item {
+				display: inline-block;
+				width: 45%;
+				margin: 0.5rem;
+			}
 		}
 	}
 }

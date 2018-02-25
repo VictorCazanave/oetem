@@ -14,4 +14,8 @@
 		 // Fake outline with round border
 		//box-shadow: $input-shadow;
 	}
+
+	@media (min-width: $medium) {
+		width: 25%;
+	}
 }

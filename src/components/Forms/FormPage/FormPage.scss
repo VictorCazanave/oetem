@@ -5,18 +5,12 @@
 	position: relative;
 	width: 100%;
 	min-height: 100%;
-	padding-bottom: 5rem;
+	padding: 2rem 1rem 5rem;
 	background-color: $page-bg-light;
 	color: $page-color-dark;
-	/*
-  background: linear-gradient(to bottom, #0b8793, #360033); bof
-	background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%); bof
-  background: linear-gradient(to bottom, #fff, #076585);
-	background: linear-gradient(to bottom, #E5E5BE, #003973);
-	*/
 
 	&__header {
-		padding: 2rem 1rem;
+		margin-bottom: 2rem;
 
 		&__title {
 			margin-bottom: 1.5rem;
@@ -25,28 +19,15 @@
 
 		&__quote {
 			display: none;
-			margin-bottom: 2.5rem;
-
-			&__text {
-				color: #aaa;
-				font-size: 1.2rem;
-				font-style: italic;
-			}
-
-			&__author {
-				font-size: 0.8rem;
-				font-style: normal;
-				margin-right: 7rem;
-			}
 		}
 
-		&__subtitle {
-		}
+		&__subtitle {}
 	}
 
 	&__footer {
 		position: absolute;
 		bottom: 1.5rem;
+		left: 0;
 		width: 100%;
 
 		&__button {
@@ -55,6 +36,30 @@
 
 			&--disabled {
 				@include button($btn-primary-disabled-bg, $btn-primary-disabled-color);
+			}
+		}
+	}
+	@media (min-width: $medium) {
+		&__header {
+			&__title {
+				margin-bottom: 3.5rem;
+			}
+
+			&__quote {
+				display: block;
+				margin-bottom: 3.5rem;
+
+				&__text {
+					color: #aaa;
+					font-size: 1.2rem;
+					font-style: italic;
+				}
+
+				&__author {
+					font-size: 0.8rem;
+					font-style: normal;
+					margin-right: 7rem;
+				}
 			}
 		}
 	}

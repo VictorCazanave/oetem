@@ -1,6 +1,6 @@
-.what-form {
-	margin-top: -1.5rem; // Because there is no form-page__header__subtitle
+@import './../../../variables.scss';
 
+.what-form {
 	&__block {
 		margin-bottom: 2rem;
 
@@ -13,4 +13,20 @@
 			margin-bottom: 1rem;
 		}
 	}
+
+	@media (min-width: $medium) {
+
+		&__block {
+			margin-bottom: 4rem;
+
+			&__title {
+				margin-bottom: 2rem;
+			}
+
+			&__subtitle {
+				margin-bottom: 2rem;
+			}
+		}
+	}
+
 }

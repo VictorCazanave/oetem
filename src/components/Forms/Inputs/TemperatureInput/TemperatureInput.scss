@@ -37,5 +37,10 @@
 				background: $input-selected-color;
 			}
 		}
+
+		@media (min-width: $medium) {
+			width: 50%;
+			margin: 0 auto;
+		}
 	}
 }

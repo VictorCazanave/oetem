@@ -5,14 +5,14 @@
 	position: relative;
 	width: 100%;
 	min-height: 100%;
+	padding: 5rem 1rem 10rem;
 	background: linear-gradient(to bottom, $page-bg-dark, $page-bg-light);
 
 	&__header {
-		padding: 5rem 1rem 0;
-		color: $page-color-light;
+		margin-bottom: 6.5rem;
 
 		&__title {
-			margin-bottom: 6.5rem;
+			color: $page-color-light;
 			font-size: 2.5rem;
 		}
 	}
@@ -22,6 +22,7 @@
 	&__footer {
 		position: absolute;
 		bottom: 1.5rem;
+		left:0;
 		width: 100%;
 
 		&__button-about {
@@ -34,4 +35,9 @@
 			text-decoration: none;
 		}
 	}
+
+	@media (min-width: $medium) {
+
+	}
+
 }

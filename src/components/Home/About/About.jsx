@@ -13,35 +13,35 @@ function About(props) {
 			contentLabel="About oetem"
 			closeTimeoutMS={300}
 			className={{base:"about", afterOpen:"about--after-open", beforeClose:"about--before-close"}}
-			overlayClassName="overlay">
+			overlayClassName={{base:"overlay", afterOpen:"overlay--after-open", beforeClose:"overlay--before-close"}}>
 			<section>
 				<header className="about__header">
 					<h1 className="about__header__title">About</h1>
 					<p>oeteM helps you to find where the weather you like will be.</p>
 				</header>
-				<article className="about__article">
-					<h1 className="about__article__title">How to use it?</h1>
-					<ol className="about__article__list">
-						<li className="about__article__list__item">
+				<div className="about__block">
+					<h2 className="about__block__title">How to use it?</h2>
+					<ol className="about__block__list">
+						<li className="about__block__list__item">
 							Choose a date you can go out to enjoy the weather
 						</li>
-						<li className="about__article__list__item">
-							Choose areas you (would) like to go: <span className="about__article__list__item__example">Taipei City, Hsinchu County...</span>
+						<li className="about__block__list__item">
+							Choose areas you (would) like to go: <span className="about__block__list__item__example">Taipei City, Hsinchu County...</span>
 						</li>
-						<li className="about__article__list__item">
-							Choose the weather you like: <span className="about__article__list__item__example">sunny, between 15° and 25°...</span>
+						<li className="about__block__list__item">
+							Choose the weather you like: <span className="about__block__list__item__example">sunny, between 15° and 25°...</span>
 						</li>
-						<li className="about__article__list__item">
+						<li className="about__block__list__item">
 							Get a list of cities which match your criteria!
 						</li>
 					</ol>
-				</article>
-				<article className="about__article">
-					<h1 className="about__article__title">Data</h1>
-					<p className="about__article__text">
+				</div>
+				<div className="about__block">
+					<h2 className="about__block__title">Data</h2>
+					<p className="about__block__text">
 						All the data are provided by the <a href="http://www.cwb.gov.tw/" target="_blank" rel="noopener noreferrer">Taiwan Central Weather Bureau</a>.
 					</p>
-				</article>
+				</div>
 				<button
 					onClick={props.onClose}
 					title="close"
