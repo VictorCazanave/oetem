@@ -39,16 +39,16 @@ function About(props) {
 				<div className="about__block">
 					<h2 className="about__block__title">Data</h2>
 					<p className="about__block__text">
-						All the data are provided by the <a href="http://www.cwb.gov.tw/" target="_blank" rel="noopener noreferrer">Taiwan Central Weather Bureau</a>.
+						All the data are provided by the <a href="http://www.cwb.gov.tw/" target="_blank" rel="noopener noreferrer" className="about__block__text__link">Taiwan Central Weather Bureau</a>.
 					</p>
 				</div>
 				<button
 					onClick={props.onClose}
-					title="close"
+					title="Close"
 					className="about__button-close"
 					aria-label="Close">X</button>
 				<footer className="about__footer">
-					Created by <a href="https://linkedin.com/in/victorcazanave" target="_blank" rel="noopener noreferrer">Victor Cazanave</a>.
+					Created by Victor Cazanave
 				</footer>
 			</section>
 		</ReactModal>

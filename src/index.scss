@@ -80,6 +80,7 @@ input {
 button {
 	overflow: visible;
 	margin: 0;
+	border: 0;
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit;
@@ -126,11 +127,4 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
-}
-
-
-@media (min-width: $medium) {
-	body {
-		//font-size: 1.2rem;
-	}
 }

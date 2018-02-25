@@ -2,6 +2,7 @@
 /* Modal animation */
 $modal-transition-duration: 300ms;
 $modal-transition-timing: ease-in;
+$about-bg: #eee;
 
 .overlay {
 	position: absolute;
@@ -29,7 +30,7 @@ $modal-transition-timing: ease-in;
 	min-height: 100%;
 	outline: 0;
 	padding: 2rem 1rem 5rem;
-	background-color: #eee;
+	background-color: $about-bg;
 
 	&--after-open {
 		top: 0;
@@ -74,6 +75,10 @@ $modal-transition-timing: ease-in;
 
 		&__text {
 			text-align: left;
+
+			&__link {
+				color: $page-color-dark;
+			}
 		}
 	}
 
@@ -84,6 +89,7 @@ $modal-transition-timing: ease-in;
 		display: block;
 		width: 2.5rem;
 		height: 2.5rem;
+		background-color: $about-bg;
 		font-size: 1.5rem;
 	}
 
