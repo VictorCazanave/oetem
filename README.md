@@ -35,10 +35,18 @@ npm start
 * Buttons hover styles
 * ~~About modal~~
 * Add custom styles to links
+* Fix buttons size?
 * ~~Use absolute path to components~~
 * Remove useless state.selected
+* Display more info with large screens
+* Customize router animation for home/matches pages
+* Add filters on matches list
 * i18n
 * Progressive web app
+* Google Analytics
+* Create common dumb components (like quote)?
+* Use OpenStreetMap?
+* Include map inside the page?
 * Server-side rendering?
 * Taiwan map loader?
 * SVG map?
