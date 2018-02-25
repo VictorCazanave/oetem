@@ -47,7 +47,7 @@ npm start
 * i18n
 * Progressive web app
 * Google Analytics
-* Create common dumb components (like quote)?
+* ~~Create common dumb components (like quote)~~
 * Use OpenStreetMap?
 * Include map inside the page?
 * Server-side rendering?
