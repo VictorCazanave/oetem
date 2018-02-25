@@ -20,8 +20,6 @@
 		&__quote {
 			display: none;
 		}
-
-		&__subtitle {}
 	}
 
 	&__footer {
@@ -40,27 +38,47 @@
 		}
 	}
 	@media (min-width: $medium) {
+		padding-bottom: 6rem;
+
 		&__header {
 			&__title {
 				margin-bottom: 3.5rem;
+				font-size: 3rem;
 			}
 
 			&__quote {
-				display: block;
+				position: relative;
+				display: inline-block;
 				margin-bottom: 3.5rem;
+				padding-bottom: 1.2rem;
 
 				&__text {
-					color: #aaa;
-					font-size: 1.2rem;
+					color: $page-color-quote;
+					font-size: 1.5rem;
 					font-style: italic;
 				}
 
 				&__author {
+					position: absolute;
+					bottom: 0;
+					left: 2rem;
 					font-size: 0.8rem;
 					font-style: normal;
-					margin-right: 7rem;
 				}
 			}
+
+			&__subtitle {
+				font-size: 1.2rem;
+			}
+		}
+	}
+	@media (min-width: $large) {
+		// Cannot change form-page width because of background problem
+		&__header,
+		form {
+			width: $page-large-width;
+			margin-right: auto;
+			margin-left: auto;
 		}
 	}
 }

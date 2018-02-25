@@ -17,13 +17,13 @@ function About(props) {
 			<section>
 				<header className="about__header">
 					<h1 className="about__header__title">About</h1>
-					<p>oeteM helps you to find where the weather you like will be.</p>
+					<p>oeteM is a reverse weather forecast application which helps you to find where the weather you like will be.</p>
 				</header>
 				<div className="about__block">
 					<h2 className="about__block__title">How to use it?</h2>
 					<ol className="about__block__list">
 						<li className="about__block__list__item">
-							Choose a date you can go out to enjoy the weather
+							Choose a date you can go out to enjoy the weather.
 						</li>
 						<li className="about__block__list__item">
 							Choose areas you (would) like to go: <span className="about__block__list__item__example">Taipei City, Hsinchu County...</span>
@@ -32,7 +32,7 @@ function About(props) {
 							Choose the weather you like: <span className="about__block__list__item__example">sunny, between 15° and 25°...</span>
 						</li>
 						<li className="about__block__list__item">
-							Get a list of cities which match your criteria!
+							Tada! Get a list of cities that match your criteria.
 						</li>
 					</ol>
 				</div>

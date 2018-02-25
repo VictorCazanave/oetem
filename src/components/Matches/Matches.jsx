@@ -81,15 +81,15 @@ class Matches extends Component {
 					{(sortedMatches.length === 1) && <p className="matches-page__header__subtitle">Here is the perfect place for you:</p>}
 					{
 						(sortedMatches.length > 1) && <p className="matches-page__header__subtitle">
-								{sortedMatches.length}&nbsp;places match your wishes:
+								{sortedMatches.length}&nbsp;places match your criteria:
 							</p>
 					}
 				</header>
 
 				{
 					(sortedMatches.length === 0) && <div className="matches-page__empty">
-							<p>Sorry, no place matches your wishes</p>
-							<p>You may try again with more open wishes</p>
+							<p>Sorry, no place matches your criteria</p>
+							<p>You may try again with more open criteria</p>
 						</div>
 				}
 				{
@@ -102,7 +102,7 @@ class Matches extends Component {
 
 				<footer className="matches-page__footer">
 					<Link to="/" className="matches-page__footer__button-home">Home</Link>
-					<Link to={this.props.againPath} onClick={this.props.onClickAgain} className="matches-page__footer__button-again">Try again!</Link>
+					<Link to={this.props.againPath} onClick={this.props.onClickAgain} className="matches-page__footer__button-again">Try again</Link>
 				</footer>
 			</section>
 		);

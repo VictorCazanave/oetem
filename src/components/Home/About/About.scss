@@ -98,7 +98,7 @@ $modal-transition-timing: ease-in;
 		min-height: auto;
 
 		&--after-open {
-			top: 8.5rem;
+			top: 10rem;
 			transition: top $modal-transition-duration $modal-transition-timing;
 		}
 
@@ -106,5 +106,10 @@ $modal-transition-timing: ease-in;
 			top: -100%;
 			transition: top $modal-transition-duration $modal-transition-timing;
 		}
+	}
+	@media (min-width: $large) {
+		left: 50%;
+		width: 37.5rem; // 600px
+		margin-left: -18.75rem; // 300px to center modal
 	}
 }

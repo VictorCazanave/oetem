@@ -48,25 +48,36 @@
 		}
 	}
 	@media (min-width: $medium) {
+		padding-bottom: 11rem;
+
 		&__header {
 			&__title {
 				margin-bottom: 3.5rem;
+				font-size: 3rem;
+			}
+
+			&__subtitle {
+				font-size: 1.2rem;
 			}
 
 			&__quote {
-				display: block;
+				position: relative;
+				display: inline-block;
 				margin-bottom: 3.5rem;
+				padding-bottom: 1.2rem;
 
 				&__text {
-					color: #aaa;
-					font-size: 1.2rem;
+					color: $page-color-quote;
+					font-size: 1.5rem;
 					font-style: italic;
 				}
 
 				&__author {
+					position: absolute;
+					bottom: 0;
+					left: 2rem;
 					font-size: 0.8rem;
 					font-style: normal;
-					margin-right: 7rem;
 				}
 			}
 		}
@@ -75,6 +86,25 @@
 			&__item {
 				display: inline-block;
 				width: 45%;
+				margin: 0.5rem;
+			}
+		}
+	}
+	@media (min-width: $large) {
+		// Cannot change matches-page width because of background problem
+		&__header {
+			width: $page-large-width;
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		&__list {
+			width: $page-large-width;
+			margin-right: auto;
+			margin-left: auto;
+
+			&__item {
+				width: 30%;
 				margin: 0.5rem;
 			}
 		}

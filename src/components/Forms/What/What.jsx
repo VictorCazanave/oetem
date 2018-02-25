@@ -11,7 +11,7 @@ function What(props) {
 			title="What?"
 			quote="There is no such thing as bad weather, only different kinds of good weather."
 			author="John Ruskin"
-			button="Let's search"
+			button="Search"
 			valid={props.selectedSkys.size > 0}
 			nextPath={props.nextPath}>
 			<form className="what-form">

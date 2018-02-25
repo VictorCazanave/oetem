@@ -1,6 +1,6 @@
 @mixin button($bg, $color) {
 	display: block;
-	width: 50%;
+	width: 60%;
 	margin: 0 auto;
 	padding: 0.6rem 1.2rem;
 	border: 0;
@@ -17,5 +17,10 @@
 
 	@media (min-width: $medium) {
 		width: 25%;
+		font-size: 1.3rem;
+	}
+
+	@media (min-width: $large) {
+		width: 15.5rem;
 	}
 }
