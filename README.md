@@ -41,6 +41,8 @@ npm start
 * Display more info with large screens
 * Customize router animation for home/matches pages
 * Add filters on matches list
+* Add Summary component
+* Add waiting spinner (Taiwan SVG?)
 * Accessibility
 * i18n
 * Progressive web app
