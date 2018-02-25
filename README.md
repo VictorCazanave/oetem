@@ -30,13 +30,17 @@ npm start
 * ~~Transform XxxInput components into dumb components~~
 * ~~Scroll to top after changing route~~
 * ~~Reset form after click on try again button~~
-* Tablet/Desktop styles
+* ~~Tablet styles~~
+* Desktop styles
 * Buttons hover styles
 * ~~About modal~~
 * Add custom styles to links
 * ~~Use absolute path to components~~
 * Remove useless state.selected
 * i18n
+* Progressive web app
+* Server-side rendering?
+* Taiwan map loader?
 * SVG map?
 
 ## Hosting
