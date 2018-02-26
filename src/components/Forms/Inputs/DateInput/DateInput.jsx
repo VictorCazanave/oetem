@@ -1,10 +1,10 @@
 import React from 'react';
-import { getFormattedDate } from 'Utils/DateUtils.js';
+import { formatDate } from 'Utils/DateUtils.js';
 import './DateInput.css';
 
 function DateInput(props) {
 	const id = `date${props.date}`; // Used to link input and label
-	const formattedDate = getFormattedDate(props.date);
+	const formattedDate = formatDate(props.date);
 
 	return (
 		<div className="date-input">

@@ -9,7 +9,12 @@ const _getDate = (string) => {
 	return new Date(year, month, day);
 }
 
-export function getFormattedDate(string) {
+/**
+ * Return a custom object with right date format
+ * @param  {String} string Date with YYYYMMDD format 
+ * @return {Object}        Date formatted values
+ */
+export function formatDate(string) {
 	const date = _getDate(string);
 
 	return {

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { getSortedAreas } from './Utils/AreaUtils';
-import { updateValue, updateSet } from './Utils/ImmutabilityUtils';
+import { sortBy, updateValue, updateSet } from './Utils/ImmutabilityUtils';
 import Home from './components/Home/Home';
 import When from './components/Forms/When/When';
 import Where from './components/Forms/Where/Where';
@@ -48,10 +47,10 @@ class App extends Component {
 			return response.json()
 		}).then((json) => {
 			// Set init data
-			this.initData = json;
+			this.initData = json; // Should copy object?
 
 			// Sort areas
-			this.initData.areas = getSortedAreas(json.areas)
+			this.initData.areas = sortBy(json.areas, 'name')
 
 			// Set selected temperature
 			this.setState(prevState => updateValue(prevState, 'selected', 'temperature', json.temperature));

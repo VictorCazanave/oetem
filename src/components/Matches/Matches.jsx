@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
-import { getSortedAreas } from 'Utils/AreaUtils';
+import { sortBy } from 'Utils/ImmutabilityUtils';
 import Quote from 'components/Common/Quote/Quote';
 import Match from 'components/Matches/Match/Match';
 import './Matches.css';
@@ -64,7 +64,7 @@ class Matches extends Component {
 	}
 
 	render() {
-		const sortedMatches = getSortedAreas(this.state.matches);
+		const sortedMatches = sortBy(this.state.matches, 'name');
 
 		return (
 			<section className="matches-page">
