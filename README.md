@@ -24,36 +24,28 @@ npm start
 * [whatwg-fetch](https://github.com/github/fetch): Used in App component to fetch data.
 
 ### TODO
-* ~~Disable submit button when form not valid~~
-* ~~Move nextPath prop in App~~
-* ~~Transform When/Where/What into dumb components~~
-* ~~Transform XxxInput components into dumb components~~
-* ~~Scroll to top after changing route~~
-* ~~Reset form after click on try again button~~
-* ~~Tablet styles~~
-* ~~Desktop styles~~
-* ~~Buttons hover styles~~
-* ~~About modal~~
-* ~~Add custom styles to links~~
-* ~~Fix buttons size~~
-* ~~Use absolute path to components~~
 * Handle nicely Match icons (hover, sprite/svg...)
-* Remove useless state.selected
-* Display more info with large screens
+* ~~Avoid duplicate code in App component~~
+* ~~Clean utils~~
 * Customize router animation for home/matches pages
-* Add filters on matches list
-* Add Summary component
-* Add waiting spinner (Taiwan SVG?)
+* Add waiting spinner
+* Handle invalid/incomplete data
 * Accessibility
 * i18n
-* Progressive web app
 * Google Analytics
-* ~~Create common dumb components (like quote)~~
+
+
+### Next version
+* Display more info with large screens
+* Add Summary component
+* Add filters on matches list
+* Progressive web app
 * Use OpenStreetMap?
 * Include map inside the page?
-* Server-side rendering?
 * Taiwan map loader?
 * SVG map?
+* Server-side rendering?
+
 
 ## Hosting
 * [DigitalOcean](https://try.digitalocean.com/cloud-hosting/)
