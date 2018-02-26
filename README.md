@@ -1,5 +1,5 @@
 # oeteM | Meteo
-A React web application of reversed meteo.
+A React web application of reverse meteo.
 
 ## Development
 
@@ -32,11 +32,12 @@ npm start
 * ~~Reset form after click on try again button~~
 * ~~Tablet styles~~
 * ~~Desktop styles~~
-* Buttons hover styles
+* ~~Buttons hover styles~~
 * ~~About modal~~
 * ~~Add custom styles to links~~
 * ~~Fix buttons size~~
 * ~~Use absolute path to components~~
+* Handle nicely Match icons (hover, sprite/svg...)
 * Remove useless state.selected
 * Display more info with large screens
 * Customize router animation for home/matches pages
