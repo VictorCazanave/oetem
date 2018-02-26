@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
 import { getSortedAreas } from 'Utils/AreaUtils';
-//import Summary from 'components/Matches/Summary/Summary';
 import Quote from 'components/Common/Quote/Quote';
 import Match from 'components/Matches/Match/Match';
 import './Matches.css';

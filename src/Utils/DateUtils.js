@@ -9,7 +9,6 @@ const _getDate = (string) => {
 	return new Date(year, month, day);
 }
 
-//TODO: Keep and display year?
 export function getFormattedDate(string) {
 	const date = _getDate(string);
 

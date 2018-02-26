@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import update from 'immutability-helper';
 import { getSortedAreas } from './Utils/AreaUtils';
+import { updateValue, updateSet } from './Utils/ImmutabilityUtils';
 import Home from './components/Home/Home';
 import When from './components/Forms/When/When';
 import Where from './components/Forms/Where/Where';
@@ -54,15 +54,7 @@ class App extends Component {
 			this.initData.areas = getSortedAreas(json.areas)
 
 			// Set selected temperature
-			this.setState((prevState) => {
-				return update(prevState, {
-					selected: {
-						temperature: {
-							$set: json.temperature
-						}
-					}
-				});
-			});
+			this.setState(prevState => updateValue(prevState, 'selected', 'temperature', json.temperature));
 		}).catch((err) => {
 			console.error('Parsing init.json failed', err)
 		})
@@ -76,71 +68,19 @@ class App extends Component {
 	}
 
 	handleSelectDate(selectedDate) {
-		this.setState((prevState) => {
-			return update(prevState, {
-				selected: {
-					date: {
-						$set: selectedDate
-					}
-				}
-			});
-		});
+		this.setState(prevState => updateValue(prevState, 'selected', 'date', selectedDate));
 	}
 
 	handleSelectArea(selectedArea, isSelected) {
-		this.setState((prevState) => {
-			let selectedAreas = new Set([...prevState.selected.areas]);
-
-			if (isSelected) {
-				// Add area
-				selectedAreas.add(selectedArea);
-			} else {
-				// Remove area
-				selectedAreas.delete(selectedArea);
-			}
-
-			return update(prevState, {
-				selected: {
-					areas: {
-						$set: selectedAreas
-					}
-				}
-			});
-		});
+		this.setState(prevState => updateSet(prevState, 'selected', 'areas', selectedArea, isSelected));
 	}
 
 	handleSelectTemperature(selectedTemperature) {
-		this.setState((prevState) => {
-			return update(prevState, {
-				selected: {
-					temperature: {
-						$set: selectedTemperature
-					}
-				}
-			});
-		});
+		this.setState(prevState => updateValue(prevState, 'selected', 'temperature', selectedTemperature));
 	}
 
 	handleSelectSky(selectedSky, isSelected) {
-		this.setState((prevState) => {
-			let selectedSkys = new Set([...prevState.selected.skys]);
-
-			if (isSelected) {
-				// Add sky
-				selectedSkys.add(selectedSky);
-			} else {
-				// Remove sky
-				selectedSkys.delete(selectedSky);
-			}
-
-			return update(prevState, {
-				selected: {
-					skys: {
-						$set: selectedSkys
-					}
-				}
-			});
-		});
+		this.setState(prevState => updateSet(prevState, 'selected', 'skys', selectedSky, isSelected));
 	}
 
 	handleClickAgain() {
