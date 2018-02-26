@@ -29,11 +29,11 @@
 		width: 100%;
 
 		&__button {
-			@include button($btn-primary-bg, $btn-primary-color);
+			@include button();
 			text-decoration: none;
 
 			&--disabled {
-				@include button($btn-primary-disabled-bg, $btn-primary-disabled-color);
+				@include button($btn-primary-disabled-bg, $btn-primary-disabled-color, $btn-primary-disabled-bg);
 			}
 		}
 	}
