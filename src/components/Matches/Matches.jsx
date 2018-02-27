@@ -30,42 +30,48 @@ class Matches extends Component {
 
 		// Fetch data and search matches
 		if (valid) {
-			// Convert this.props.selected.skys Set into Array to use find() method
-			const selectedSkys = [...this.props.selected.skys];
+			let requests = []
+			const selectedSkys = [...this.props.selected.skys]; // Convert this.props.selected.skys Set into Array to use find() method
 
-			//for (const selectedArea of this.props.selected.areas) {
-			//const url = `/${this.props.selected.date}_${selectedArea.id}.json`;
-			const url = '20180212_10005.json';
+			for (const selectedArea of this.props.selected.areas) {
+				const url = `/${this.props.selected.date}_${selectedArea.id}.json`;
 
-			fetch(url).then((response) => {
-				return response.json()
-			}).then((json) => {
-				const matches = this.getMatches(json.area, this.props.selected.temperature, selectedSkys);
+				requests.push(fetch(url)
+					.then(response => response.json())
+					.catch(err => console.error(`parsing ${url} failed`, err))
+				);
+			}
 
-				// Must do it here because fetch is async
-				this.setState((prevState) => {
-					return update(prevState, {
-						matches: {
-							$push: matches
-						}
+			Promise.all(requests)
+				.then((responses) => {
+					let matches = [];
+
+					for (const response of responses) {
+						matches = matches.concat(
+							this.getMatches(response.area, this.props.selected.temperature, selectedSkys)
+						);
+					}
+
+					this.setState((prevState) => {
+						return update(prevState, {
+							fetching: {
+								$set: false
+							},
+							matches: {
+								$set: sortBy(matches, 'name')
+							}
+						});
 					});
-				});
-			}).catch((err) => {
-				console.error(`parsing ${url} failed`, err)
-			})
-			//}
+				})
 		}
 	}
 
 	checkSelected(selected) {
-		return true;
-		/*
 		return typeof selected.date === 'string' &&
 			selected.areas.size > 0 &&
 			typeof selected.temperature.min === 'number' &&
 			typeof selected.temperature.max === 'number' &&
 			selected.skys.size > 0;
-		*/
 	}
 
 	getMatches(area, selectedTemperature, selectedSkys) {
@@ -81,17 +87,12 @@ class Matches extends Component {
 	}
 
 	match(weather, selectedTemperature, selectedSkys) {
-		return true;
-		/*
 		return (weather.minTemperature.value >= selectedTemperature.min) && (
 			weather.maxTemperature.value <= selectedTemperature.max
 		) && (selectedSkys.find(sky => sky.id === weather.sky.id));
-		*/
 	}
 
 	render() {
-		const sortedMatches = sortBy(this.state.matches, 'name');
-
 		return (
 			<section className="matches-page">
 				<header className="matches-page__header">
@@ -106,7 +107,13 @@ class Matches extends Component {
 						</p>
 					}
 					{
-						(this.state.valid && sortedMatches.length === 0) &&
+						(this.state.valid && this.state.fetching) &&
+						<p className="matches-page__header__subtitle">
+							Fetching
+						</p>
+					}
+					{
+						(this.state.valid && this.state.matches.length === 0) &&
 						<p className="matches-page__header__subtitle">
 							Sorry, no place matches your criteria.
 							<span className="matches-page__header__subtitle__smiley">:-/</span>
@@ -114,15 +121,15 @@ class Matches extends Component {
 						</p>
 					}
 					{
-						(this.state.valid && sortedMatches.length === 1) &&
+						(this.state.valid && this.state.matches.length === 1) &&
 						<p className="matches-page__header__subtitle">
 							Here is the perfect place for you:
 						</p>
 					}
 					{
-						(this.state.valid && sortedMatches.length > 1) &&
+						(this.state.valid && this.state.matches.length > 1) &&
 						<p className="matches-page__header__subtitle">
-							{sortedMatches.length}&nbsp;places match your criteria:
+							{this.state.matches.length}&nbsp;places match your criteria:
 						</p>
 					}
 				</header>
@@ -130,7 +137,7 @@ class Matches extends Component {
 				<ul className="matches-page__list">
 					{
 						(this.state.valid) &&
-						sortedMatches.map((match) => (<li className="matches-page__list__item" key={match.name}><Match match={match}/></li>))
+						this.state.matches.map((match) => (<li className="matches-page__list__item" key={`${match.area.id}${match.name}`}><Match match={match}/></li>))
 					}
 				</ul>
 
