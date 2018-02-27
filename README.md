@@ -29,16 +29,19 @@ npm start
 * ~~Clean utils~~
 * Customize router animation for home/matches pages
 * Add waiting spinner
-* Handle invalid/incomplete data
+* ~~Handle invalid/incomplete data~~
+* Remove commented code in Matches
 * Accessibility
 * i18n
 * Google Analytics
 
 
 ### Next version
+* Do parallel fetch()
 * Display more info with large screens
 * Add Summary component
 * Add filters on matches list
+* Give more error details (use Redirect?)
 * Progressive web app
 * Use OpenStreetMap?
 * Include map inside the page?
