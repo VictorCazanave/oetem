@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
 import { sortBy } from 'Utils/ImmutabilityUtils';
 import Quote from 'components/Common/Quote/Quote';
+import Spinner from 'components/Common/Spinner/Spinner';
 import Match from 'components/Matches/Match/Match';
 import './Matches.css';
 
@@ -108,12 +109,10 @@ class Matches extends Component {
 					}
 					{
 						(this.state.valid && this.state.fetching) &&
-						<p className="matches-page__header__subtitle">
-							Fetching
-						</p>
+						<Spinner/>
 					}
 					{
-						(this.state.valid && this.state.matches.length === 0) &&
+						(this.state.valid && !this.state.fetching && this.state.matches.length === 0) &&
 						<p className="matches-page__header__subtitle">
 							Sorry, no place matches your criteria.
 							<span className="matches-page__header__subtitle__smiley">:-/</span>
@@ -121,13 +120,13 @@ class Matches extends Component {
 						</p>
 					}
 					{
-						(this.state.valid && this.state.matches.length === 1) &&
+						(this.state.valid && !this.state.fetching && this.state.matches.length === 1) &&
 						<p className="matches-page__header__subtitle">
 							Here is the perfect place for you:
 						</p>
 					}
 					{
-						(this.state.valid && this.state.matches.length > 1) &&
+						(this.state.valid && !this.state.fetching && this.state.matches.length > 1) &&
 						<p className="matches-page__header__subtitle">
 							{this.state.matches.length}&nbsp;places match your criteria:
 						</p>
@@ -136,7 +135,7 @@ class Matches extends Component {
 
 				<ul className="matches-page__list">
 					{
-						(this.state.valid) &&
+						(this.state.valid && !this.state.fetching) &&
 						this.state.matches.map((match) => (<li className="matches-page__list__item" key={`${match.area.id}${match.name}`}><Match match={match}/></li>))
 					}
 				</ul>
