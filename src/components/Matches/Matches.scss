@@ -19,6 +19,15 @@
 		&__quote {
 			display: none;
 		}
+
+		&__subtitle {
+			&__smiley {
+				display: block;
+				margin: 1rem 0;
+				transform: rotate(90deg);
+				font-size: 2rem;
+			}
+		}
 	}
 
 	&__list {
@@ -58,6 +67,10 @@
 
 			&__subtitle {
 				font-size: 1.2rem;
+
+				&__smiley {
+					font-size: 3rem;
+				}
 			}
 
 			&__quote {
