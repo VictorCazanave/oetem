@@ -5,7 +5,7 @@ class Spinner extends React.Component {
 
 	render() {
 		return (
-			<div class="spinner"></div>
+			<div className="spinner"></div>
 		);
 	}
 }

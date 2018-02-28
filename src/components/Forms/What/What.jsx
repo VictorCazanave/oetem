@@ -12,7 +12,7 @@ function What(props) {
 			quote="There is no such thing as bad weather, only different kinds of good weather."
 			author="John Ruskin"
 			button="Search"
-			valid={props.selectedSkys.size > 0}
+			valid={props.selectedSkys.length > 0}
 			nextPath={props.nextPath}>
 			<form className="what-form">
 				<div className="what-form__block">
@@ -31,7 +31,7 @@ function What(props) {
 						props.skys.map((sky) => (
 							<SkyInput
 								sky={sky}
-								selected={props.selectedSkys.has(sky)}
+								selected={props.selectedSkys.findIndex(s => s.id === sky.id) > -1}
 								onToggle={props.onSelectSky}
 								key={sky.id}/>
 						))

@@ -3,7 +3,6 @@ import FormPage from 'components/Forms/FormPage/FormPage';
 import DateInput from 'components/Forms/Inputs/DateInput/DateInput';
 
 function When(props) {
-
 	return (
 		<FormPage
 			title="When?"

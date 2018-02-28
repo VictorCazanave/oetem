@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { sortBy, updateValue, updateSet } from './Utils/ImmutabilityUtils';
+import { sortBy, updateValue, updateArray } from './utils/ImmutabilityUtils';
+import { storeDate, storeAreas, storeTemperature, storeSkys, getStorage, clearStorage } from './utils/StorageUtils';
 import Home from './components/Home/Home';
 import When from './components/Forms/When/When';
 import Where from './components/Forms/Where/Where';
@@ -15,17 +16,17 @@ class App extends Component {
 		this.state = {
 			selected: {
 				date: null,
-				areas: new Set(),
+				areas: [],
 				temperature: {
 					min: -100,
 					max: 100
 				},
-				skys: new Set()
+				skys: []
 			}
 		};
 
 		// Init data that will not change later
-		this.initData = {
+		this.init = {
 			dates: [],
 			areas: [],
 			temperature: {
@@ -47,13 +48,22 @@ class App extends Component {
 			return response.json()
 		}).then((json) => {
 			// Set init data
-			this.initData = json; // Should copy object?
+			this.init = {
+				dates: json.dates,
+				areas: sortBy(json.areas, 'name'), // Sort areas
+				temperature: json.temperature,
+				skys: json.skys
+			};
 
-			// Sort areas
-			this.initData.areas = sortBy(json.areas, 'name')
+			// Store init temperature if no selected temperature
+			if (getStorage().temperature === null) {
+				storeTemperature(this.init.temperature);
+			}
 
-			// Set selected temperature
-			this.setState(prevState => updateValue(prevState, 'selected', 'temperature', json.temperature));
+			// Set state with stored data
+			this.setState((prevState) => {
+				return updateValue(prevState, 'selected', getStorage());
+			});
 		}).catch((err) => {
 			console.error('Parsing init.json failed', err)
 		})
@@ -61,25 +71,49 @@ class App extends Component {
 
 	componentDidUpdate(prevProps) {
 		// Scroll to top when changing route
-		if (this.props.location !== prevProps.location) {
+		if (this.props.location.pathname !== prevProps.location.pathname) {
 			window.scrollTo(0, 0)
 		}
 	}
 
 	handleSelectDate(selectedDate) {
-		this.setState(prevState => updateValue(prevState, 'selected', 'date', selectedDate));
+		// Set and store selected date
+		this.setState((prevState) => {
+			const newState = updateValue(prevState, 'selected.date', selectedDate);
+			storeDate(newState.selected.date);
+
+			return newState;
+		});
 	}
 
 	handleSelectArea(selectedArea, isSelected) {
-		this.setState(prevState => updateSet(prevState, 'selected', 'areas', selectedArea, isSelected));
+		// Add/remove and store selected area
+		this.setState((prevState) => {
+			const newState = updateArray(prevState, 'selected.areas', selectedArea, isSelected)
+			storeAreas(newState.selected.areas);
+
+			return newState;
+		});
 	}
 
 	handleSelectTemperature(selectedTemperature) {
-		this.setState(prevState => updateValue(prevState, 'selected', 'temperature', selectedTemperature));
+		// Set and store selected temperature
+		this.setState((prevState) => {
+			const newState = updateValue(prevState, 'selected.temperature', selectedTemperature);
+			storeTemperature(newState.selected.temperature);
+
+			return newState;
+		});
 	}
 
 	handleSelectSky(selectedSky, isSelected) {
-		this.setState(prevState => updateSet(prevState, 'selected', 'skys', selectedSky, isSelected));
+		// Add/remove and store selected sky
+		this.setState((prevState) => {
+			const newState = updateArray(prevState, 'selected.skys', selectedSky, isSelected)
+			storeSkys(newState.selected.skys);
+
+			return newState;
+		});
 	}
 
 	handleClickAgain() {
@@ -87,11 +121,14 @@ class App extends Component {
 		this.setState({
 			selected: {
 				date: null,
-				areas: new Set(),
-				temperature: this.initData.temperature,
-				skys: new Set()
+				areas: [],
+				temperature: this.init.temperature,
+				skys: []
 			}
 		});
+
+		// Reset storage
+		clearStorage(this.init.temperature);
 	}
 
 	render() {
@@ -108,7 +145,7 @@ class App extends Component {
 							path="/when"
 							render={(props) => (
 								<When
-									dates={this.initData.dates}
+									dates={this.init.dates}
 									selectedDate={this.state.selected.date}
 									onSelectDate={this.handleSelectDate}
 									nextPath="/where"
@@ -118,7 +155,7 @@ class App extends Component {
 							path="/where"
 							render={(props) => (
 								<Where
-									areas={this.initData.areas}
+									areas={this.init.areas}
 									selectedAreas={this.state.selected.areas}
 									onSelectArea={this.handleSelectArea}
 									nextPath="/what"
@@ -128,10 +165,10 @@ class App extends Component {
 							path="/what"
 							render={(props) => (
 								<What
-									temperature={this.initData.temperature}
+									temperature={this.init.temperature}
 									selectedTemperature={this.state.selected.temperature}
 									onSelectTemperature={this.handleSelectTemperature}
-									skys={this.initData.skys}
+									skys={this.init.skys}
 									selectedSkys={this.state.selected.skys}
 									onSelectSky={this.handleSelectSky}
 									nextPath="/matches"
@@ -139,7 +176,9 @@ class App extends Component {
 							)}/>
 						<Route
 							path="/matches"
-							render={(props) => (<Matches selected={this.state.selected} onClickAgain={this.handleClickAgain} againPath="/when" {...props}/>)}/>
+							render={(props) => (
+								<Matches selected={this.state.selected} onClickAgain={this.handleClickAgain} againPath="/when" {...props}/>
+							)}/>
 					</Switch>
 				</CSSTransition>
 			</TransitionGroup>

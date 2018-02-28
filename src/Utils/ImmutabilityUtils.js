@@ -1,4 +1,5 @@
 import update from 'immutability-helper';
+import { get, set } from 'object-path';
 
 /**
  * Return a new array sorted by given property
@@ -23,47 +24,39 @@ export function sortBy(array, property) {
 
 /**
  * Return a new object with updated value
- * @param  {Object} obj      Object to copy
- * @param  {String} parent   Name of the parent property ('selected')
- * @param  {String} property Name of the property to update
- * @param  {Any} 		value    New value of the property
- * @return {Object}          New object with updated value
+ * @param  {Object} obj		Object to copy
+ * @param  {String} path	Path of the property (ex: 'a.b.c')
+ * @param  {Any} 		value	New value of the property
+ * @return {Object}       New object with updated value
  */
-export function updateValue(obj, parent, property, value) {
-	return update(obj, {
-		[parent]: {
-			[property]: {
-				$set: value
-			}
-		}
-	});
+export function updateValue(obj, path, value) {
+	let objUpdate = {};
+	set(objUpdate, `${path}.$set`, value);
+	
+	return update(obj, objUpdate);
 }
 
 /**
- * Return a new object with updated set
- * @param  {Object} 	obj      Object to copy
- * @param  {String} 	parent   Name of the parent property ('selected')
- * @param  {String} 	property Name of the property to update
- * @param  {Ant} 			item     New item to add/remove in the set
- * @param  {Boolean} 	added    Indicate whether item should be added or removed
- * @return {Object}          	 New object with updated set
+ * Return a new object with updated array
+ * @param  {Object} 	obj		Object to copy
+ * @param  {String} 	path	Path of the property (ex: 'a.b.c')
+ * @param  {Any}			elem  Element to add/remove in the array
+ * @param  {Boolean} 	added	Indicate whether element should be added or removed
+ * @return {Object}					New object with updated array
  */
-export function updateSet(obj, parent, property, item, added) {
-	let set = new Set([...obj[parent][property]]);
+export function updateArray(obj, path, elem, added) {
+	let objUpdate = {};
+	let copy = [...get(obj, path)];
 
 	if (added) {
-		// Add item
-		set.add(item);
+		// Add element
+		copy.push(elem);
 	} else {
-		// Remove item
-		set.delete(item);
+		// Remove element
+		copy = copy.filter(e => e.id !== elem.id);
 	}
-
-	return update(obj, {
-		[parent]: {
-			[property]: {
-				$set: set
-			}
-		}
-	});
+	
+	set(objUpdate, `${path}.$set`, copy);
+	
+	return update(obj, objUpdate);
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
-import { sortBy } from 'Utils/ImmutabilityUtils';
+import { sortBy } from 'utils/ImmutabilityUtils';
 import Quote from 'components/Common/Quote/Quote';
 import Spinner from 'components/Common/Spinner/Spinner';
 import Match from 'components/Matches/Match/Match';
@@ -11,68 +11,69 @@ class Matches extends Component {
 	constructor() {
 		super();
 		this.state = {
-			valid: false,
+			valid: true,
 			fetching: true,
 			matches: []
 		}
 	}
 
-	componentDidMount() {
-		const valid = this.checkSelected(this.props.selected);
+	componentWillReceiveProps(nextProps) {
+		if (nextProps !== this.props) {
+			const valid = this.checkSelected(nextProps.selected);
 
-		// Update state.valid
-		this.setState((prevState) => {
-			return update(prevState, {
-				valid: {
-					$set: valid
-				}
-			});
-		});
-
-		// Fetch data and search matches
-		if (valid) {
-			let requests = []
-			const selectedSkys = [...this.props.selected.skys]; // Convert this.props.selected.skys Set into Array to use find() method
-
-			for (const selectedArea of this.props.selected.areas) {
-				const url = `/${this.props.selected.date}_${selectedArea.id}.json`;
-
-				requests.push(fetch(url)
-					.then(response => response.json())
-					.catch(err => console.error(`parsing ${url} failed`, err))
-				);
-			}
-
-			Promise.all(requests)
-				.then((responses) => {
-					let matches = [];
-
-					for (const response of responses) {
-						matches = matches.concat(
-							this.getMatches(response.area, this.props.selected.temperature, selectedSkys)
-						);
+			// Update state.valid
+			this.setState((prevState) => {
+				return update(prevState, {
+					valid: {
+						$set: valid
 					}
+				});
+			});
 
-					this.setState((prevState) => {
-						return update(prevState, {
-							fetching: {
-								$set: false
-							},
-							matches: {
-								$set: sortBy(matches, 'name')
-							}
+			// Fetch data and search matches
+			if (valid) {
+				let requests = [];
+
+				for (const selectedArea of nextProps.selected.areas) {
+					const url = `/${nextProps.selected.date}_${selectedArea.id}.json`;
+
+					requests.push(fetch(url)
+						.then(response => response.json())
+						.catch(err => console.error(`parsing ${url} failed`, err))
+					);
+				}
+
+				Promise.all(requests)
+					.then((responses) => {
+						let matches = [];
+
+						for (const response of responses) {
+							matches = matches.concat(
+								this.getMatches(response.area, nextProps.selected.temperature, nextProps.selected.skys)
+							);
+						}
+
+						this.setState((prevState) => {
+							return update(prevState, {
+								fetching: {
+									$set: false
+								},
+								matches: {
+									$set: sortBy(matches, 'name')
+								}
+							});
 						});
-					});
-				})
+					})
+			}
 		}
 	}
 
 	checkSelected(selected) {
 		return typeof selected.date === 'string' &&
-			selected.areas.size > 0 &&
+			selected.areas.length > 0 &&
 			typeof selected.temperature.min === 'number' &&
 			typeof selected.temperature.max === 'number' &&
-			selected.skys.size > 0;
+			selected.skys.length > 0;
 	}
 
 	getMatches(area, selectedTemperature, selectedSkys) {
