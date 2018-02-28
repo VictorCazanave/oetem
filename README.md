@@ -17,32 +17,39 @@ npm start
 * [npm-run-all](https://github.com/mysticatea/npm-run-all): Run in parallel npm scripts.
 
 ### App modules
-* [immutability-helper](https://github.com/kolodny/immutability-helper): Used in setState() to mutate a copy of the state without changing the original one.
 * [react-input-range](https://github.com/davidchin/react-input-range): Used in TemperatureInput component to select a range of temperature.
 * [react-modal](https://github.com/reactjs/react-modal): Used in About component to display a modal.
 * [react-transition-group](https://github.com/reactjs/react-transition-group): Used in App component to add CSS transition between routes.
 * [whatwg-fetch](https://github.com/github/fetch): Used in App component to fetch data.
+* [immutability-helper](https://github.com/kolodny/immutability-helper): Used in setState() to mutate a copy of the state without changing the original one.
+* [object-path](https://github.com/mariocasciaro/object-path): Use in ImmutabilityUtils to get property value from path.
 
 ### TODO
 * Handle nicely Match icons (hover, sprite/svg...)
 * ~~Avoid duplicate code in App component~~
 * ~~Clean utils~~
-* Customize router animation for home/matches pages
-* Add waiting spinner
+* ~~Do parallel fetch()~~
+* ~~Store state in session storage~~
+* ~~Add waiting spinner~~
 * ~~Handle invalid/incomplete data~~
-* Remove commented code in Matches
+* ~~Remove commented code in Matches~~
 * Accessibility
 * i18n
 * Google Analytics
 
 
 ### Next version
-* Do parallel fetch()
+* Optimize fetching init.json
+* Avoid duplicated code in App
 * Display more info with large screens
 * Add Summary component
 * Add filters on matches list
 * Give more error details (use Redirect?)
+* Add select all button
+* Customize router animation for home/matches pages (if possible)
+* Redux
 * Progressive web app
+* CI
 * Use OpenStreetMap?
 * Include map inside the page?
 * Taiwan map loader?
