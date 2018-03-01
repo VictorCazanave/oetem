@@ -7,6 +7,7 @@ function DateInput(props) {
 	const formattedDate = formatDate(props.date);
 
 	return (
+		// Keyboard interaction is normal: https://www.w3.org/wiki/RadioButton
 		<div className="date-input">
 				<input
 					type="radio"
@@ -16,9 +17,9 @@ function DateInput(props) {
 					id={id}
 					className="date-input__input"/>
 				<label htmlFor={id} className="date-input__label">
-					<div className="date-input__label__month">{formattedDate.month}</div>
-					<div className="date-input__label__date">{formattedDate.date}</div>
-					<div className="date-input__label__day">{formattedDate.day}</div>
+					<span className="date-input__label__month">{formattedDate.month}</span>
+					<span className="date-input__label__date">{formattedDate.date}</span>
+					<span className="date-input__label__day">{formattedDate.day}</span>
 				</label>
 			</div>
 	);
