@@ -3,7 +3,7 @@ import { formatDate } from 'utils/DateUtils.js';
 import './DateInput.css';
 
 function DateInput(props) {
-	const id = `date${props.date}`; // Used to link input and label
+	const id = `date-${props.date}`; // Used to link input and label
 	const formattedDate = formatDate(props.date);
 
 	return (

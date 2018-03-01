@@ -2,7 +2,7 @@ import React from 'react';
 import './SkyInput.css';
 
 function SkyInput(props) {
-	const id = `sky${props.sky.id}`; // Used to link input and label
+	const id = `sky-${props.sky.id}`; // Used to link input and label
 
 	return (
 		<div className="sky-input">

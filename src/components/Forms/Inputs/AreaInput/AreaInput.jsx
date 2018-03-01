@@ -2,7 +2,7 @@ import React from 'react';
 import './AreaInput.css';
 
 function AreaInput(props) {
-	const id = `area${props.area.id}`; // Used to link input and label
+	const id = `area-${props.area.id}`; // Used to link input and label
 
 	return (
 		<div className="area-input">
