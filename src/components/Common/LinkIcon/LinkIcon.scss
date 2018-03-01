@@ -15,6 +15,7 @@
 	&:hover {
 		svg {
 			fill:#777;
+			transition: fill 200ms ease-in;
 		}
 	}
 }
