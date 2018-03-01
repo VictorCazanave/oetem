@@ -1,4 +1,5 @@
 @import './../../../../variables.scss';
+@import './../../../../mixins.scss';
 $input-date-border-radius: 0.5rem;
 $input-date-top-bg: #fd9f1b;
 $input-date-top-color: #fff;
@@ -13,6 +14,7 @@ $input-date-bottom-color: #222;
 		width: 6rem;
 		border: 0.25rem solid $page-bg-light;
 		border-radius: 0.7rem;
+		cursor: pointer;
 
 		&__month {
 			border-radius: $input-date-border-radius $input-date-border-radius 0 0;
@@ -37,21 +39,6 @@ $input-date-bottom-color: #222;
 	}
 
 	&__input {
-		opacity: 0;
-		width: 0;
-		height: 0;
-
-		&:focus + .date-input__label {
-			//box-shadow: $input-shadow;
-		}
-		//TODO: Choose best color and way to show selected value
-		&:checked + .date-input__label {
-			//box-shadow: none;
-			border-color: $input-selected-color;
-
-			.date-input__label__month {
-				//background-color: $input-selected-color;
-			}
-		}
+		@include input('date-input');
 	}
 }

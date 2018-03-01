@@ -27,6 +27,13 @@
 			margin-top: -0.8rem;
 			border-color: $input-selected-color;
 			background-color: $input-selected-color;
+
+			&:active,
+			&:focus,
+			&:hover {
+				box-shadow: $input-shadow;
+				transition: box-shadow 200ms ease-in;
+			}
 		}
 
 		&__track {

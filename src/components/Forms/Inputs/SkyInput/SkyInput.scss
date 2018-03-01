@@ -1,4 +1,5 @@
 @import './../../../../variables.scss';
+@import './../../../../mixins.scss';
 
 .sky-input {
 	display: inline-block;
@@ -9,20 +10,10 @@
 		border: 0.25rem solid $page-bg-light;
 		border-radius: 50%;
 		background-color: $input-bg;
+		cursor: pointer;
 	}
 
 	&__input {
-		opacity: 0;
-		width: 0;
-		height: 0;
-
-		&:focus + .sky-input__label {
-			//box-shadow: $input-shadow;
-		}
-
-		&:checked + .sky-input__label {
-			//box-shadow: none;
-			border-color: $input-selected-color;
-		}
+		@include input('sky-input');
 	}
 }

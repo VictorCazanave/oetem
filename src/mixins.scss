@@ -13,8 +13,6 @@
 	&:active,
 	&:focus,
 	&:hover {
-		// Fake outline with round border
-		//box-shadow: $input-shadow;
 		background-color: $hover-bg;
 	}
 	@media (min-width: $medium) {
@@ -23,5 +21,25 @@
 	}
 	@media (min-width: $large) {
 		width: 15.5rem;
+	}
+}
+@mixin input($class) {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	box-shadow: none;
+
+	&:active,
+	&:focus,
+	&:hover {
+		+ .#{$class}__label {
+			// Fake outline with round border
+			box-shadow: $input-shadow;
+			transition: box-shadow 200ms ease-in;
+		}
+	}
+
+	&:checked + .#{$class}__label {
+		border-color: $input-selected-color;
 	}
 }

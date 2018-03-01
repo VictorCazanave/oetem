@@ -1,4 +1,5 @@
 @import './../../../../variables.scss';
+@import './../../../../mixins.scss';
 
 .area-input {
 	display: inline-block;
@@ -14,6 +15,7 @@
 		border-radius: 50% 50% 50% 0;
 		transform: rotate(-45deg);
 		background-color: $input-bg;
+		cursor: pointer;
 
 		&__text {
 			font-size: 0.8rem;
@@ -35,18 +37,7 @@
 	}
 
 	&__input {
-		opacity: 0;
-		width: 0;
-		height: 0;
-
-		&:focus + .area-input__label {
-			//box-shadow: $input-shadow;
-		}
-
-		&:checked + .area-input__label {
-			//box-shadow: none;
-			border-color: $input-selected-color;
-		}
+		@include input('area-input');
 	}
 	@media (min-width: $medium) {
 		margin-left: 1rem;
