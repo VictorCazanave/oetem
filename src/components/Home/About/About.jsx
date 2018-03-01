@@ -48,7 +48,7 @@ function About(props) {
 					className="about__button-close"
 					aria-label="Close">X</button>
 				<footer className="about__footer">
-					Created by Victor Cazanave
+					eoteM v1.0.0 created by Victor Cazanave
 				</footer>
 			</section>
 		</ReactModal>
