@@ -29,9 +29,26 @@ export function sortBy(array, property) {
  * @param  {Any} 		value	New value of the property
  * @return {Object}       New object with updated value
  */
+ // TODO: Delete it and use updateValues instead?
 export function updateValue(obj, path, value) {
 	let objUpdate = {};
 	set(objUpdate, `${path}.$set`, value);
+	
+	return update(obj, objUpdate);
+}
+
+/**
+ * Return a new object with updated values
+ * @param  {Object} obj			Object to copy
+ * @param  {Object} config	Set of properties path / new value pairs (ex: {'a.b.c': false, 'd.e': 42})
+ * @return {Object}       	New object with updated values
+ */
+export function updateValues(obj, config) {
+	let objUpdate = {};
+	
+	for(let path in config) {
+		set(objUpdate, `${path}.$set`, config[path]);
+	}
 	
 	return update(obj, objUpdate);
 }
