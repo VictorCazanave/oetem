@@ -14,9 +14,9 @@ function AreaInput(props) {
 					id={id}
 					className="area-input__input"/>
 				<label htmlFor={id} className="area-input__label">
-					<div className="area-input__label__text">
+					<span className="area-input__label__text">
 						{props.area.name}
-					</div>
+					</span>
 				</label>
 			</div>
 

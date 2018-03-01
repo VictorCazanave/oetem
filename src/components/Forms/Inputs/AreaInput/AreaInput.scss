@@ -16,8 +16,10 @@
 		transform: rotate(-45deg);
 		background-color: $input-bg;
 		cursor: pointer;
+		user-select: none;
 
 		&__text {
+			display: block;
 			font-size: 0.8rem;
 			transform: rotate(45deg);
 		}
