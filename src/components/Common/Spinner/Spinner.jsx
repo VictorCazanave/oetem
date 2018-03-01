@@ -1,7 +1,8 @@
 import React from 'react';
 import './Spinner.css';
 
-function Spinner(props) {
+function Spinner() {
+
 	return (
 		<div className="spinner"></div>
 	);
