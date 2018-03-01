@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import update from 'immutability-helper';
-import { sortBy } from 'utils/ImmutabilityUtils';
+import { updateValue, updateValues, sortBy } from 'utils/ImmutabilityUtils';
+import { makeCancelable } from 'utils/PromiseUtils';
 import Quote from 'components/Common/Quote/Quote';
 import Spinner from 'components/Common/Spinner/Spinner';
 import Match from 'components/Matches/Match/Match';
@@ -10,25 +10,19 @@ import './Matches.css';
 class Matches extends Component {
 	constructor() {
 		super();
+
 		this.state = {
 			valid: true,
 			fetching: true,
 			matches: []
-		}
+		};
+
+		this.cancelablePromise = null;
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps !== this.props) {
 			const valid = this.checkSelected(nextProps.selected);
-
-			// Update state.valid
-			this.setState((prevState) => {
-				return update(prevState, {
-					valid: {
-						$set: valid
-					}
-				});
-			});
 
 			// Fetch data and search matches
 			if (valid) {
@@ -43,7 +37,11 @@ class Matches extends Component {
 					);
 				}
 
-				Promise.all(requests)
+				// Create a cancelable promise to avoid error in componentWillUnmount()
+				this.cancelablePromise = makeCancelable(Promise.all(requests));
+
+				this.cancelablePromise
+					.promise
 					.then((responses) => {
 						let matches = [];
 
@@ -53,19 +51,27 @@ class Matches extends Component {
 							);
 						}
 
-						this.setState((prevState) => {
-							return update(prevState, {
-								fetching: {
-									$set: false
-								},
-								matches: {
-									$set: sortBy(matches, 'name')
-								}
-							});
-						});
+						this.setState(prevState => updateValues(prevState, {
+							'fetching': false,
+							'matches': sortBy(matches, 'name')
+						}))
 					})
+					.catch((error) => {
+						// Do not throw error when promise is canceled
+						// https://www.npmjs.com/package/makecancelable
+						if (error && !error.isCanceled) {
+							throw (error);
+						}
+					});
+			} else {
+				// Update state.valid
+				this.setState(prevState => updateValue(prevState, 'valid', false));
 			}
 		}
+	}
+
+	componentWillUnmount() {
+		this.cancelablePromise.cancel();
 	}
 
 	checkSelected(selected) {
