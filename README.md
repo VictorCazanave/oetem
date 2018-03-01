@@ -25,7 +25,7 @@ npm start
 * [object-path](https://github.com/mariocasciaro/object-path): Use in ImmutabilityUtils to get property value from path.
 
 ### TODO
-* Handle nicely Match icons (hover, sprite/svg...)
+* ~~Handle nicely Match icons (hover, sprite/svg...)~~
 * ~~Avoid duplicate code in App component~~
 * ~~Clean utils~~
 * ~~Do parallel fetch()~~
@@ -34,11 +34,11 @@ npm start
 * ~~Handle invalid/incomplete data~~
 * ~~Remove commented code in Matches~~
 * Accessibility
-* i18n
 * Google Analytics
 
 
 ### Next version
+* i18n
 * Optimize fetching init.json
 * Avoid duplicated code in App
 * Display more info with large screens
@@ -47,6 +47,7 @@ npm start
 * Give more error details (use Redirect?)
 * Add select all button
 * Customize router animation for home/matches pages (if possible)
+* Flow/TypeScript?
 * Redux
 * Progressive web app
 * CI
