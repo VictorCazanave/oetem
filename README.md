@@ -20,7 +20,6 @@ npm start
 * [react-input-range](https://github.com/davidchin/react-input-range): Used in TemperatureInput component to select a range of temperature.
 * [react-modal](https://github.com/reactjs/react-modal): Used in About component to display a modal.
 * [react-transition-group](https://github.com/reactjs/react-transition-group): Used in App component to add CSS transition between routes.
-* [whatwg-fetch](https://github.com/github/fetch): Used in App component to fetch data.
 * [immutability-helper](https://github.com/kolodny/immutability-helper): Used in setState() to mutate a copy of the state without changing the original one.
 * [object-path](https://github.com/mariocasciaro/object-path): Use in ImmutabilityUtils to get property value from path.
 
@@ -33,7 +32,9 @@ npm start
 * ~~Add waiting spinner~~
 * ~~Handle invalid/incomplete data~~
 * ~~Remove commented code in Matches~~
-* Accessibility
+* ~~Accessibility~~
+* ~~Remove usless package (fetch)~~
+* ~~Fix lifecycle issu in Matches~~
 * Google Analytics
 
 
@@ -45,10 +46,13 @@ npm start
 * Add Summary component
 * Add filters on matches list
 * Give more error details (use Redirect?)
+* Find a place to store const url http://www.cwb.gov.tw/V7/symbol/weather/gif/day/...
 * Add select all button
+* Avoid displaying error message on Matches after clicking Try againP
+* Automatically add version from package.json in About component
 * Customize router animation for home/matches pages (if possible)
 * Flow/TypeScript?
-* Redux
+* Redux! (to avoid cancelable promise?)
 * Progressive web app
 * CI
 * Use OpenStreetMap?
