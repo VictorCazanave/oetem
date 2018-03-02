@@ -95,6 +95,7 @@ class Matches extends Component {
 	 * @param  {Object} 	selected 	Selected inputs
 	 * @return {Boolean}						Indicate whether selected inputs are valid or not
 	 */
+	// TODO: Find a better name
 	isValid(selected) {
 		return typeof selected.date === 'string' &&
 			selected.areas.length > 0 &&

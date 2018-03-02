@@ -1,6 +1,11 @@
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
+/**
+ * Transform string date into Date object 
+ * @param  {String} string Date with YYYYMMDD format
+ * @return {[type]}        Date object
+ */
 const _getDate = (string) => {
 	const year = string.slice(0, 4);
 	const month = string.slice(4, 6);

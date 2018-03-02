@@ -1,4 +1,9 @@
-// Code from: https://reactjs.org/blog/2015/12/16/ismounted-antipattern.html
+/**
+ * Transform an ES6 promise into cancelable promise
+ * Code from: https://reactjs.org/blog/2015/12/16/ismounted-antipattern.html
+ * @param  {Promise} promise 	Promise to transform
+ * @return {Object}         	Custom cancelable promise
+ */
 export function makeCancelable(promise) {
   let hasCanceled = false;
 
