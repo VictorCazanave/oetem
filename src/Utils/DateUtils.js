@@ -7,8 +7,8 @@ const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
  * @return {[type]}        Date object
  */
 const _getDate = (string) => {
-	const year = string.slice(0, 4);
-	const month = string.slice(4, 6);
+	const year = parseInt(string.slice(0, 4));
+	const month = parseInt(string.slice(4, 6)) - 1; // month is 0-based
 	const day = string.slice(6, 8);
 
 	return new Date(year, month, day);
