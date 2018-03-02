@@ -8,7 +8,7 @@ import { get, set } from 'object-path';
  * @return {Array}          	New sorted array
  */
 export function sortBy(array, property) {
-	// sort() does not return a copy
+	// Array.sort() does not return a copy
 	let copy = [...array];
 
 	return copy.sort((item1, item2) => {
