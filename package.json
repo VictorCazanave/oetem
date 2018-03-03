@@ -1,6 +1,6 @@
 {
 	"name": "oetem",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"private": true,
 	"proxy": "http://localhost:8080",
 	"dependencies": {
@@ -25,6 +25,8 @@
 		"eject": "react-scripts eject"
 	},
 	"devDependencies": {
+		"eslint": "^4.18.2",
+		"eslint-plugin-react": "^7.7.0",
 		"node-sass-chokidar": "0.0.3",
 		"npm-run-all": "^4.1.2"
 	}
