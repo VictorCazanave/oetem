@@ -1,5 +1,5 @@
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 /**
  * Transform string date into Date object 
@@ -12,7 +12,7 @@ const _getDate = (string) => {
 	const day = string.slice(6, 8);
 
 	return new Date(year, month, day);
-}
+};
 
 /**
  * Return a custom object with right date format

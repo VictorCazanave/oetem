@@ -1,11 +1,14 @@
 import update from 'immutability-helper';
-import { get, set } from 'object-path';
+import {
+	get,
+	set
+} from 'object-path';
 
 /**
  * Return a new array sorted by given property
- * @param  {Array} 	array    	Array to copy and sort
- * @param  {String} property 	Name of property used to sort
- * @return {Array}          	New sorted array
+ * @param  {Array} 	array			Array to copy and sort
+ * @param  {String} property	Name of property used to sort
+ * @return {Array}						New sorted array
  */
 export function sortBy(array, property) {
 	// Array.sort() does not return a copy
@@ -29,11 +32,11 @@ export function sortBy(array, property) {
  * @param  {Any} 		value	New value of the property
  * @return {Object}       New object with updated value
  */
- // TODO: Delete it and use updateValues instead?
+// TODO: Delete it and use updateValues instead?
 export function updateValue(obj, path, value) {
 	let objUpdate = {};
 	set(objUpdate, `${path}.$set`, value);
-	
+
 	return update(obj, objUpdate);
 }
 
@@ -45,11 +48,11 @@ export function updateValue(obj, path, value) {
  */
 export function updateValues(obj, config) {
 	let objUpdate = {};
-	
-	for(let path in config) {
+
+	for (let path in config) {
 		set(objUpdate, `${path}.$set`, config[path]);
 	}
-	
+
 	return update(obj, objUpdate);
 }
 
@@ -72,8 +75,8 @@ export function updateArray(obj, path, elem, added) {
 		// Remove element
 		copy = copy.filter(e => e.id !== elem.id);
 	}
-	
+
 	set(objUpdate, `${path}.$set`, copy);
-	
+
 	return update(obj, objUpdate);
 }
