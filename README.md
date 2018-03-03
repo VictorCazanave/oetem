@@ -12,9 +12,15 @@ cd oetem
 npm start
 ```
 
+### ESLint
+`./node_modules/.bin/eslint src/**/*`
+
+Or Atom ESLint plugin.
+
 ### Factory modules
 * [node-sass-chokidar](https://github.com/michaelwayman/node-sass-chokidar): Compile SASS.
 * [npm-run-all](https://github.com/mysticatea/npm-run-all): Run in parallel npm scripts.
+* [eslint](https://github.com/eslint/eslint): Check JS code.
 
 ### App modules
 * [react-input-range](https://github.com/davidchin/react-input-range): Used in TemperatureInput component to select a range of temperature.
@@ -24,23 +30,15 @@ npm start
 * [object-path](https://github.com/mariocasciaro/object-path): Use in ImmutabilityUtils to get property value from path.
 
 ### TODO
-* ~~Handle nicely Match icons (hover, sprite/svg...)~~
-* ~~Avoid duplicate code in App component~~
-* ~~Clean utils~~
-* ~~Do parallel fetch()~~
-* ~~Store state in session storage~~
-* ~~Add waiting spinner~~
-* ~~Handle invalid/incomplete data~~
-* ~~Remove commented code in Matches~~
-* ~~Accessibility~~
-* ~~Remove usless package (fetch)~~
-* ~~Fix lifecycle issu in Matches~~
 * Google Analytics
+* Merge to master
 
 
 ### Next version
 * i18n
+* Add favicon
 * Optimize fetching init.json
+* Display error message when init.json not available
 * Avoid duplicated code in App
 * Display more info with large screens
 * Add Summary component
