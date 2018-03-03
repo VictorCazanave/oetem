@@ -1,0 +1,19 @@
+@import './../../../../variables.scss';
+@import './../../../../mixins.scss';
+
+.sky-input {
+	display: inline-block;
+	margin: 0.1rem 0.2rem;
+
+	&__label {
+		padding: 0.8rem;
+		border: 0.25rem solid $page-bg-light;
+		border-radius: 50%;
+		background-color: $input-bg;
+		cursor: pointer;
+	}
+
+	&__input {
+		@include input('sky-input');
+	}
+}

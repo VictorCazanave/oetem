@@ -1,0 +1,61 @@
+@import './../../variables.scss';
+@import './../../mixins.scss';
+
+.home-page {
+	position: relative;
+	width: 100%;
+	min-height: 100%;
+	padding: 5rem 1rem 10rem;
+	background: linear-gradient(to bottom, $page-bg-dark, $page-bg-light);
+
+	&__header {
+		margin-bottom: 6.5rem;
+
+		&__title {
+			color: $page-color-light;
+			font-size: 2.5rem;
+		}
+	}
+
+	&__intro {
+		color:$page-color-light;
+		font-size: 1.1rem;
+	}
+
+	&__footer {
+		position: absolute;
+		bottom: 1.5rem;
+		left: 0;
+		width: 100%;
+
+		&__button-about {
+			@include button($btn-secondary-bg, $btn-secondary-color, $btn-secondary-hover-bg);
+			margin-bottom: 2rem;
+		}
+
+		&__button-start {
+			@include button();
+			text-decoration: none;
+		}
+	}
+	@media (min-width: $medium) {
+		&__header {
+			margin-bottom: 10rem;
+			&__title {
+				font-size: 4rem;
+			}
+		}
+		&__intro {
+			font-size: 1.5rem;
+		}
+	}
+	@media (min-width: $large) {
+		// Cannot change home-page width because of background problem
+		&__header,
+		&__intro {
+			width: $page-large-width;
+			margin-right: auto;
+			margin-left: auto;
+		}
+	}
+}
