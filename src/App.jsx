@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { sortBy, updateValue, updateArray } from './utils/ImmutabilityUtils';
-import { storeDate, storeAreas, storeTemperature, storeSkys, getStorage, clearStorage } from './utils/StorageUtils';
-import Home from './components/Home/Home';
-import When from './components/Forms/When/When';
-import Where from './components/Forms/Where/Where';
-import What from './components/Forms/What/What';
-import Matches from './components/Matches/Matches';
+import ReactGA from 'react-ga';
+import { sortBy, updateValue, updateArray } from 'utils/ImmutabilityUtils';
+import { storeDate, storeAreas, storeTemperature, storeSkys, getStorage, clearStorage } from 'utils/StorageUtils';
+import Home from 'components/Home/Home';
+import When from 'components/Forms/When/When';
+import Where from 'components/Forms/Where/Where';
+import What from 'components/Forms/What/What';
+import Matches from 'components/Matches/Matches';
 import './App.css';
 
 class App extends Component {
@@ -44,8 +45,17 @@ class App extends Component {
 	}
 
 	componentDidMount() {
+		// Google Analytics initialization
+		ReactGA.initialize('UA-115096268-1', {
+			debug: true
+		});
+
+		// Track page on first load
+		ReactGA.pageview(this.props.location.pathname);
+
+		// Fetch init data
 		fetch('init.json').then((response) => {
-			return response.json()
+			return response.json();
 		}).then((json) => {
 			// Set init data
 			this.init = {
@@ -65,14 +75,15 @@ class App extends Component {
 				return updateValue(prevState, 'selected', getStorage());
 			});
 		}).catch((err) => {
-			console.error('Parsing init.json failed', err)
-		})
+			console.error('Parsing init.json failed', err);
+		});
 	}
 
 	componentDidUpdate(prevProps) {
-		// Scroll to top when changing route
+		// Scroll to top and track page when changing route
 		if (this.props.location.pathname !== prevProps.location.pathname) {
-			window.scrollTo(0, 0)
+			window.scrollTo(0, 0);
+			ReactGA.pageview(this.props.location.pathname);
 		}
 	}
 
@@ -89,7 +100,7 @@ class App extends Component {
 	handleSelectArea(selectedArea, isSelected) {
 		// Add/remove and store selected area
 		this.setState((prevState) => {
-			const newState = updateArray(prevState, 'selected.areas', selectedArea, isSelected)
+			const newState = updateArray(prevState, 'selected.areas', selectedArea, isSelected);
 			storeAreas(newState.selected.areas);
 
 			return newState;
@@ -109,7 +120,7 @@ class App extends Component {
 	handleSelectSky(selectedSky, isSelected) {
 		// Add/remove and store selected sky
 		this.setState((prevState) => {
-			const newState = updateArray(prevState, 'selected.skys', selectedSky, isSelected)
+			const newState = updateArray(prevState, 'selected.skys', selectedSky, isSelected);
 			storeSkys(newState.selected.skys);
 
 			return newState;
