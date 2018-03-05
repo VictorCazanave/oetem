@@ -46,9 +46,7 @@ class App extends Component {
 
 	componentDidMount() {
 		// Google Analytics initialization
-		ReactGA.initialize('UA-115096268-1', {
-			debug: true
-		});
+		ReactGA.initialize('UA-115096268-1');
 
 		// Track page on first load
 		ReactGA.pageview(this.props.location.pathname);
