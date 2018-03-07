@@ -51,7 +51,7 @@ class Matches extends Component {
 
 			// Fetch data
 			for (const selectedArea of selected.areas) {
-				const url = `/${selected.date}_${selectedArea.id}.json`;
+				const url = `data/${selected.date}_${selectedArea.id}.json`;
 
 				requests.push(fetch(url)
 					.then(response => response.json())
