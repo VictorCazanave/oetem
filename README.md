@@ -1,6 +1,7 @@
 # oeteM | Meteo
 A React web application of reverse meteo.
 
+
 ## Development
 
 ### Start
@@ -13,9 +14,7 @@ npm start
 ```
 
 ### ESLint
-`./node_modules/.bin/eslint src/**/*`
-
-Or Atom ESLint plugin.
+`./node_modules/.bin/eslint src/**/*` or Atom ESLint plugin.
 
 ### Factory modules
 * [node-sass-chokidar](https://github.com/michaelwayman/node-sass-chokidar): Compile SASS.
@@ -26,20 +25,15 @@ Or Atom ESLint plugin.
 * [react-input-range](https://github.com/davidchin/react-input-range): Used in TemperatureInput component to select a range of temperature.
 * [react-modal](https://github.com/reactjs/react-modal): Used in About component to display a modal.
 * [react-transition-group](https://github.com/reactjs/react-transition-group): Used in App component to add CSS transition between routes.
+* [react-ga](https://github.com/react-ga/react-ga): Used in App to track pages.
 * [immutability-helper](https://github.com/kolodny/immutability-helper): Used in setState() to mutate a copy of the state without changing the original one.
 * [object-path](https://github.com/mariocasciaro/object-path): Use in ImmutabilityUtils to get property value from path.
 
-### TODO
-* Google Analytics
-* Merge to master
-
-
 ### Next version
 * i18n
-* Add favicon
 * Optimize fetching init.json
 * Display error message when init.json not available
-* Avoid duplicated code in App
+* Use env variables or global config for data url
 * Display more info with large screens
 * Add Summary component
 * Add filters on matches list
@@ -52,6 +46,7 @@ Or Atom ESLint plugin.
 * Flow/TypeScript?
 * Redux! (to avoid cancelable promise?)
 * Progressive web app
+* Improve GA (tracking events, searched data...)
 * CI
 * Use OpenStreetMap?
 * Include map inside the page?
@@ -60,6 +55,14 @@ Or Atom ESLint plugin.
 * Server-side rendering?
 
 
-## Hosting
-* [DigitalOcean](https://try.digitalocean.com/cloud-hosting/)
-* [Google Clound](https://cloud.google.com/nodejs/)
+## Deployment
+
+`sudo sh deploy.sh`
+
+Or manually:
+* Get source code: `git clone`/`git pull`
+* Install dependencies: `npm install`
+* Build application: `npm run build`
+* Copy application to server: `sudo cp -R ~/git/oetem/build/ /var/www/`
+* Delete old version: `sudo rm -rf /var/www/oetem/`
+* Rename new version: `sudo mv /var/www/build/ /var/www/oetem`
