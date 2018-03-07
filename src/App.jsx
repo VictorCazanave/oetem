@@ -52,7 +52,7 @@ class App extends Component {
 		ReactGA.pageview(this.props.location.pathname);
 
 		// Fetch init data
-		fetch('init.json').then((response) => {
+		fetch('data/init.json').then((response) => {
 			return response.json();
 		}).then((json) => {
 			// Set init data
