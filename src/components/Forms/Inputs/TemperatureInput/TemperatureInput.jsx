@@ -6,13 +6,13 @@ function TemperatureInput(props) {
 
 	return (
 		<div className="input-temperature">
-				<InputRange
-					minValue={props.min}
-					maxValue={props.max}
-					formatLabel={value => `${value}°C`}
-					value={props.value}
-					onChange={(value) => props.onChange(value)}/>
-			</div>
+			<InputRange
+				minValue={props.min}
+				maxValue={props.max}
+				formatLabel={value => `${value}°C`}
+				value={props.value}
+				onChange={(value) => props.onChange(value)}/>
+		</div>
 	);
 }
 
