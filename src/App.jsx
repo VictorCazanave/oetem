@@ -143,11 +143,15 @@ class App extends Component {
 	render() {
 		// this.props.location comes from withRouter HOC
 		// https://medium.com/@pshrmn/a-shallow-dive-into-react-router-v4-animated-transitions-4b73f634992a
+		//
+		// In <CSSTransition> need to replace key={this.props.location.key} by key={this.props.location.pathname} when using HashRouter
+		// https://github.com/ReactTraining/react-router/issues/5249
+		//
 		// TODO: Use ReactCSSTransitionGroup?
 		// https://reactjs.org/docs/animation.html#high-level-api-reactcsstransitiongroup
 		return (
 			<TransitionGroup>
-				<CSSTransition key={this.props.location.key} classNames="route" timeout={600}>
+				<CSSTransition key={this.props.location.pathname} classNames="route" timeout={600}>
 					<Switch location={this.props.location}>
 						<Route exact={true} path="/" component={Home}/>
 						<Route
