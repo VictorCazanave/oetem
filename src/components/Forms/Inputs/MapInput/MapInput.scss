@@ -1,0 +1,26 @@
+@import './../../../../variables.scss';
+
+.map-input {
+	width: 90%;
+	height: auto;
+	stroke: $page-color-dark;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1;
+
+	&__area {
+		fill: $input-bg;
+
+		&:active,
+		&:focus,
+		&:hover {
+			fill: $input-shadow-color;
+			transition: fill 150ms ease-in;
+		}
+
+		&[data-selected=true] {
+			fill: $input-selected-color;
+			transition-property: none;
+		}
+	}
+}
