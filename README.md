@@ -7,7 +7,7 @@ A React web application of reverse meteo.
 ### Start
 ```
 cd node-oetem
-http-server ./outputData
+http-server .
 
 cd oetem
 npm start
