@@ -21,4 +21,5 @@ $btn-secondary-hover-bg: #fff;
 $input-bg: #fff;
 $input-selected-color: #45879e;
 //$input-shadow: 0 0 0.2rem 0.1rem $input-selected-color;
-$input-shadow: 0 0 0 0.2rem rgba(69, 135, 158, 0.4);
+$input-shadow-color: rgba(69, 135, 158, 0.4);
+$input-shadow: 0 0 0 0.2rem $input-shadow-color;
