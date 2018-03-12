@@ -1,6 +1,6 @@
 import React from 'react';
 import FormPage from 'components/Forms/FormPage/FormPage';
-import AreaInput from 'components/Forms/Inputs/AreaInput/AreaInput';
+import MapInput from 'components/Forms/Inputs/MapInput/MapInput';
 
 function Where(props) {
 	return (
@@ -12,17 +12,7 @@ function Where(props) {
 			button="Last question"
 			valid={props.selectedAreas.length > 0}
 			nextPath={props.nextPath}>
-			<form>
-				{
-					props.areas.map((area) => (
-						<AreaInput
-							area={area}
-							selected={props.selectedAreas.findIndex(a => a.id === area.id) > -1}
-							onToggle={props.onSelectArea}
-							key={area.id}/>
-					))
-				}
-			</form>
+			<MapInput selectedAreas={props.selectedAreas} onSelect={props.onSelectArea}/>
 		</FormPage>
 	);
 }
