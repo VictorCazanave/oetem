@@ -1,8 +1,17 @@
 import React from 'react';
 import FormPage from 'components/Forms/FormPage/FormPage';
 import MapInput from 'components/Forms/Inputs/MapInput/MapInput';
+import MapInputAreas from 'components/Forms/Inputs/MapInput/MapInputAreas';
 
 function Where(props) {
+
+	const extendedAreas = props.areas.map((area) => {
+		const mapInputArea = MapInputAreas.find(a => a.name === area.name);
+
+		// Replace MapInputArea id with CWB id
+		return { ...mapInputArea, ...area };
+	});
+
 	return (
 		<FormPage
 			title="Where?"
@@ -12,7 +21,14 @@ function Where(props) {
 			button="Last question"
 			valid={props.selectedAreas.length > 0}
 			nextPath={props.nextPath}>
-			<MapInput selectedAreas={props.selectedAreas} onSelect={props.onSelectArea}/>
+			<MapInput
+				areas={extendedAreas}
+				onClick={(event) => {
+					const selectedArea = { id: event.target.id, name: event.target.attributes['aria-label'].value };
+					const isSelected = event.target.attributes['aria-selected'].value === 'false'; // Because it is a string, not a boolean
+					props.onSelectArea(selectedArea, isSelected)
+				}}
+				isSelected={area => props.selectedAreas.findIndex(a => a.id === area.id) > -1} />
 		</FormPage>
 	);
 }
