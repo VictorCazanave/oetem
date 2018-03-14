@@ -10,6 +10,7 @@
 
 	&__area {
 		fill: $input-bg;
+		cursor: pointer;
 
 		&:active,
 		&:focus,
@@ -18,7 +19,7 @@
 			transition: fill 150ms ease-in;
 		}
 
-		&[data-selected=true] {
+		&[aria-selected=true] {
 			fill: $input-selected-color;
 			transition-property: none;
 		}

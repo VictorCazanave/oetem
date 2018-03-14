@@ -1,22 +1,28 @@
 import React from 'react';
-import config from './MapInputConfig.js';
+import MapInputAreas from './MapInputAreas';
 import './MapInput.css';
 
 function MapInput(props) {
+	const areas = props.areas || MapInputAreas;
+	const role = props.role || 'button';
+
 	return (
-		<svg className="map-input" xmlns="http://www.w3.org/2000/svg" viewBox="312 322 688 973" aria-labelledby="map-input-title">
-			<title id="map-input-title">Taiwan map</title>
+		<svg className="map-input" xmlns="http://www.w3.org/2000/svg" viewBox="312 322 688 973" aria-label="Map of Taiwan">
 		{
-			config.areas.map((area) => (
-				<path
+			areas.map((area) => {
+				const selected = props.isSelected ? props.isSelected(area) : undefined;
+
+				return (<path
 					className="map-input__area"
-					id={area.cwbId}
-					onClick={(event) => props.onSelect({id:area.cwbId, name:area.name}, event.target.dataset.selected === 'false')}
-					data-selected={props.selectedAreas.findIndex(a => a.id === area.cwbId) > -1}
-					name={area.name}
+					id={area.id}
 					d={area.path}
+					onClick={props.onClick}
+					role={role}
+					aria-label={area.name}
+					aria-selected={selected}
 					key={area.id} />
-			))
+				);
+			})
 		}
 	</svg>
 	);
