@@ -2,6 +2,7 @@ import React from 'react';
 import FormPage from 'components/Forms/FormPage/FormPage';
 import MapInput from 'components/Forms/Inputs/MapInput/MapInput';
 import MapInputAreas from 'components/Forms/Inputs/MapInput/MapInputAreas';
+import AreaList from './AreaList/AreaList';
 
 function Where(props) {
 
@@ -28,10 +29,16 @@ function Where(props) {
 			button="Last question"
 			valid={props.selectedAreas.length > 0}
 			nextPath={props.nextPath}>
+
 			<MapInput
 				areas={extendedAreas}
 				onAreaClick={handleAreaClick}
 				isAreaSelected={area => props.selectedAreas.findIndex(a => a.id === area.id) > -1} />
+
+			<AreaList
+				areas={props.selectedAreas}
+				onDeselectArea={area => props.onSelectArea(area, false)}/>
+
 		</FormPage>
 	);
 }
