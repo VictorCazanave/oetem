@@ -14,6 +14,8 @@ function MapInput(props) {
 					className="map-input__area"
 					id={area.id}
 					d={area.path}
+					onMouseOver={props.onAreaOver}
+					onMouseOut={props.onAreaO}
 					onClick={props.onAreaClick}
 					role={role}
 					aria-label={area.name}
