@@ -12,6 +12,13 @@ function Where(props) {
 		return { ...mapInputArea, ...area };
 	});
 
+	const handleAreaClick = (event) => {
+		const selectedArea = { id: event.target.id, name: event.target.attributes['aria-label'].value };
+		const isSelected = event.target.attributes['aria-selected'].value === 'false'; // Because it is a string, not a boolean
+		props.onSelectArea(selectedArea, isSelected);
+		event.target.blur(); // Remove focus on clicked element
+	}
+
 	return (
 		<FormPage
 			title="Where?"
@@ -23,12 +30,8 @@ function Where(props) {
 			nextPath={props.nextPath}>
 			<MapInput
 				areas={extendedAreas}
-				onClick={(event) => {
-					const selectedArea = { id: event.target.id, name: event.target.attributes['aria-label'].value };
-					const isSelected = event.target.attributes['aria-selected'].value === 'false'; // Because it is a string, not a boolean
-					props.onSelectArea(selectedArea, isSelected)
-				}}
-				isSelected={area => props.selectedAreas.findIndex(a => a.id === area.id) > -1} />
+				onAreaClick={handleAreaClick}
+				isAreaSelected={area => props.selectedAreas.findIndex(a => a.id === area.id) > -1} />
 		</FormPage>
 	);
 }
