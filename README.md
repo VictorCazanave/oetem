@@ -60,6 +60,7 @@ npm start
 `sudo sh deploy.sh`
 
 Or manually:
+
 * Get source code: `git clone`/`git pull`
 * Install dependencies: `npm install`
 * Build application: `npm run build`
