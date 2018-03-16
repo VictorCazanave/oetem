@@ -31,19 +31,20 @@ npm start
 
 ### Next version
 * i18n
+* Flow VS prop-types
+* Flow/TypeScript?
+* Update .eslintrc with https://eslint.org/docs/user-guide/configuring#using-the-configuration-from-a-plugin
 * Optimize fetching init.json
 * Display error message when init.json not available
-* Use env variables or global config for data url
+* Use env variables or global config for data url (find a place to store const url http://www.cwb.gov.tw/V7/symbol/weather/gif/day/...)
 * Display more info with large screens
 * Add Summary component
 * Add filters on matches list
 * Give more error details (use Redirect?)
-* Find a place to store const url http://www.cwb.gov.tw/V7/symbol/weather/gif/day/...
 * Add select all button
 * Avoid displaying error message on Matches after clicking Try againP
 * Automatically add version from package.json in About component
 * Customize router animation for home/matches pages (if possible)
-* Flow/TypeScript?
 * Redux! (to avoid cancelable promise?)
 * Progressive web app
 * Improve GA (tracking events, searched data...)
@@ -51,7 +52,6 @@ npm start
 * Use OpenStreetMap?
 * Include map inside the page?
 * Taiwan map loader?
-* SVG map?
 * Server-side rendering?
 
 
