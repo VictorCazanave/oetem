@@ -1,7 +1,8 @@
 @import './../../../../variables.scss';
 
 .map-input {
-	width: 90%;
+	//width: 90%;
+	width: 18.5rem;
 	height: auto;
 	stroke: $page-color-dark;
 	stroke-linecap: round;
@@ -16,12 +17,32 @@
 		&:focus,
 		&:hover {
 			fill: $input-shadow-color;
+			outline: 0;
 			transition: fill 150ms ease-in;
 		}
 
 		&[aria-selected=true] {
 			fill: $input-selected-color;
 			transition-property: none;
+
+			// TODO: Find a nice and accessible way
+			/*
+			&:active,
+			&:focus,
+			&:hover {
+				fill: $input-shadow-color;
+				outline: 0;
+			}
+			*/
 		}
+	}
+	@media (min-width: $medium) {
+		//width: 60%;
+		width: 27.5rem;
+		margin: 2rem 0;
+	}
+	@media (min-width: $large) {
+		//width: 40%;
+		width: 30rem;
 	}
 }
