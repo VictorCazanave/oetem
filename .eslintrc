@@ -5,6 +5,7 @@
 	},
 	"extends": [
 		"eslint:recommended",
+		"plugin:react/recommended"
 	],
 	"parserOptions": {
 		"ecmaFeatures": {
@@ -38,6 +39,7 @@
 		"semi": [
 			"error",
 			"always"
-		]
+		],
+		"no-set-state": "off"
 	}
 }
