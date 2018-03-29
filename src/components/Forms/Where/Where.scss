@@ -1,0 +1,48 @@
+@import './../../../variables.scss';
+
+.svg-map {
+	//width: 90%;
+	width: 18.5rem;
+	height: auto;
+	margin-bottom: 1rem;
+	stroke: $page-color-dark;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1;
+
+	&__location {
+		fill: $input-bg;
+		cursor: pointer;
+
+		&:active,
+		&:focus,
+		&:hover {
+			fill: $input-shadow-color;
+			outline: 0;
+			transition: fill 150ms ease-in;
+		}
+
+		&[aria-checked=true] {
+			fill: $input-selected-color;
+			transition-property: none;
+			// TODO: Find a nice and accessible way
+			/*
+			&:active,
+			&:focus,
+			&:hover {
+				fill: $input-shadow-color;
+				outline: 0;
+			}
+			*/
+		}
+	}
+	@media (min-width: $medium) {
+		//width: 60%;
+		width: 27.5rem;
+		margin: 2rem 0;
+	}
+	@media (min-width: $large) {
+		//width: 40%;
+		width: 30rem;
+	}
+}

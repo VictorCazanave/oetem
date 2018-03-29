@@ -1,21 +1,27 @@
 import React from 'react';
+import { SVGMap, Taiwan } from 'react-svg-map';
 import FormPage from 'components/Forms/FormPage/FormPage';
-import MapInput from 'components/Forms/Inputs/MapInput/MapInput';
-import MapInputAreas from 'components/Forms/Inputs/MapInput/MapInputAreas';
 import AreaList from './AreaList/AreaList';
+import './Where.css';
 
 function Where(props) {
 
-	const extendedAreas = props.areas.map((area) => {
-		const mapInputArea = MapInputAreas.find(a => a.name === area.name);
+	// SVGMap locations == oeteM areas
+	// TODO: Standardize name (location VS area)
+	const customTaiwan = {
+		...Taiwan,
+		locations: props.areas.map((area) => {
+			// Display only available areas
+			const location = Taiwan.locations.find(location => location.name === area.name);
 
-		// Replace MapInputArea id with CWB id
-		return { ...mapInputArea, ...area };
-	});
+			// Replace SVGMap location id with CWB id and return a copy of location object
+			return { ...location, ...area };
+		})
+	};
 
 	const handleAreaClick = (event) => {
-		const selectedArea = { id: event.target.id, name: event.target.attributes['aria-label'].value };
-		const isSelected = event.target.attributes['aria-selected'].value === 'false'; // Because it is a string, not a boolean
+		const selectedArea = { id: event.target.id, name: event.target.attributes.name.value };
+		const isSelected = event.target.attributes['aria-checked'].value === 'false'; // Because it is a string, not a boolean
 		props.onSelectArea(selectedArea, isSelected);
 		event.target.blur(); // Remove focus on clicked element
 	}
@@ -30,10 +36,11 @@ function Where(props) {
 			valid={props.selectedAreas.length > 0}
 			nextPath={props.nextPath}>
 
-			<MapInput
-				areas={extendedAreas}
-				onAreaClick={handleAreaClick}
-				isAreaSelected={area => props.selectedAreas.findIndex(a => a.id === area.id) > -1} />
+			<SVGMap
+				map={customTaiwan}
+				type="checkbox"
+				onLocationClick={handleAreaClick}
+				isLocationSelected={location => props.selectedAreas.findIndex(area => area.id === location.id) > -1} />
 
 			<AreaList
 				areas={props.selectedAreas}
