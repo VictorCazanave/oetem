@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import About from 'components/Home/About/About';
 import './Home.css';
 
-class Home extends Component {
+class Home extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			showAbout: false
-		}
+		};
 
 		this.handleOpenAbout = this.handleOpenAbout.bind(this);
 		this.handleCloseAbout = this.handleCloseAbout.bind(this);
@@ -36,10 +36,14 @@ class Home extends Component {
 				</header>
 				<p className="home-page__intro">Find where your favourite weather will be</p>
 				<footer className="home-page__footer">
-					<button className="home-page__footer__button-about" onClick={this.handleOpenAbout}>About</button>
-					<Link to="/when" className="home-page__footer__button-start">Start</Link>
+					<button className="home-page__footer__button-about" onClick={this.handleOpenAbout}>
+						About
+					</button>
+					<Link to="/when" className="home-page__footer__button-start">
+						Start
+					</Link>
 				</footer>
-				<About show={this.state.showAbout} onClose={this.handleCloseAbout}/>
+				<About show={this.state.showAbout} onClose={this.handleCloseAbout} />
 			</section>
 		);
 	}

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FormPage from 'components/Forms/FormPage/FormPage';
 import DateInput from 'components/Forms/Inputs/DateInput/DateInput';
 
@@ -13,18 +14,17 @@ function When(props) {
 			valid={props.selectedDate}
 			nextPath={props.nextPath}>
 			<form>
-				{
-					props.dates.map((date) => (
-						<DateInput
-							date={date}
-							selected={props.selectedDate === date}
-							onToggle={props.onSelectDate}
-							key={date}/>
-					))
-				}
+				{props.dates.map(date => <DateInput date={date} selected={props.selectedDate === date} onToggle={props.onSelectDate} key={date} />)}
 			</form>
 		</FormPage>
 	);
 }
+
+When.propTypes = {
+	dates: PropTypes.arrayOf(PropTypes.string),
+	selectedDate: PropTypes.string,
+	onSelectDate: PropTypes.func,
+	nextPath: PropTypes.string
+};
 
 export default When;

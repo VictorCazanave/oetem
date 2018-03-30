@@ -1,16 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { SVGMap, Taiwan } from 'react-svg-map';
 import FormPage from 'components/Forms/FormPage/FormPage';
 import AreaList from './AreaList/AreaList';
 import './Where.css';
 
 function Where(props) {
-
 	// SVGMap locations == oeteM areas
 	// TODO: Standardize name (location VS area)
 	const customTaiwan = {
 		...Taiwan,
-		locations: props.areas.map((area) => {
+		locations: props.areas.map(area => {
 			// Display only available areas
 			const location = Taiwan.locations.find(location => location.name === area.name);
 
@@ -19,12 +19,15 @@ function Where(props) {
 		})
 	};
 
-	const handleAreaClick = (event) => {
-		const selectedArea = { id: event.target.id, name: event.target.attributes.name.value };
+	const handleAreaClick = event => {
+		const selectedArea = {
+			id: event.target.id,
+			name: event.target.attributes.name.value
+		};
 		const isSelected = event.target.attributes['aria-checked'].value === 'false'; // Because it is a string, not a boolean
 		props.onSelectArea(selectedArea, isSelected);
 		event.target.blur(); // Remove focus on clicked element
-	}
+	};
 
 	return (
 		<FormPage
@@ -35,19 +38,33 @@ function Where(props) {
 			button="Last question"
 			valid={props.selectedAreas.length > 0}
 			nextPath={props.nextPath}>
-
 			<SVGMap
 				map={customTaiwan}
 				type="checkbox"
 				onLocationClick={handleAreaClick}
-				isLocationSelected={location => props.selectedAreas.findIndex(area => area.id === location.id) > -1} />
+				isLocationSelected={location => props.selectedAreas.findIndex(area => area.id === location.id) > -1}
+			/>
 
-			<AreaList
-				areas={props.selectedAreas}
-				onDeselectArea={area => props.onSelectArea(area, false)}/>
-
+			<AreaList areas={props.selectedAreas} onDeselectArea={area => props.onSelectArea(area, false)} />
 		</FormPage>
 	);
 }
+
+Where.propTypes = {
+	areas: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string,
+			name: PropTypes.string
+		})
+	),
+	selectedAreas: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string,
+			name: PropTypes.string
+		})
+	),
+	onSelectArea: PropTypes.func,
+	nextPath: PropTypes.string
+};
 
 export default Where;

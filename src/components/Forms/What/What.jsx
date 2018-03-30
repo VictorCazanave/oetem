@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FormPage from 'components/Forms/FormPage/FormPage';
 import TemperatureInput from 'components/Forms/Inputs/TemperatureInput/TemperatureInput';
 import SkyInput from 'components/Forms/Inputs/SkyInput/SkyInput';
 import './What.css';
 
 function What(props) {
-
 	return (
 		<FormPage
 			title="What?"
@@ -22,24 +22,39 @@ function What(props) {
 						min={props.temperature.min}
 						max={props.temperature.max}
 						value={props.selectedTemperature}
-						onChange={props.onSelectTemperature}/>
+						onChange={props.onSelectTemperature}
+					/>
 				</div>
 				<div className="what-form__block">
 					<h2 className="what-form__block__title">Sky</h2>
 					<p className="what-form__block__subtitle">Choose the kind of sky you like:</p>
-					{
-						props.skys.map((sky) => (
-							<SkyInput
-								sky={sky}
-								selected={props.selectedSkys.findIndex(s => s.id === sky.id) > -1}
-								onToggle={props.onSelectSky}
-								key={sky.id}/>
-						))
-					}
+					{props.skys.map(sky => (
+						<SkyInput sky={sky} selected={props.selectedSkys.findIndex(s => s.id === sky.id) > -1} onToggle={props.onSelectSky} key={sky.id} />
+					))}
 				</div>
 			</form>
 		</FormPage>
 	);
 }
+
+What.propTypes = {
+	temperature: PropTypes.objectOf(PropTypes.number),
+	selectedTemperature: PropTypes.objectOf(PropTypes.number),
+	onSelectTemperature: PropTypes.func,
+	skys: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string,
+			name: PropTypes.string
+		})
+	),
+	selectedSkys: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string,
+			name: PropTypes.string
+		})
+	),
+	onSelectSky: PropTypes.func,
+	nextPath: PropTypes.string
+};
 
 export default What;

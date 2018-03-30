@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './AreaItem.css';
 
 function AreaItem(props) {
@@ -7,16 +8,21 @@ function AreaItem(props) {
 	return (
 		<li className="area-item">
 			{props.area.name}
-			<button
-				onClick={() => props.onDeselect(props.area)}
-				title={label}
-				aria-label={label}
-				className="area-item__button">
+			<button onClick={() => props.onDeselect(props.area)} title={label} aria-label={label} className="area-item__button">
 				X
 			</button>
 		</li>
-
 	);
 }
+
+AreaItem.propTypes = {
+	area: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string,
+			name: PropTypes.string
+		})
+	),
+	onDeselect: PropTypes.func
+};
 
 export default AreaItem;

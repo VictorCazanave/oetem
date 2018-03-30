@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import ReactGA from 'react-ga';
+import PropTypes from 'prop-types';
 import { sortBy, updateValue, updateArray } from 'utils/ImmutabilityUtils';
 import { storeDate, storeAreas, storeTemperature, storeSkys, getStorage, clearStorage } from 'utils/StorageUtils';
 import Home from 'components/Home/Home';
@@ -11,9 +12,9 @@ import What from 'components/Forms/What/What';
 import Matches from 'components/Matches/Matches';
 import './App.css';
 
-class App extends Component {
-	constructor() {
-		super();
+class App extends React.Component {
+	constructor(props) {
+		super(props);
 		this.state = {
 			selected: {
 				date: null,
@@ -52,29 +53,32 @@ class App extends Component {
 		ReactGA.pageview(this.props.location.pathname);
 
 		// Fetch init data
-		fetch('data/init.json').then((response) => {
-			return response.json();
-		}).then((json) => {
-			// Set init data
-			this.init = {
-				dates: json.dates,
-				areas: sortBy(json.areas, 'name'), // Sort areas
-				temperature: json.temperature,
-				skys: json.skys
-			};
+		fetch('data/init.json')
+			.then(response => {
+				return response.json();
+			})
+			.then(json => {
+				// Set init data
+				this.init = {
+					dates: json.dates,
+					areas: sortBy(json.areas, 'name'), // Sort areas
+					temperature: json.temperature,
+					skys: json.skys
+				};
 
-			// Store init temperature if no selected temperature
-			if (getStorage().temperature === null) {
-				storeTemperature(this.init.temperature);
-			}
+				// Store init temperature if no selected temperature
+				if (getStorage().temperature === null) {
+					storeTemperature(this.init.temperature);
+				}
 
-			// Set state with stored data
-			this.setState((prevState) => {
-				return updateValue(prevState, 'selected', getStorage());
+				// Set state with stored data
+				this.setState(prevState => {
+					return updateValue(prevState, 'selected', getStorage());
+				});
+			})
+			.catch(err => {
+				console.error('Parsing init.json failed', err);
 			});
-		}).catch((err) => {
-			console.error('Parsing init.json failed', err);
-		});
 	}
 
 	componentDidUpdate(prevProps) {
@@ -87,7 +91,7 @@ class App extends Component {
 
 	handleSelectDate(selectedDate) {
 		// Set and store selected date
-		this.setState((prevState) => {
+		this.setState(prevState => {
 			const newState = updateValue(prevState, 'selected.date', selectedDate);
 			storeDate(newState.selected.date);
 
@@ -97,7 +101,7 @@ class App extends Component {
 
 	handleSelectArea(selectedArea, isSelected) {
 		// Add/remove and store selected area
-		this.setState((prevState) => {
+		this.setState(prevState => {
 			const newState = updateArray(prevState, 'selected.areas', selectedArea, isSelected);
 			storeAreas(newState.selected.areas);
 
@@ -107,7 +111,7 @@ class App extends Component {
 
 	handleSelectTemperature(selectedTemperature) {
 		// Set and store selected temperature
-		this.setState((prevState) => {
+		this.setState(prevState => {
 			const newState = updateValue(prevState, 'selected.temperature', selectedTemperature);
 			storeTemperature(newState.selected.temperature);
 
@@ -117,7 +121,7 @@ class App extends Component {
 
 	handleSelectSky(selectedSky, isSelected) {
 		// Add/remove and store selected sky
-		this.setState((prevState) => {
+		this.setState(prevState => {
 			const newState = updateArray(prevState, 'selected.skys', selectedSky, isSelected);
 			storeSkys(newState.selected.skys);
 
@@ -153,30 +157,34 @@ class App extends Component {
 			<TransitionGroup>
 				<CSSTransition key={this.props.location.pathname} classNames="route" timeout={600}>
 					<Switch location={this.props.location}>
-						<Route exact={true} path="/" component={Home}/>
+						<Route exact={true} path="/" component={Home} />
 						<Route
 							path="/when"
-							render={(props) => (
+							render={props => (
 								<When
 									dates={this.init.dates}
 									selectedDate={this.state.selected.date}
 									onSelectDate={this.handleSelectDate}
 									nextPath="/where"
-									{...props}/>
-							)}/>
+									{...props}
+								/>
+							)}
+						/>
 						<Route
 							path="/where"
-							render={(props) => (
+							render={props => (
 								<Where
 									areas={this.init.areas}
 									selectedAreas={this.state.selected.areas}
 									onSelectArea={this.handleSelectArea}
 									nextPath="/what"
-									{...props}/>
-							)}/>
+									{...props}
+								/>
+							)}
+						/>
 						<Route
 							path="/what"
-							render={(props) => (
+							render={props => (
 								<What
 									temperature={this.init.temperature}
 									selectedTemperature={this.state.selected.temperature}
@@ -185,18 +193,23 @@ class App extends Component {
 									selectedSkys={this.state.selected.skys}
 									onSelectSky={this.handleSelectSky}
 									nextPath="/matches"
-									{...props}/>
-							)}/>
+									{...props}
+								/>
+							)}
+						/>
 						<Route
 							path="/matches"
-							render={(props) => (
-								<Matches selected={this.state.selected} onClickAgain={this.handleClickAgain} againPath="/when" {...props}/>
-							)}/>
+							render={props => <Matches selected={this.state.selected} onClickAgain={this.handleClickAgain} againPath="/when" {...props} />}
+						/>
 					</Switch>
 				</CSSTransition>
 			</TransitionGroup>
 		);
 	}
 }
+
+App.propTypes = {
+	location: PropTypes.object
+};
 
 export default withRouter(App);
