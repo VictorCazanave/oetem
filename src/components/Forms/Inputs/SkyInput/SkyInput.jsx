@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SkyInput.css';
 
 function SkyInput(props) {
@@ -6,21 +7,28 @@ function SkyInput(props) {
 
 	return (
 		<div className="sky-input">
-				<input
-					type="checkbox"
-					value={props.sky.id}
-					checked={props.selected}
-					onChange={(event) => props.onToggle(props.sky, event.target.checked)}
-					id={id}
-					className="sky-input__input"/>
-				<label htmlFor={id} className="sky-input__label">
-					<img
-						src={`http://www.cwb.gov.tw/V7/symbol/weather/gif/day/${props.sky.id}.gif`}
-						alt={props.sky.label}
-						title={props.sky.label}/>
-				</label>
-			</div>
+			<input
+				type="checkbox"
+				value={props.sky.id}
+				checked={props.selected}
+				onChange={event => props.onToggle(props.sky, event.target.checked)}
+				id={id}
+				className="sky-input__input"
+			/>
+			<label htmlFor={id} className="sky-input__label">
+				<img src={`http://www.cwb.gov.tw/V7/symbol/weather/gif/day/${props.sky.id}.gif`} alt={props.sky.label} title={props.sky.label} />
+			</label>
+		</div>
 	);
 }
+
+SkyInput.propTypes = {
+	sky: PropTypes.shape({
+		id: PropTypes.string,
+		label: PropTypes.string
+	}),
+	selected: PropTypes.bool,
+	onToggle: PropTypes.func
+};
 
 export default SkyInput;

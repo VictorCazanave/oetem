@@ -38,19 +38,25 @@ function What(props) {
 }
 
 What.propTypes = {
-	temperature: PropTypes.objectOf(PropTypes.number),
-	selectedTemperature: PropTypes.objectOf(PropTypes.number),
+	temperature: PropTypes.shape({
+		min: PropTypes.number,
+		max: PropTypes.number
+	}),
+	selectedTemperature: PropTypes.shape({
+		min: PropTypes.number,
+		max: PropTypes.number
+	}),
 	onSelectTemperature: PropTypes.func,
 	skys: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.string,
-			name: PropTypes.string
+			label: PropTypes.string
 		})
 	),
 	selectedSkys: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.string,
-			name: PropTypes.string
+			label: PropTypes.string
 		})
 	),
 	onSelectSky: PropTypes.func,
