@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { updateValue, sortBy } from 'utils/ImmutabilityUtils';
@@ -8,7 +8,7 @@ import Spinner from 'components/Common/Spinner/Spinner';
 import Match from 'components/Matches/Match/Match';
 import './Matches.css';
 
-class Matches extends Component {
+class Matches extends React.Component {
 	constructor() {
 		super();
 

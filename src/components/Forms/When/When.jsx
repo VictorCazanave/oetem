@@ -11,7 +11,7 @@ function When(props) {
 			quote="Every day brings new choices."
 			author="Martha Beck"
 			button="One more question"
-			valid={props.selectedDate}
+			valid={props.selectedDate !== null}
 			nextPath={props.nextPath}>
 			<form>
 				{props.dates.map(date => <DateInput date={date} selected={props.selectedDate === date} onToggle={props.onSelectDate} key={date} />)}

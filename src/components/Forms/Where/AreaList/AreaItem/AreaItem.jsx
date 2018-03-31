@@ -16,12 +16,10 @@ function AreaItem(props) {
 }
 
 AreaItem.propTypes = {
-	area: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.string,
-			name: PropTypes.string
-		})
-	),
+	area: PropTypes.shape({
+		id: PropTypes.string,
+		name: PropTypes.string
+	}),
 	onDeselect: PropTypes.func
 };
 
