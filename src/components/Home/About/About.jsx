@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
+import packageJson from 'package.alias.json'; // symlink to package.json which is outside or src folder
 import './About.css';
 
 function About(props) {
@@ -53,7 +54,7 @@ function About(props) {
 				<button onClick={props.onClose} title="Close" className="about__button-close" aria-label="Close">
 					X
 				</button>
-				<footer className="about__footer">eoteM v1.1.0 created by Victor Cazanave</footer>
+				<footer className="about__footer">{`eoteM v${packageJson.version} created by Victor Cazanave`}</footer>
 			</section>
 		</ReactModal>
 	);
