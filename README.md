@@ -1,6 +1,6 @@
 # oeteM | Meteo
 
-A React web application of reverse meteo.
+A reverse weather forecast web application built with React.js: (https://victorcazanave.com/oetem)[https://victorcazanave.com/oetem]
 
 ## Development
 
@@ -16,7 +16,7 @@ npm start
 
 ### ESLint
 
-`./node_modules/.bin/eslint src/**/*` or Atom ESLint plugin.
+`npm run eslint` or Atom ESLint plugin.
 
 ### Factory modules
 
@@ -49,27 +49,18 @@ npm start
 * Add filters on matches list
 * Give more error details (use Redirect?)
 * Add select all button
-* Avoid displaying error message on Matches after clicking Try againP
+* Avoid displaying error message on Matches after clicking Try again
 * Customize router animation for home/matches pages (if possible)
 * Flow? Tool seems not ready yet: https://github.com/facebook/flow/issues/5874
-* Redux! (to avoid cancelable promise?)
+* Redux (to avoid cancelable promise?)
 * Progressive web app
 * Improve GA (tracking events, searched data...)
 * CI
+* Rethink UI?
 * Use OpenStreetMap?
 * Include map inside the page?
-* Taiwan map loader?
 * Server-side rendering?
 
 ## Deployment
 
 `sudo sh deploy.sh`
-
-Or manually:
-
-* Get source code: `git clone`/`git pull`
-* Install dependencies: `npm install`
-* Build application: `npm run build`
-* Copy application to server: `sudo cp -R ~/git/oetem/build/ /var/www/`
-* Delete old version: `sudo rm -rf /var/www/oetem/`
-* Rename new version: `sudo mv /var/www/build/ /var/www/oetem`
