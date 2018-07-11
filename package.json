@@ -1,9 +1,25 @@
 {
 	"name": "oetem",
 	"version": "1.2.0",
-	"private": true,
 	"homepage": ".",
 	"proxy": "http://localhost:8080",
+	"license": "GNU General Public License v2.0",
+	"author": "Victor Cazanave <victor.cazanave@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/VictorCazanave/oetem.git"
+	},
+	"scripts": {
+		"build-css": "node-sass-chokidar src/ -o src/",
+		"watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+		"start-js": "react-scripts start",
+		"start": "npm-run-all -p watch-css start-js",
+		"build-js": "react-scripts build",
+		"build": "npm-run-all build-css build-js",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject",
+		"eslint": "./node_modules/.bin/eslint src/**/*"
+	},
 	"dependencies": {
 		"immutability-helper": "^2.6.4",
 		"object-path": "^0.11.4",
@@ -16,17 +32,6 @@
 		"react-scripts": "1.1.0",
 		"react-svg-map": "^1.0.0-alpha.3",
 		"react-transition-group": "^2.2.1"
-	},
-	"scripts": {
-		"build-css": "node-sass-chokidar src/ -o src/",
-		"watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-		"start-js": "react-scripts start",
-		"start": "npm-run-all -p watch-css start-js",
-		"build-js": "react-scripts build",
-		"build": "npm-run-all build-css build-js",
-		"test": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject",
-		"eslint": "./node_modules/.bin/eslint src/**/*"
 	},
 	"devDependencies": {
 		"babel-eslint": "^8.2.2",
