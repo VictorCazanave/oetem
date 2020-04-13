@@ -1,8 +1,6 @@
 # oeteM | Meteo
 
-A reverse weather forecast web application built with React.js
-
-[https://victorcazanave.com/oetem](https://victorcazanave.com/oetem)
+**[WIP]** A reverse weather forecast web application built with React.js
 
 ## Development
 
