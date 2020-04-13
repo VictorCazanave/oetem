@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import ReactGA from 'react-ga';
 import PropTypes from 'prop-types';
 import { sortBy, updateValue, updateArray } from 'utils/ImmutabilityUtils';
 import { storeDate, storeAreas, storeTemperature, storeSkys, getStorage, clearStorage } from 'utils/StorageUtils';
@@ -46,12 +45,6 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		// Google Analytics initialization
-		ReactGA.initialize('UA-115096268-1');
-
-		// Track page on first load
-		ReactGA.pageview(this.props.location.pathname);
-
 		// Fetch init data
 		fetch('data/init.json')
 			.then(response => {
@@ -85,7 +78,6 @@ class App extends React.Component {
 		// Scroll to top and track page when changing route
 		if (this.props.location.pathname !== prevProps.location.pathname) {
 			window.scrollTo(0, 0);
-			ReactGA.pageview(this.props.location.pathname);
 		}
 	}
 
