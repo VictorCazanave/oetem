@@ -2,7 +2,6 @@
 	"name": "oetem",
 	"version": "1.2.0",
 	"homepage": ".",
-	"proxy": "http://localhost:8080",
 	"license": "GNU General Public License v2.0",
 	"author": "Victor Cazanave <victor.cazanave@gmail.com>",
 	"repository": {

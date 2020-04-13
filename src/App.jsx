@@ -46,7 +46,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		// Fetch init data
-		fetch('data/init.json')
+		fetch('https://oetem.victorcazanave.com/init.json')
 			.then(response => {
 				return response.json();
 			})

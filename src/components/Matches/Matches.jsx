@@ -52,7 +52,7 @@ class Matches extends React.Component {
 
 			// Fetch data
 			for (const selectedArea of selected.areas) {
-				const url = `data/${selected.date}_${selectedArea.id}.json`;
+				const url = `https://oetem.victorcazanave.com/${selected.date}_${selectedArea.id}.json`;
 
 				requests.push(
 					fetch(url)
