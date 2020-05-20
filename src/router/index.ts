@@ -1,27 +1,61 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
+//import { hasDifferentQueryParams } from '@/utilities'
+import HomeView from '@/views/HomeView.vue'
+import WhenView from '@/views/WhenView.vue'
+import WhereView from '@/views/WhereView.vue'
+import WhatView from '@/views/WhatView.vue'
+import MatchesView from '@/views/MatchesView.vue'
 
 Vue.use(VueRouter)
 
-  const routes: Array<RouteConfig> = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+const routes: Array<RouteConfig> = [
+	{
+		path: '/',
+		name: 'Home',
+		component: HomeView
+	},
+	{
+		path: '/when',
+		name: 'When',
+		component: WhenView
+	},
+	{
+		path: '/where',
+		name: 'Where',
+		component: WhereView
+	},
+	{
+		path: '/what',
+		name: 'What',
+		component: WhatView
+	},
+	{
+		path: '/matches',
+		name: 'Matches',
+		component: MatchesView,
+		// TODO: Try https://router.vuejs.org/guide/essentials/passing-props.html#function-mode
+		//props: (route) => ({ ...route.query })
+	}
 ]
 
 const router = new VueRouter({
-  routes
+	routes
 })
+
+// Keep query params between routes
+/*
+router.beforeEach((to, from, next) => {
+	if (hasDifferentQueryParams(from.query, to.query)) {
+		console.log('REDIRECT')
+		next({
+			name: to.name!,
+			query: { ...from.query, ...to.query }
+		})
+	} else {
+		next()
+	}
+})
+*/
 
 export default router
