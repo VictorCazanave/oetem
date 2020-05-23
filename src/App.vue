@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <div v-if="loading">Loading...</div>
-    <router-view v-else />
+    <transition
+      v-else
+      name="slide-up"
+    >
+      <router-view />
+    </transition>
   </div>
 </template>
 
