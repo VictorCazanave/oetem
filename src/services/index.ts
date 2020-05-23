@@ -6,7 +6,6 @@ export default {
 	async getAvailableData(): Promise<object> {
 		const res = await fetch(`${BASE_URL}init.json`)
 		const data = await res.json()
-		console.log('AVAILABLE DATA', data)
 
 		return data
 	},

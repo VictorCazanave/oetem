@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import 'reflect-metadata'
+
+import '@/styles/main.scss'
+
 import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'

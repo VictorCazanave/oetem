@@ -3,38 +3,39 @@
     title="When?"
     quote="Every day brings new choices."
     author="Martha Beck"
+    :subtitles="['Choose a date you can go out:']"
     submit-label="One more question"
-    :is-valid="!!selectedDate"
+    :valid="!!selectedDate"
     previous-route="Home"
     @submit="save"
   >
-    <div
-      role="radiogroup"
-      aria-labelledby="page-title"
-    >
-      <label
-        v-for="date in dates"
-        :key="date"
+    <template #section0>
+      <div
+        role="radiogroup"
+        aria-labelledby="subtitle0"
+        class="group"
       >
-        <input
+        <InputDate
+          v-for="date in dates"
+          :key="date"
           v-model="selectedDate"
-          type="radio"
-          :value="date"
-        />
-        {{ date }}
-      </label>
-    </div>
+          :date="date"
+        ></InputDate>
+      </div>
+    </template>
   </BasePage>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { State } from 'vuex-class'
-import BasePage from '@/components/BasePage.vue'
+import BasePage from '@/components/Base/BasePage.vue'
+import InputDate from '@/components/Input/InputDate.vue'
 
 @Component({
 	components: {
-    BasePage
+		BasePage,
+		InputDate
 	}
 })
 export default class WhenView extends Vue {

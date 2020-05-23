@@ -1,0 +1,52 @@
+/* Group of items (inputs and tags) */
+.group {
+	display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Common styles of pages (BasePage and MatchesView) */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+	padding: 1rem 1rem 2rem;
+	
+	&-previous {
+		align-self: flex-start;
+	}
+
+	&-title {
+		flex: 0;
+		margin-bottom: $margin-medium;
+		font-size: 2rem;
+	}
+
+	&-quote {
+		display: none;
+	}
+
+	&-subtitle {
+		margin-bottom: $margin-medium;
+	}
+
+	&-button {
+		margin-top: auto;
+	}
+}
+
+@media (min-width: $breakpoint-medium) {
+	.page {
+
+		&-title {
+			margin-bottom: $margin-large;
+			font-size: 3rem;
+		}
+
+		&-quote {
+			display: inline-block;
+			margin-bottom: $margin-large;
+		}
+	}
+}

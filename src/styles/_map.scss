@@ -1,0 +1,46 @@
+// Style of vue-svg-map
+// Location style cannot be defined in scoped CSS
+.svg-map {
+	// TODO: Find a cleaner way to always fit map
+	width: 17.5rem;
+	height: auto;
+	
+	stroke: $page-txt-dark;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1;
+
+	&__location {
+		fill: $input-bg;
+		cursor: pointer;
+
+		&:active,
+		&:focus,
+		&:hover {
+			fill: $input-color-focus;
+			outline: 0;
+			//transition: fill 150ms ease-in;
+		}
+
+		&[aria-checked=true] {
+			fill: $input-color-selected;
+			transition-property: none;
+			// TODO: Find a nice and accessible way
+			/*
+			&:active,
+			&:focus,
+			&:hover {
+				fill: $input-color-focus;
+				outline: 0;
+			}
+			*/
+		}
+	}
+
+	@media (min-width: $breakpoint-medium) {
+		width: 24rem;
+	}
+	@media (min-width: $breakpoint-large) {
+		width: 30rem;
+	}
+}

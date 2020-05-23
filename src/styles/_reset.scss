@@ -1,0 +1,41 @@
+/* CSS Reset inspired by https://github.com/alsacreations/KNACSS/blob/master/sass/_vendor/_reboot.scss */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+	font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+p,
+a,
+button,
+ul,
+blockquote {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	background: none;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}

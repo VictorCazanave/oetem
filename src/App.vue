@@ -17,7 +17,7 @@ export default class HomeView extends Vue {
 	// https://github.com/ktsn/vuex-class/issues/58
 	@Action fetchAvailableData!: ActionMethod
 	
-  created() {
+	created() {
 		this.init()
 	}
 	
@@ -32,6 +32,3 @@ export default class HomeView extends Vue {
 	}
 }
 </script>
-
-<style lang="scss">
-</style>

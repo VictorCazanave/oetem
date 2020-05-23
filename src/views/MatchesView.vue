@@ -1,41 +1,42 @@
 <template>
-  <section>
-    <h1>Matches</h1>
+  <main class="page matches-page">
+    <ButtonIcon
+      label="Previous page"
+      icon="previous"
+      class="page-previous"
+      @click="back"
+    ></ButtonIcon>
 
-    <nav>
-      <button @click="back">
-        Previous
-      </button>
-    </nav>
+    <h1 class="page-title">
+      Matches
+    </h1>
 
     <BaseQuote
       quote="Climate is what we expect, weather is what we get."
       author="Mark Twain"
+      class="page-quote"
     ></BaseQuote>
 
-    <ul>
+    <h2 class="page-subtitle">
+      {{ matchedLocations.length }} places match your criteria:
+    </h2>
+
+    <ul class="matches">
       <li
         v-for="location in matchedLocations"
         :key="location.geocode"
+        class="match"
       >
-        {{ location.name }}
-        {{ location.areaName }}
-        {{ location.geocode }}
-        {{ location.lon }}
-        {{ location.lat }}
-        {{ location.weather.minTemperature.value }}
-        {{ location.weather.minTemperature.unit }}
-        {{ location.weather.maxTemperature.value }}
-        {{ location.weather.maxTemperature.unit }}
-        {{ location.weather.sky.id }}
-        {{ location.weather.sky.label }}
+        <LocationCard :location="location"></LocationCard>
       </li>
     </ul>
 
-    <RouterLink :to="{ name: 'Home' }">
-      Home
-    </RouterLink>
-  </section>
+    <ButtonText
+      label="Try again"
+      class="page-button"
+      @click="restart"
+    ></ButtonText>
+  </main>
 </template>
 
 <script lang="ts">
@@ -44,10 +45,18 @@ import SERVICES from '@/services'
 import Location from '@/models/Location'
 import Temperature from '@/models/Temperature'
 import { getMatches } from '@/utilities'
-import BaseQuote from '@/components/BaseQuote.vue'
+import BaseQuote from '@/components/Base/BaseQuote.vue'
+import ButtonIcon from '@/components/Button/ButtonIcon.vue'
+import ButtonText from '@/components/Button/ButtonText.vue'
+import LocationCard from '@/components/LocationCard.vue'
 
 @Component({
-	components: { BaseQuote }
+	components: { 
+		BaseQuote,
+		ButtonIcon,
+		ButtonText,
+		LocationCard
+	}
 })
 export default class MatchesView extends Vue {
 	selectedDate = ''
@@ -96,5 +105,49 @@ export default class MatchesView extends Vue {
 			replace: true
 		})
 	}
+
+	restart() {
+		this.$router.push({ name: 'Home' })
+	}
 }
 </script>
+
+<style scoped lang="scss">
+.matches-page {
+  background: linear-gradient(to top, $page-bg-dark, $page-bg-light);
+}
+
+.matches {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  max-width: $page-max-width;
+  margin-bottom: $margin-medium;
+}
+
+.match {
+  margin: $margin-small 0;
+  list-style: none;
+}
+
+@media (min-width: $breakpoint-medium) {
+  .matches {
+    align-self: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .match {
+    width: 40%;
+    margin: $margin-small;
+  }
+}
+
+@media (min-width: $breakpoint-large) {
+  .match {
+    width: 30%;
+    margin: $margin-small;
+  }
+}
+</style>
