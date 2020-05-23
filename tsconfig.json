@@ -14,10 +14,6 @@
 		"types": [
 			"webpack-env"
 		],
-		"typeRoots": [
-			"./node_modules/@types",
-			"./types" // Type definitions of third-party libraries
-		],
 		"paths": {
 			"@/*": [
 				"src/*"
@@ -39,6 +35,5 @@
 	],
 	"exclude": [
 		"node_modules",
-		"types"
 	]
 }

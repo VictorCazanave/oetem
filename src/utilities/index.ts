@@ -32,7 +32,7 @@ export function hasDifferentQueryParams(fromQuery = {}, toQuery = {}): boolean {
 }
 
 // Links between ids of svg-maps and ids of CWB
-export const AREA_ID = {
+export const AREA_ID: { [key: string]: string } = {
 	'changhua-county': '10007',
 	'chiayi-city': '10020',
 	'chiayi-county': '10010',
