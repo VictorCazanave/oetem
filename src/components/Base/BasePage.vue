@@ -92,10 +92,6 @@ export default class BasePage extends Vue {
 }
 
 @media (min-width: $breakpoint-medium) {
-  .form {
-    font-size: 1.2rem;
-  }
-
   .section {
     margin-bottom: 4rem;
   }

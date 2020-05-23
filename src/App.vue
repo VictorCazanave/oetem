@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <div v-if="loading">Loading...</div>
+    <BaseLoading
+      v-if="loading"
+      message="Loading weather data"
+      class="loading"
+    ></BaseLoading>
+
     <transition
       v-else
       name="slide-up"
@@ -14,8 +19,13 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { ActionMethod } from 'vuex'
 import { Action } from 'vuex-class'
+import BaseLoading from '@/components/Base/BaseLoading.vue'
 
-@Component
+@Component({
+	components: {
+		BaseLoading
+	}
+})
 export default class HomeView extends Vue {
 	loading = true
 
@@ -37,3 +47,9 @@ export default class HomeView extends Vue {
 	}
 }
 </script>
+
+<style scoped lang="scss">
+.loading {
+  margin: 40% auto 0;
+}
+</style>

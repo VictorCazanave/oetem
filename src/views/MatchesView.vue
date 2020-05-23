@@ -17,19 +17,26 @@
       class="page-quote"
     ></BaseQuote>
 
-    <h2 class="page-subtitle">
-      {{ matchedLocations.length }} places match your criteria:
-    </h2>
+    <BaseLoading
+      v-if="loading"
+      message="Searching for the best locations"
+    ></BaseLoading>
 
-    <ul class="matches">
-      <li
-        v-for="location in matchedLocations"
-        :key="location.geocode"
-        class="match"
-      >
-        <LocationCard :location="location"></LocationCard>
-      </li>
-    </ul>
+    <template v-else>
+      <h2 class="page-subtitle">
+        {{ subtitle }}
+      </h2>
+
+      <ul class="matches">
+        <li
+          v-for="location in matchedLocations"
+          :key="location.geocode"
+          class="match"
+        >
+          <LocationCard :location="location"></LocationCard>
+        </li>
+      </ul>
+    </template>
 
     <ButtonText
       label="Try again"
@@ -46,6 +53,7 @@ import Location from '@/models/Location'
 import Temperature from '@/models/Temperature'
 import { getMatches } from '@/utilities'
 import BaseQuote from '@/components/Base/BaseQuote.vue'
+import BaseLoading from '@/components/Base/BaseLoading.vue'
 import ButtonIcon from '@/components/Button/ButtonIcon.vue'
 import ButtonText from '@/components/Button/ButtonText.vue'
 import LocationCard from '@/components/LocationCard.vue'
@@ -53,18 +61,29 @@ import LocationCard from '@/components/LocationCard.vue'
 @Component({
 	components: { 
 		BaseQuote,
+		BaseLoading,
 		ButtonIcon,
 		ButtonText,
 		LocationCard
 	}
 })
 export default class MatchesView extends Vue {
+	loading = true
 	selectedDate = ''
 	selectedAreas: string[] = []
 	selectedSkys: string[] = []
 	selectedTemperature: Temperature = { min: 0 , max: 0 }
 	matchedLocations: Location[] = []
 
+	get subtitle(): string {
+		if(this.matchedLocations.length === 0) {
+			return 'Sorry, no place matches your criteria.'
+		} else if(this.matchedLocations.length === 1) {
+			return 'Here is the perfect place for you:'
+		}
+
+		return  `${this.matchedLocations.length} places match your criteria:`
+	}
 
 	created() {
 		// TODO: Check if all query params exist
@@ -88,11 +107,12 @@ export default class MatchesView extends Vue {
 
 			areas.forEach(area => {
 				const matches = getMatches(area, this.selectedTemperature.min, this.selectedTemperature.max, this.selectedSkys)
-				console.log('MATCHES', matches)
 				this.matchedLocations = [...this.matchedLocations, ...matches]
 			})
 		} catch (error) {
 			console.log('ERROR', error)
+		} finally {
+			this.loading = false
 		}
 	}
 
