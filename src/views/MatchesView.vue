@@ -133,9 +133,9 @@ export default class MatchesView extends Vue {
 }
 
 .matches {
-  align-self: stretch;
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: $page-max-width;
   margin-bottom: $margin-medium;
 }
@@ -147,7 +147,6 @@ export default class MatchesView extends Vue {
 
 @media (min-width: $breakpoint-medium) {
   .matches {
-    align-self: center;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
