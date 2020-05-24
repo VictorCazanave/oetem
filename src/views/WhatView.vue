@@ -18,6 +18,7 @@
         v-bind="{...temperature}"
         :enable-cross="false"
         :drag-on-click="true"
+        :use-keyboard="true"
         tooltip="always"
         tooltip-placement="bottom"
         tooltip-formatter="{value}°C"
