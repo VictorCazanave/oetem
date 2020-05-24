@@ -34,28 +34,11 @@ const routes: Array<RouteConfig> = [
 		path: '/matches',
 		name: 'Matches',
 		component: MatchesView,
-		// TODO: Try https://router.vuejs.org/guide/essentials/passing-props.html#function-mode
-		//props: (route) => ({ ...route.query })
 	}
 ]
 
 const router = new VueRouter({
 	routes
 })
-
-// Keep query params between routes
-/*
-router.beforeEach((to, from, next) => {
-	if (hasDifferentQueryParams(from.query, to.query)) {
-		console.log('REDIRECT')
-		next({
-			name: to.name!,
-			query: { ...from.query, ...to.query }
-		})
-	} else {
-		next()
-	}
-})
-*/
 
 export default router

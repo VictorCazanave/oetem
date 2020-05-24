@@ -3,8 +3,14 @@
     <BaseLoading
       v-if="loading"
       message="Loading weather data"
-      class="loading"
+      class="center"
     ></BaseLoading>
+
+    <BaseError
+      v-else-if="error"
+      :error="error"
+      class="center"
+    ></BaseError>
 
     <transition
       v-else
@@ -20,14 +26,17 @@ import { Component, Vue } from 'vue-property-decorator'
 import { ActionMethod } from 'vuex'
 import { Action } from 'vuex-class'
 import BaseLoading from '@/components/Base/BaseLoading.vue'
+import BaseError from '@/components/Base/BaseError.vue'
 
 @Component({
 	components: {
-		BaseLoading
+		BaseLoading,
+		BaseError
 	}
 })
 export default class HomeView extends Vue {
 	loading = true
+	error = ''
 
 	// https://github.com/ktsn/vuex-class/issues/58
 	@Action fetchAvailableData!: ActionMethod
@@ -40,7 +49,7 @@ export default class HomeView extends Vue {
 		try {
 			await this.fetchAvailableData()
 		} catch (error) {
-			console.log('ERROR', error)
+			this.error = 'Sorry, an error occurred. Please refresh the page or try again later.'
 		} finally {
 			this.loading = false
 		}
@@ -49,7 +58,7 @@ export default class HomeView extends Vue {
 </script>
 
 <style scoped lang="scss">
-.loading {
+.center {
   margin: 40% auto 0;
 }
 </style>

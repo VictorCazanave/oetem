@@ -25,15 +25,6 @@
 		&[aria-checked=true] {
 			fill: $input-color-selected;
 			transition-property: none;
-			// TODO: Find a nice and accessible way
-			/*
-			&:active,
-			&:focus,
-			&:hover {
-				fill: $input-color-focus;
-				outline: 0;
-			}
-			*/
 		}
 	}
 

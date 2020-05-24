@@ -22,6 +22,11 @@
       message="Searching for the best locations"
     ></BaseLoading>
 
+    <BaseError
+      v-else-if="error"
+      :error="error"
+    ></BaseError>
+
     <template v-else>
       <h2 class="page-subtitle">
         {{ subtitle }}
@@ -60,6 +65,7 @@ import {
 } from '@/utilities'
 import BaseQuote from '@/components/Base/BaseQuote.vue'
 import BaseLoading from '@/components/Base/BaseLoading.vue'
+import BaseError from '@/components/Base/BaseError.vue'
 import ButtonIcon from '@/components/Button/ButtonIcon.vue'
 import ButtonText from '@/components/Button/ButtonText.vue'
 import LocationCard from '@/components/LocationCard.vue'
@@ -68,6 +74,7 @@ import LocationCard from '@/components/LocationCard.vue'
 	components: { 
 		BaseQuote,
 		BaseLoading,
+		BaseError,
 		ButtonIcon,
 		ButtonText,
 		LocationCard
@@ -75,6 +82,7 @@ import LocationCard from '@/components/LocationCard.vue'
 })
 export default class MatchesView extends Vue {
 	loading = true
+	error = ''
 	date = getStoredDate()
 	areaIds = getStoredAreas()
 
@@ -96,13 +104,16 @@ export default class MatchesView extends Vue {
 	}
 
 	created() {
+		console.log('T', this.maxTemperature)
+		
 		if(this.date 
 			&& this.areaIds.length > 0 
-			&& this.minTemperature !== undefined
-			&& this.maxTemperature !== undefined
 			&& this.skys.length > 0
 		) {
 			this.search()
+		} else {
+			this.loading = false
+			this.error = 'Sorry, some criteria are missing. Please try again.'
 		}
 	}
 
@@ -115,7 +126,7 @@ export default class MatchesView extends Vue {
 				this.matchedLocations = [...this.matchedLocations, ...matches]
 			})
 		} catch (error) {
-			console.log('ERROR', error)
+			this.error = 'Sorry, an error occurred. Please refresh the page or try again.'
 		} finally {
 			this.loading = false
 		}
