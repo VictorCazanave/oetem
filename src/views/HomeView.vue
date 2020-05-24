@@ -8,18 +8,19 @@
       Find where your favourite weather will be
     </p>
 
-    <!-- Use button instead of router link to disable it -->
+    <!-- Use button instead of router link to disable it when error -->
     <ButtonText
       label="Start"
       type="button"
       class="start"
-      @click="$router.push({ name: 'When' })"
+      @click="start"
     ></ButtonText>
   </main>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { clearStorage } from '@/utilities'
 import ButtonText from '@/components/Button/ButtonText.vue'
 
 @Component({
@@ -28,6 +29,10 @@ import ButtonText from '@/components/Button/ButtonText.vue'
 	}
 })
 export default class HomeView extends Vue {
+	start() {
+		clearStorage()
+		this.$router.push({ name: 'When' })
+	}
 }
 </script>
 

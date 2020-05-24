@@ -4,7 +4,7 @@
       label="Previous page"
       icon="previous"
       class="page-previous"
-      @click="back"
+      @click="$router.back()"
     ></ButtonIcon>
 
     <h1 class="page-title">
@@ -50,8 +50,14 @@
 import { Component, Vue } from 'vue-property-decorator'
 import SERVICES from '@/services'
 import Location from '@/models/Location'
-import Temperature from '@/models/Temperature'
-import { getMatches } from '@/utilities'
+import { 
+	getStoredDate,
+	getStoredAreas,
+	getStoredMinTemperature, 
+	getStoredMaxTemperature,
+	getStoredSkys,
+	getMatches
+} from '@/utilities'
 import BaseQuote from '@/components/Base/BaseQuote.vue'
 import BaseLoading from '@/components/Base/BaseLoading.vue'
 import ButtonIcon from '@/components/Button/ButtonIcon.vue'
@@ -69,10 +75,14 @@ import LocationCard from '@/components/LocationCard.vue'
 })
 export default class MatchesView extends Vue {
 	loading = true
-	selectedDate = ''
-	selectedAreas: string[] = []
-	selectedSkys: string[] = []
-	selectedTemperature: Temperature = { min: 0 , max: 0 }
+	date = getStoredDate()
+	areaIds = getStoredAreas()
+
+	// TODO: Find a way to handle missing temperatures
+	minTemperature= getStoredMinTemperature(-100)
+	maxTemperature= getStoredMaxTemperature(100)
+
+	skys = getStoredSkys()
 	matchedLocations: Location[] = []
 
 	get subtitle(): string {
@@ -86,27 +96,22 @@ export default class MatchesView extends Vue {
 	}
 
 	created() {
-		// TODO: Check if all query params exist
-		// TODO: Create utility functions to avoid code duplication
-		this.selectedDate = this.$route.query.date as string
-		this.selectedAreas = Array.isArray(this.$route.query.areas)
-			? this.$route.query.areas as string[]
-			: [this.$route.query.areas]
-		this.selectedSkys = Array.isArray(this.$route.query.skys)
-			? this.$route.query.skys as string[]
-			: [this.$route.query.skys]
-		this.selectedTemperature.min = Number(this.$route.query.min)
-		this.selectedTemperature.max = Number(this.$route.query.max)
-
-		this.search()
+		if(this.date 
+			&& this.areaIds.length > 0 
+			&& this.minTemperature !== undefined
+			&& this.maxTemperature !== undefined
+			&& this.skys.length > 0
+		) {
+			this.search()
+		}
 	}
 
 	async search() {
 		try {
-			const areas = await Promise.all(this.selectedAreas.map(area => SERVICES.getWeather(this.selectedDate, area)))
+			const areas = await Promise.all(this.areaIds.map(areaId => SERVICES.getWeather(this.date, areaId)))
 
 			areas.forEach(area => {
-				const matches = getMatches(area, this.selectedTemperature.min, this.selectedTemperature.max, this.selectedSkys)
+				const matches = getMatches(area, this.minTemperature, this.maxTemperature, this.skys)
 				this.matchedLocations = [...this.matchedLocations, ...matches]
 			})
 		} catch (error) {
@@ -114,16 +119,6 @@ export default class MatchesView extends Vue {
 		} finally {
 			this.loading = false
 		}
-	}
-
-	back() {
-		// Use this instead of $route.back() to keep query params
-		// TODO: Avoid duplication with BasePage
-		this.$router.push({
-			name: 'What', 
-			query: this.$route.query,
-			replace: true
-		})
 	}
 
 	restart() {

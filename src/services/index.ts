@@ -10,12 +10,10 @@ export default {
 		return data
 	},
 
-	async getWeather(date: string, area: string): Promise<Area> {
-		const res = await fetch(`${BASE_URL}${date}_${area}.json`)
+	async getWeather(date: string, areaId: string): Promise<Area> {
+		const res = await fetch(`${BASE_URL}${date}_${areaId}.json`)
 		const data = await res.json()
-		console.log('WEATHER', data)
 
-		// TODO: Really need date property?
 		return data.area
 	}
 }

@@ -6,7 +6,6 @@
     :subtitles="['Choose a date you can go out:']"
     submit-label="One more question"
     :valid="!!selectedDate"
-    previous-route="Home"
     @submit="save"
   >
     <template #section0>
@@ -29,6 +28,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { State } from 'vuex-class'
+import { getStoredDate, storeDate } from '@/utilities'
 import BasePage from '@/components/Base/BasePage.vue'
 import InputDate from '@/components/Input/InputDate.vue'
 
@@ -39,26 +39,13 @@ import InputDate from '@/components/Input/InputDate.vue'
 	}
 })
 export default class WhenView extends Vue {
-	selectedDate = ''
+	selectedDate = getStoredDate()
 	
 	@State dates!: string[]
 
-	created() {
-		if(this.$route.query.date) {
-			// Type based on: https://github.com/vuejs/vue-router/pull/2050#issuecomment-441797165
-			this.selectedDate = this.$route.query.date as string
-		}
-	}
-
 	save(): void {
-		this.$router.push({ 
-			name: 'Where', 
-			query: { 
-				// To keep all query params
-				...this.$route.query,
-				date: this.selectedDate
-			} 
-		})
+		storeDate(this.selectedDate)
+		this.$router.push({ name: 'Where' })
 	}
 }
 </script>

@@ -43,6 +43,14 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { State } from 'vuex-class'
 import VueSlider from 'vue-slider-component'
+import { 
+	getStoredMinTemperature, 
+	getStoredMaxTemperature,
+	getStoredSkys,
+	storeMinTemperature,
+	storeMaxTemperature,
+	storeSkys 
+} from '@/utilities'
 import Sky from '@/models/Sky'
 import Temperature from '@/models/Temperature'
 import BasePage from '@/components/Base/BasePage.vue'
@@ -56,46 +64,27 @@ import InputSky from '@/components/Input/InputSky.vue'
 	}
 })
 export default class WhatView extends Vue {
-	selectedSkyIds: string[] = []
 	selectedTemperature: number[] = []
+	selectedSkyIds = getStoredSkys()
 	
-	@State skys!: Sky[]
 	@State temperature!: Temperature
+	@State skys!: Sky[]
 
 	get sortedSkys(): Sky[] {
 		return [...this.skys].sort((sky1, sky2) => Number(sky1.id) - Number(sky2.id))
 	}
 
 	created() {
-		if(this.$route.query.skys) {
-			this.selectedSkyIds = Array.isArray(this.$route.query.skys)
-				? this.$route.query.skys as string[]
-				: [this.$route.query.skys]
-		}
-
-		if(this.$route.query.min) {
-			this.selectedTemperature[0] = Number(this.$route.query.min)
-		} else {
-			this.selectedTemperature[0] = this.temperature.min
-		}
-
-		if(this.$route.query.max) {
-			this.selectedTemperature[1] = Number(this.$route.query.max)
-		} else {
-			this.selectedTemperature[1] = this.temperature.max
-		}
+		// this.temperature is not available before
+		this.selectedTemperature[0] = getStoredMinTemperature(this.temperature.min)
+		this.selectedTemperature[1] = getStoredMaxTemperature(this.temperature.max)
 	}
 
 	save(): void {
-		this.$router.push({ 
-			name: 'Matches',
-			query: { 
-				...this.$route.query,
-				skys: this.selectedSkyIds,
-				min: this.selectedTemperature[0].toString(),
-				max: this.selectedTemperature[1].toString()
-			}
-		})
+		storeMinTemperature(this.selectedTemperature[0])
+		storeMaxTemperature(this.selectedTemperature[1])
+		storeSkys(this.selectedSkyIds)
+		this.$router.push({ name: 'Matches' })
 	}
 }
 </script>

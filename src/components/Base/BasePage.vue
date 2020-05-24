@@ -4,7 +4,7 @@
       label="Previous page"
       icon="previous"
       class="page-previous"
-      @click="back"
+      @click="$router.back()"
     ></ButtonIcon>
 
     <h1 class="page-title">
@@ -64,16 +64,6 @@ export default class BasePage extends Vue {
 	@Prop({ required: true }) readonly subtitles!: string[];
   @Prop({ required: true }) readonly submitLabel!: string;
 	@Prop({ required: true }) readonly valid!: boolean;
-	@Prop({ required: true }) readonly previousRoute!: string;
-	
-	back() {
-		// Use this instead of $route.back() to keep query params
-		this.$router.push({
-			name: this.previousRoute, 
-			query: this.$route.query,
-			replace: true
-		})
-	}
 }
 </script>
 
