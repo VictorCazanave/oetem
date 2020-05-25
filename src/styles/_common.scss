@@ -1,11 +1,13 @@
-/* Group of items (inputs and tags) */
-.group {
-	display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+/* Pages transition */
+.slide-up-enter-active, .slide-up-leave-active  {
+  transition: transform .8s ease-in;
 }
 
-/* Common styles of pages (BasePage and MatchesView) */
+.slide-up-enter-to, .slide-up-leave-to {
+  transform: translateY(-100vh);
+}
+
+/* Pages common styles (BasePage and MatchesView) */
 .page {
   display: flex;
   flex-direction: column;
@@ -51,4 +53,11 @@
 			margin-bottom: $margin-large;
 		}
 	}
+}
+
+/* Group of inlined items (inputs and tags) */
+.group {
+	display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }

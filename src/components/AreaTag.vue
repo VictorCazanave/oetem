@@ -41,6 +41,8 @@ export default class AreaTag extends Vue {
 }
 
 .icon {
+  @include transition(color);
+
   margin-left: 0.25rem;
   background-color: $input-bg;
   color: $page-txt-light;

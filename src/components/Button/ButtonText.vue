@@ -18,6 +18,8 @@ export default class ButtonText extends Vue {
 
 <style scoped lang="scss">
 .button {
+  @include transition(box-shadow);
+
   width: 60%;
   padding: 0.6rem 1.2rem;
   border-radius: 1000rem;

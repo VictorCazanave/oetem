@@ -11,20 +11,19 @@
 	stroke-width: 1;
 
 	&__location {
+  	@include transition(fill);
+
 		fill: $input-bg;
 		cursor: pointer;
 
-		&:active,
 		&:focus,
 		&:hover {
 			fill: $input-color-focus;
 			outline: 0;
-			//transition: fill 150ms ease-in;
 		}
 
 		&[aria-checked=true] {
 			fill: $input-color-selected;
-			transition-property: none;
 		}
 	}
 

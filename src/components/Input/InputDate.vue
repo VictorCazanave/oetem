@@ -79,6 +79,8 @@ $input-date-bottom-bg: $input-bg;
 }
 
 .label {
+  @include transition(box-shadow, border-color);
+
   display: flex;
   flex-direction: column;
   border: 0.25rem solid $page-bg-light;

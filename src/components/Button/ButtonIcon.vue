@@ -20,6 +20,8 @@ export default class ButtonText extends Vue {
 <style scoped lang="scss">
 // TODO: Remove code duplication with ButtonText
 .button {
+  @include transition(box-shadow);
+
   padding: 0.5rem;
   border-radius: 50%;
   box-shadow: $button-shadow;

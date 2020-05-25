@@ -91,6 +91,8 @@ export default class LocationCard extends Vue {
 }
 
 .link {
+  @include transition(color);
+
   color: $page-txt-light;
   font-size: 1.2rem;
   text-decoration: none;

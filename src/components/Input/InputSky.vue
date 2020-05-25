@@ -77,6 +77,8 @@ export default class InputSky extends Vue {
 }
 
 .label {
+  @include transition(box-shadow, border-color);
+
   display: block;
   width: 4rem;
   height: 4rem;
