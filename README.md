@@ -2,15 +2,15 @@
 
 _A reverse weather forecast web application built with Vue.js_
 
-⛅ Data
+## ⛅ Data
 
 All the meteorological data come from the [Central Weather Bureau of Taiwan](https://www.cwb.gov.tw).
 
-👨‍💻Tools
+## 👨‍💻Tools
 
 This application is built with Vue.js and TypeScript.
 
-💡Enhancements
+## 💡Enhancements
 
 * Handle i18n (Chinese/English)
 * Add `About` modal
