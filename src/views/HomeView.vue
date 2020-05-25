@@ -8,13 +8,11 @@
       Find where your favourite weather will be
     </p>
 
-    <MovingClouds class="clouds"></MovingClouds>
-
     <!-- Use button instead of router link to disable it when error -->
     <ButtonText
       label="Start"
       type="button"
-      class="start"
+      class="page-button"
       @click="start"
     ></ButtonText>
   </main>
@@ -23,12 +21,10 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { clearStorage } from '@/utilities'
-import MovingClouds from '@/components/MovingClouds.vue'
 import ButtonText from '@/components/Button/ButtonText.vue'
 
 @Component({
 	components: {
-		MovingClouds,
 		ButtonText
 	}
 })
@@ -61,14 +57,6 @@ export default class HomeView extends Vue {
   font-size: 1.1rem;
 }
 
-.clouds {
-  display: none;
-}
-
-.start {
-  margin-top: auto;
-}
-
 @media (min-width: $breakpoint-medium) {
   .title {
     margin-bottom: 10rem;
@@ -77,10 +65,6 @@ export default class HomeView extends Vue {
 
   .intro {
     font-size: 1.5rem;
-  }
-
-  .clouds {
-    display: block;
   }
 }
 </style>
