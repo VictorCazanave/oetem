@@ -17,8 +17,8 @@ This application is built with Vue.js and TypeScript.
 * Add `Select/Deselect All` buttons
 * Manage matches list (summary, sorting, filtering...)
 * Improve accessibility
-* Improve design (moving clouds 🤔)
+* Improve PWA
 * Improve router animation (slide up/down)
-* Test PWA
+* Improve design (moving clouds 🤔)
 * Use OpenStreetMap 🤔
 * Include map inside `Matches` page 🤔
