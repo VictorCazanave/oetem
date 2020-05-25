@@ -1,29 +1,24 @@
-# oetem
+# oeteM | Meteo
 
-## Project setup
-```
-npm install
-```
+_A reverse weather forecast web application built with Vue.js_
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+⛅ Data
 
-### Compiles and minifies for production
-```
-npm run build
-```
+All the meteorological data come from the [Central Weather Bureau of Taiwan](https://www.cwb.gov.tw).
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
+👨‍💻Tools
 
-### Lints and fixes files
-```
-npm run lint
-```
+This application is built with Vue.js and TypeScript.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+💡Enhancements
+
+* Handle i18n (Chinese/English)
+* Add `About` modal
+* Add `Select/Deselect All` buttons
+* Manage matches list (summary, sorting, filtering...)
+* Improve accessibility
+* Improve design (moving clouds 🤔)
+* Improve router animation (slide up/down)
+* Test PWA
+* Use OpenStreetMap 🤔
+* Include map inside `Matches` page 🤔
