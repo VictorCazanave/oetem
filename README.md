@@ -20,5 +20,6 @@ This application is built with Vue.js and TypeScript.
 * Improve PWA
 * Improve router animation (slide up/down)
 * Improve design (moving clouds 🤔)
+* Use Vue CLI plugin to deploy 🤔
 * Use OpenStreetMap 🤔
 * Include map inside `Matches` page 🤔
