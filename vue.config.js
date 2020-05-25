@@ -9,4 +9,11 @@ module.exports = {
 			}
 		}
 	},
+	pwa: {
+		themeColor: '#076585',
+		msTileColor: '#fffff',
+		manifestOptions: {
+			'background_color': '#ffffff'
+		}
+	}
 }
