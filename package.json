@@ -7,7 +7,7 @@
 		"build": "vue-cli-service build",
 		"test:e2e": "vue-cli-service test:e2e",
 		"lint": "vue-cli-service lint",
-		"deploy": "npm run build && mv dist docs"
+		"deploy": "rm -rf docs && npm run build && mv dist docs"
 	},
 	"dependencies": {
 		"@svg-maps/taiwan.main": "^1.0.0",
