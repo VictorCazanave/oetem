@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/oetem/img/icomoon.d1bbf5cb.svg"
   },
   {
-    "revision": "1ab3a644e80352e5f82cdf616dbdef12",
+    "revision": "8d892c623493b9cbb00abddaded57dd8",
     "url": "/oetem/index.html"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/oetem/js/chunk-vendors.c7092fd9.js"
   },
   {
-    "revision": "6100e06a0b8be0a47758a5c2fabbc48f",
+    "revision": "b5d9ac7c641b1ddc4ce61ec3bca50598",
     "url": "/oetem/manifest.json"
   },
   {

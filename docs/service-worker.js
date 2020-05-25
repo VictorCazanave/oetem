@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/oetem/precache-manifest.8361c0814ac8beec7808ace26a37ef05.js"
+  "/oetem/precache-manifest.46de3723d7f0e06709059c4247d5739d.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "oetem"});

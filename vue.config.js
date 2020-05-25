@@ -10,6 +10,8 @@ module.exports = {
 		}
 	},
 	pwa: {
+		name: 'oeteM',
+		'short_name': 'oeteM',
 		themeColor: '#076585',
 		msTileColor: '#fffff',
 		manifestOptions: {
