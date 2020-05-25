@@ -1,0 +1,51 @@
+/* Breakpoints */
+$breakpoint-medium: 48rem; // 768px (iPad portrait)
+$breakpoint-large: 64rem; // 1020.25rem (iPad landscape)
+
+/* Pages */
+$page-max-width: 64rem; // 1020.25rem
+$page-bg-dark: #076585;
+$page-bg-light: #eef4f6;
+$page-txt-dark: #444;
+$page-txt-light: #999;
+$page-txt-lighter: #eee;
+$page-txt-error: #b83a3a;
+
+/* Margins */
+$margin-small: 0.5rem;
+$margin-medium: 2rem;
+$margin-large: 3.5rem;
+
+/* Buttons */
+$button-primary-bg: #30d180;
+$button-primary-txt: #fff;
+$button-secondary-bg: #f1f6f8;
+$button-secondary-txt: #aaa;
+$button-shadow: 0 0.125rem 0.25rem 0 rgba(110, 110, 110, 0.5);
+$button-shadow-focus: 0 0.125rem 0.25rem 0 rgba(110, 110, 110, 0.8);
+$button-shadow-active: inset 0 -0.125rem 0.25rem 0 rgba(110, 110, 110, 0.5);
+$button-shadow-disabled:  0 0.125rem 0.25rem 0 rgba(110, 110, 110, 0.2);
+
+/* Inputs */
+$input-bg: #fff;
+$input-color-selected: #45879e;
+$input-color-focus: rgba(69, 135, 158, 0.4);
+$input-shadow-focus: 0 0 0 0.2rem $input-color-focus;
+$input-shadow: 0 0.125rem 0.25rem 0 rgba(170, 170, 170, 0.5);
+
+/* Icons */
+$icomoon-font-family: "icomoon" !default;
+$icomoon-font-path: "fonts" !default;
+$icon-close: "\e901";
+$icon-about: "\e900";
+$icon-location: "\e947";
+$icon-sphere: "\e9c9";
+$icon-sad: "\e9e5";
+$icon-wondering: "\e9fb";
+$icon-previous: "\ea40";
+
+/* Slider (override default theme) */
+$themeColor: $input-color-selected;
+$bgColor: $input-bg;
+$dotBgColor: $input-color-selected;
+$dotShadow: $input-shadow;

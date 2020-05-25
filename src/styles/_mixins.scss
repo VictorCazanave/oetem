@@ -1,0 +1,13 @@
+/* 
+ * Transition with multiple properties
+ * Based on: https://gist.github.com/tobiasahlin/7a421fb9306a4f518aab
+ */
+@mixin transition($properties...) {
+	$transitions: ();
+
+	@each $property in $properties {
+    $transitions: append($transitions, $property 200ms ease-in, comma);
+	}
+	
+	transition: $transitions;
+}

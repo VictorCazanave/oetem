@@ -1,0 +1,63 @@
+/* Pages transition */
+.slide-up-enter-active, .slide-up-leave-active  {
+  transition: transform .8s ease-in;
+}
+
+.slide-up-enter-to, .slide-up-leave-to {
+  transform: translateY(-100vh);
+}
+
+/* Pages common styles (BasePage and MatchesView) */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+	padding: 1rem 1rem 2rem;
+	
+	&-previous {
+		align-self: flex-start;
+	}
+
+	&-title {
+		flex: 0;
+		margin-bottom: $margin-medium;
+		font-size: 2rem;
+	}
+
+	&-quote {
+		display: none;
+	}
+
+	&-subtitle {
+		margin-bottom: $margin-medium;
+	}
+
+	&-button {
+		margin-top: auto;
+	}
+}
+
+@media (min-width: $breakpoint-medium) {
+	.page {
+  	font-size: 1.2rem;
+
+
+		&-title {
+			margin-bottom: $margin-large;
+			font-size: 3rem;
+		}
+
+		&-quote {
+			display: inline-block;
+			margin-bottom: $margin-large;
+		}
+	}
+}
+
+/* Group of inlined items (inputs and tags) */
+.group {
+	display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
