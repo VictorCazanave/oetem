@@ -1,9 +1,9 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?t5mnk9') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?t5mnk9') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?t5mnk9##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?nlwfo9') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?nlwfo9') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?nlwfo9##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,6 +27,11 @@
 .icon-close {
   &:before {
     content: $icon-close; 
+  }
+}
+.icon-cloud {
+  &:before {
+    content: $icon-cloud; 
   }
 }
 .icon-about {
@@ -57,5 +62,10 @@
 .icon-previous {
   &:before {
     content: $icon-previous; 
+  }
+}
+.icon-github {
+  &:before {
+    content: $icon-github; 
   }
 }

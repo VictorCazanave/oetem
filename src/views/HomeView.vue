@@ -8,6 +8,14 @@
       Find where your favourite weather will be
     </p>
 
+    <aside class="sidebar">
+      <ButtonIcon
+        label="About"
+        icon="about"
+        @click="$modal.show('about')"
+      ></ButtonIcon>
+    </aside>
+
     <!-- Use button instead of router link to disable it when error -->
     <ButtonText
       label="Start"
@@ -15,17 +23,23 @@
       class="page-button"
       @click="start"
     ></ButtonText>
+
+    <AboutModal></AboutModal>
   </main>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { clearStorage } from '@/utilities'
+import ButtonIcon from '@/components/Button/ButtonIcon.vue'
 import ButtonText from '@/components/Button/ButtonText.vue'
+import AboutModal from '@/components/AboutModal.vue'
 
 @Component({
 	components: {
-		ButtonText
+		ButtonIcon,
+		ButtonText,
+		AboutModal
 	}
 })
 export default class HomeView extends Vue {
@@ -53,11 +67,20 @@ export default class HomeView extends Vue {
 }
 
 .intro {
+  margin-bottom: 2rem;
   padding: 0 1rem;
   font-size: 1.1rem;
 }
 
+.sidebar {
+  margin-top: auto;
+}
+
 @media (min-width: $breakpoint-medium) {
+  .page {
+    padding-top: 10rem;
+  }
+
   .title {
     margin-bottom: 10rem;
     font-size: 4rem;

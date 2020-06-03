@@ -1,9 +1,9 @@
 /* Breakpoints */
 $breakpoint-medium: 48rem; // 768px (iPad portrait)
-$breakpoint-large: 64rem; // 1020.25rem (iPad landscape)
+$breakpoint-large: 64rem; // 1024px (iPad landscape)
 
 /* Pages */
-$page-max-width: 64rem; // 1020.25rem
+$page-max-width: 64rem; // 1024px
 $page-bg-dark: #076585;
 $page-bg-light: #eef4f6;
 $page-txt-dark: #444;
@@ -19,6 +19,7 @@ $margin-large: 3.5rem;
 /* Buttons */
 $button-primary-bg: #30d180;
 $button-primary-txt: #fff;
+$button-secondary-size: 2.25rem;
 $button-secondary-bg: #f1f6f8;
 $button-secondary-txt: #aaa;
 $button-shadow: 0 0.125rem 0.25rem 0 rgba(110, 110, 110, 0.5);
@@ -37,12 +38,14 @@ $input-shadow: 0 0.125rem 0.25rem 0 rgba(170, 170, 170, 0.5);
 $icomoon-font-family: "icomoon" !default;
 $icomoon-font-path: "fonts" !default;
 $icon-close: "\e901";
-$icon-about: "\e900";
+$icon-cloud: "\e900";
+$icon-about: "\e902";
 $icon-location: "\e947";
 $icon-sphere: "\e9c9";
 $icon-sad: "\e9e5";
 $icon-wondering: "\e9fb";
 $icon-previous: "\ea40";
+$icon-github: "\eab0";
 
 /* Slider (override default theme) */
 $themeColor: $input-color-selected;

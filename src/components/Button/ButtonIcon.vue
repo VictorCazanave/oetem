@@ -22,11 +22,13 @@ export default class ButtonText extends Vue {
 .button {
   @include transition(box-shadow);
 
-  padding: 0.5rem;
+  width: $button-secondary-size;
+  height: $button-secondary-size;
   border-radius: 50%;
   box-shadow: $button-shadow;
   background-color: $button-secondary-bg;
   color: $button-secondary-txt;
+  font-size: 1.2rem;
 
   &:focus,
   &:hover {
@@ -43,7 +45,7 @@ export default class ButtonText extends Vue {
   }
 
   @media (min-width: $breakpoint-medium) {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 }
 </style>

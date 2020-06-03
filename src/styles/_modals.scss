@@ -1,0 +1,8 @@
+// Style of vue-js-modal
+.vm--overlay {
+background: rgba($color: $page-bg-dark, $alpha: 0.7);
+}
+
+.vm--modal {
+	box-shadow: 0 0.25rem 0.5rem 0 rgba(110, 110, 110, 0.5);
+}
