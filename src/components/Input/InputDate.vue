@@ -63,6 +63,8 @@ $input-date-bottom-bg: $input-bg;
 .input {
   // Hide native input
   position: absolute;
+  top: 50%;
+  left: 50%;
   z-index: -1;
 
   &:focus,

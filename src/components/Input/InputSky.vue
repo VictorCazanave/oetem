@@ -61,6 +61,8 @@ export default class InputSky extends Vue {
 .input {
   // Hide native input
   position: absolute;
+  top: 50%;
+  left: 50%;
   z-index: -1;
 
   &:focus,
