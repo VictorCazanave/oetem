@@ -12,16 +12,16 @@ This application is built with Vue.js and TypeScript.
 
 ## 💡Enhancements
 
-* Handle i18n (Chinese/English)
-* Add `About` modal
-* Add `Select/Deselect All` buttons
-* Add end-to-end tests (Puppeterr vs Cypress)
-* Manage matches list (summary, sorting, filtering...)
-* Improve accessibility
-* Improve PWA
-* Improve router animation (slide up/down)
-* Improve design (moving clouds 🤔)
-* Use Vue CLI plugin to deploy 🤔
-* Use OpenStreetMap 🤔
-* Create REST API 🤔
-* Include map inside `Matches` page 🤔
+[ ] Handle i18n (Chinese/English)
+[x] Add `About` modal
+[ ] Add `Select/Deselect All` buttons
+[ ] Add end-to-end tests (Puppeterr vs Cypress)
+[ ] Manage matches list (summary, sorting, filtering...)
+[ ] Improve accessibility
+[ ] Improve PWA
+[ ] Improve router animation (slide up/down)
+[ ] Improve design (moving clouds 🤔)
+[ ] Use Vue CLI plugin to deploy 🤔
+[ ] Use OpenStreetMap 🤔
+[ ] Create REST API 🤔
+[ ] Include map inside `Matches` page 🤔
