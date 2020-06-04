@@ -24,6 +24,7 @@
       @click="start"
     ></ButtonText>
 
+    <MovingClouds class="clouds"></MovingClouds>
     <AboutModal></AboutModal>
   </main>
 </template>
@@ -33,12 +34,14 @@ import { Component, Vue } from 'vue-property-decorator'
 import { clearStorage } from '@/utilities'
 import ButtonIcon from '@/components/Button/ButtonIcon.vue'
 import ButtonText from '@/components/Button/ButtonText.vue'
+import MovingClouds from '@/components/MovingClouds.vue'
 import AboutModal from '@/components/AboutModal.vue'
 
 @Component({
 	components: {
 		ButtonIcon,
 		ButtonText,
+		MovingClouds,
 		AboutModal
 	}
 })
@@ -72,6 +75,11 @@ export default class HomeView extends Vue {
   margin: auto 0 2rem;
 }
 
+.clouds {
+  top: 0;
+  display: none;
+}
+
 @media (min-width: $breakpoint-medium) {
   .page {
     padding-top: 10rem;
@@ -84,6 +92,10 @@ export default class HomeView extends Vue {
 
   .intro {
     font-size: 1.5rem;
+  }
+
+  .clouds {
+    display: block;
   }
 }
 </style>

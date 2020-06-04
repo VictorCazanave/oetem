@@ -4,7 +4,7 @@
     aria-hidden="true"
   >
     <div
-      v-for="i in 4"
+      v-for="i in 8"
       :key="i"
       :class="`cloud${i}`"
       class="cloud"
@@ -36,19 +36,21 @@ $shadow: 0 0 5rem 0.5rem $color;
     transform: translateX(-50vh);
   }
   100% {
-    transform: translateX(200vh);
+    transform: translateX(150vh);
   }
 }
 
 .wrapper {
-  position: relative;
+  position: fixed;
   overflow: hidden;
+  width: 100%;
+  height: 40rem;
 }
 
 .cloud {
   position: absolute;
-  width: 11rem;
-  height: 3.5rem;
+  width: 5rem;
+  height: 2rem;
   border-radius: 100rem;
   box-shadow: $shadow;
   background-color: $color;
@@ -63,24 +65,29 @@ $shadow: 0 0 5rem 0.5rem $color;
   }
 
   &:before {
-    width: 6rem;
-    height: 6rem;
-    top: -3rem;
-    right: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    top: -1.25rem;
+    right: 0.75rem;
   }
 
   &:after {
-    width: 3rem;
-    height: 3rem;
-    top: -1.5rem;
-    left: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: -0.75rem;
+    left: 0.75rem;
   }
 }
 
 @for $i from 1 through 4 {
   .cloud#{$i} {
-    top: $i * 8rem;
+    top: $i * 7rem;
     animation: moveCloud (5 - $i) * 10s linear infinite;
+  }
+
+  .cloud#{$i + 4} {
+    top: $i * 5rem;
+    animation: moveCloud (5 - $i) * 7s linear infinite;
   }
 }
 </style>
