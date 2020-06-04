@@ -1,5 +1,5 @@
 <template>
-  <main class="page">
+  <main class="page home">
     <h1 class="title">
       oeteM | Meteo
     </h1>
@@ -51,11 +51,7 @@ export default class HomeView extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
+.home {
   padding: 5rem 0 2rem; // No left/right padding because of moving clouds
   background: linear-gradient(to bottom, $page-bg-dark, $page-bg-light);
   color: $page-txt-lighter;
@@ -73,7 +69,7 @@ export default class HomeView extends Vue {
 }
 
 .sidebar {
-  margin-top: auto;
+  margin: auto 0 2rem;
 }
 
 @media (min-width: $breakpoint-medium) {

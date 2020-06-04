@@ -2,10 +2,11 @@
   <modal
     name="about"
     :adaptive="true"
-    width="50%"
+    width="80%"
     :min-width="320"
     :max-width="800"
     height="auto"
+    :scrollable="true"
   >
     <section class="about">
       <ButtonIcon
