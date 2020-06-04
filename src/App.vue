@@ -59,6 +59,6 @@ export default class HomeView extends Vue {
 
 <style scoped lang="scss">
 .center {
-  margin: 40% auto 0;
+  margin: 40vh auto 0;
 }
 </style>
